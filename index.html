@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Company Hub</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#4b286d" />
+  </head>
+  <body>
+    <header>
+      <div class="language-toggle">
+        <div class="language-container">
+          <div class="language-selector">
+            <button class="active language-btn" data-lang="en">EN</button>
+            <button class="language-btn" data-lang="fr">FR</button>
+            <div class="language-dropdown-icon">
+              <i class="fas fa-chevron-down"></i>
+            </div>
+          </div>
+          <div class="language-preferences-panel">
+            <div class="language-pref-section">
+              <h4>Language Settings</h4>
+              <div class="language-option">
+                <input
+                  type="radio"
+                  id="lang-en"
+                  name="language"
+                  value="en"
+                  checked
+                />
+                <label for="lang-en">English</label>
+              </div>
+              <div class="language-option">
+                <input type="radio" id="lang-fr" name="language" value="fr" />
+                <label for="lang-fr">Français</label>
+              </div>
+              <div class="remember-preference">
+                <input type="checkbox" id="remember-lang" checked />
+                <label for="remember-lang"
+                  >Remember my language preference</label
+                >
+              </div>
+            </div>
+            <div class="region-pref-section">
+              <h4>Region</h4>
+              <select id="region-selector">
+                <option value="all">All Regions</option>
+                <option value="qc">Quebec</option>
+                <option value="on">Ontario</option>
+                <option value="ab-bc">Alberta/British Columbia</option>
+                <option value="atlantic">Atlantic</option>
+              </select>
+              <div class="region-info">
+                <i class="fas fa-info-circle"></i>
+                <span>Content will be filtered based on your region.</span>
+              </div>
+            </div>
+            <div class="pref-actions">
+              <button id="save-preferences" class="save-pref-btn">
+                Save Preferences
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <nav>
+        <div class="logo">Company Hub</div>
+        <button class="mobile-menu-btn">
+          <i class="fas fa-bars"></i>
+        </button>
+        <ul class="nav-links">
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="pages/learning-hub.html">Learning Hub</a></li>
+          <li><a href="pages/comms-news.html">Comms News</a></li>
+          <li><a href="pages/valuegen.html">ValueGen</a></li>
+          <li><a href="pages/valuecenter.html">ValueCenter</a></li>
+          <li><a href="pages/partners.html">Partners</a></li>
+          <li><a href="pages/training.html">Training</a></li>
+          <li class="managers-only">
+            <a href="pages/managers.html">Managers</a>
+          </li>
+          <li><a href="pages/profile-dashboard.html">My Dashboard</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <!-- Offline Access Banner -->
+      <div class="offline-banner">
+        <div class="offline-content">
+          <div class="offline-icon">
+            <i class="fas fa-wifi"></i>
+          </div>
+          <div class="offline-message">
+            <strong>Offline Access Available</strong>
+            <p>
+              Save content for offline use in areas with limited connectivity.
+            </p>
+          </div>
+          <button class="offline-toggle-btn">
+            <i class="fas fa-chevron-down"></i>
+          </button>
+        </div>
+        <div class="offline-options">
+          <div class="offline-option">
+            <input
+              type="checkbox"
+              id="enable-offline"
+              class="offline-checkbox"
+            />
+            <label for="enable-offline">Enable offline access</label>
+            <div class="offline-status">
+              <span class="offline-indicator"></span>
+              <span class="offline-status-text">Not enabled</span>
+            </div>
+          </div>
+          <div class="offline-actions">
+            <button id="save-for-offline" class="offline-action-btn" disabled>
+              <i class="fas fa-download"></i> Save content for offline use
+            </button>
+            <div class="offline-storage-info">
+              <div class="storage-bar">
+                <div class="storage-used" style="width: 0%"></div>
+              </div>
+              <span class="storage-text">0 MB used (0 MB available)</span>
+            </div>
+          </div>
+          <div class="offline-help">
+            <a href="pages/article-template.html">
+              <i class="fas fa-question-circle"></i> How to use offline mode
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Critical Alert Banner -->
+      <div class="critical-alert-banner">
+        <div class="critical-alert-content">
+          <div class="alert-icon">
+            <i class="fas fa-exclamation-circle"></i>
+          </div>
+          <div class="alert-message">
+            <strong>CRITICAL UPDATE:</strong> All RT-3000 series routers must be
+            updated to firmware v6.2.1 by June 15th.
+            <a href="pages/article-template.html" class="alert-link"
+              >View Details</a
+            >
+          </div>
+        </div>
+        <button class="alert-close-btn">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+
+      <!-- Global Search Bar -->
+      <div class="search-container">
+        <div class="search-wrapper">
+          <i class="fas fa-search search-icon"></i>
+          <input
+            type="text"
+            id="global-search"
+            placeholder="Search for articles, documentation, or guides..."
+          />
+          <button class="search-button">Search</button>
+        </div>
+      </div>
+
+      <section class="hero">
+        <h1>Welcome to the Company Hub</h1>
+        <p>Your centralized portal for all company resources and information</p>
+        <div class="hero-buttons">
+          <a href="pages/article-template.html" class="hero-btn primary-btn">
+            <i class="fas fa-bolt"></i> Learn Hub Basics
+          </a>
+          <a href="pages/article-template.html" class="hero-btn secondary-btn">
+            <i class="fas fa-tools"></i> Technical Resources
+          </a>
+        </div>
+      </section>
+
+      <section class="personalized-feed">
+        <div class="section-header">
+          <h2>Your Personalized Feed</h2>
+          <button class="customize-feed-btn">
+            <i class="fas fa-sliders-h"></i> Customize
+          </button>
+        </div>
+        <div class="personalization-notice">
+          <i class="fas fa-info-circle"></i>
+          <span
+            >Content is personalized based on your role, region, and
+            preferences.</span
+          >
+          <a href="pages/profile-dashboard.html" class="manage-preferences-link"
+            >Manage Preferences</a
+          >
+        </div>
+        <div class="feed-content">
+          <div class="feed-item">
+            <div class="feed-item-header">
+              <span class="feed-item-type">Learning</span>
+              <span class="feed-item-date">Today</span>
+            </div>
+            <h3>New Fiber Installation Training Available</h3>
+            <p>
+              A new training module for the latest fiber installation techniques
+              has been added to your learning dashboard.
+            </p>
+            <div class="feed-item-meta">
+              <span class="feed-relevance">
+                <i class="fas fa-bullseye"></i> Relevant to your role
+              </span>
+            </div>
+            <a href="pages/article-template.html" class="feed-item-link"
+              >View Training</a
+            >
+          </div>
+          <div class="feed-item region-specific">
+            <div class="feed-item-header">
+              <span class="feed-item-type">Regional</span>
+              <span class="feed-item-date">Yesterday</span>
+            </div>
+            <h3>Ontario Building Code Update</h3>
+            <p>
+              New building code regulations for multi-dwelling installations in
+              Ontario have been published.
+            </p>
+            <div class="feed-item-meta">
+              <span class="feed-relevance">
+                <i class="fas fa-map-marker-alt"></i> Specific to your region
+              </span>
+            </div>
+            <a href="pages/article-template.html" class="feed-item-link"
+              >Read Update</a
+            >
+          </div>
+          <div class="feed-item">
+            <div class="feed-item-header">
+              <span class="feed-item-type">Technical</span>
+              <span class="feed-item-date">Jun 8</span>
+            </div>
+            <h3>Router Firmware Update Required</h3>
+            <p>
+              Critical security update for all RT-3000 series routers must be
+              completed by June 15th.
+            </p>
+            <div class="feed-item-meta">
+              <span class="feed-relevance">
+                <i class="fas fa-exclamation-circle"></i> High priority
+              </span>
+            </div>
+            <a href="pages/article-template.html" class="feed-item-link"
+              >View Details</a
+            >
+          </div>
+          <div class="feed-item saved">
+            <div class="feed-item-header">
+              <span class="feed-item-type">Saved</span>
+              <span class="feed-item-date">Jun 5</span>
+            </div>
+            <h3>WiFi 6 Implementation Guide</h3>
+            <p>
+              Reference guide for installing and configuring new WiFi 6
+              equipment.
+            </p>
+            <div class="feed-item-meta">
+              <span class="feed-relevance">
+                <i class="fas fa-bookmark"></i> From your bookmarks
+              </span>
+            </div>
+            <a href="pages/article-template.html" class="feed-item-link"
+              >View Guide</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <!-- User Quick Access Section -->
+      <section class="quick-access">
+        <div class="user-links">
+          <div class="recent-articles">
+            <h3><i class="fas fa-history"></i> Recently Viewed</h3>
+            <ul id="recent-articles-list">
+              <li>
+                <a href="pages/article-template.html"
+                  >Fiber Installation Guide v2.3</a
+                >
+                <span class="time-viewed">2h ago</span>
+              </li>
+              <li>
+                <a href="pages/article-template.html"
+                  >Customer Premises Equipment Setup</a
+                >
+                <span class="time-viewed">Yesterday</span>
+              </li>
+              <li>
+                <a href="pages/article-template.html"
+                  >Billing Process for New Installations</a
+                >
+                <span class="time-viewed">3d ago</span>
+              </li>
+            </ul>
+            <a href="pages/article-template.html" class="view-all"
+              >View All <i class="fas fa-chevron-right"></i
+            ></a>
+          </div>
+          <div class="saved-articles">
+            <h3><i class="fas fa-bookmark"></i> Bookmarked</h3>
+            <ul id="saved-articles-list">
+              <li>
+                <a href="pages/article-template.html"
+                  >Network Troubleshooting Flowchart</a
+                >
+              </li>
+              <li>
+                <a href="pages/article-template.html"
+                  >WiFi Signal Optimization Guide</a
+                >
+              </li>
+              <li>
+                <a href="pages/article-template.html"
+                  >Monthly Promotion Calculator</a
+                >
+              </li>
+            </ul>
+            <a href="pages/article-template.html" class="view-all"
+              >View All <i class="fas fa-chevron-right"></i
+            ></a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Updates and Alerts Section -->
+      <section class="updates-section">
+        <div class="technical-bulletins">
+          <div class="section-header">
+            <h2>Technical Bulletins & Policy Updates</h2>
+            <a href="#" class="view-all"
+              >View All <i class="fas fa-chevron-right"></i
+            ></a>
+          </div>
+          <div class="bulletin-items">
+            <div class="bulletin-item">
+              <span class="date-badge">NEW</span>
+              <h4>Router Firmware Update Required</h4>
+              <p>
+                All RT-3000 series routers must be updated to firmware v6.2.1 by
+                June 15th.
+              </p>
+              <a href="pages/article-template.html" class="read-more"
+                >Read more <i class="fas fa-arrow-right"></i
+              ></a>
+            </div>
+            <div class="bulletin-item">
+              <span class="date-badge">May 28</span>
+              <h4>New Cable Installation Protocol</h4>
+              <p>
+                Updated procedures for multi-dwelling unit installations are now
+                in effect.
+              </p>
+              <a href="pages/article-template.html" class="read-more"
+                >Read more <i class="fas fa-arrow-right"></i
+              ></a>
+            </div>
+            <div class="bulletin-item">
+              <span class="date-badge">May 25</span>
+              <h4>Certification Requirements Update</h4>
+              <p>
+                New security certification requirements for all field
+                technicians.
+              </p>
+              <a href="pages/article-template.html" class="read-more"
+                >Read more <i class="fas fa-arrow-right"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="hot-offers">
+          <div class="section-header">
+            <h2>Today's Hot Offers</h2>
+            <a href="pages/article-template.html" class="view-all"
+              >View All <i class="fas fa-chevron-right"></i
+            ></a>
+          </div>
+          <div class="offer-items">
+            <div class="offer-item">
+              <div class="offer-badge">BEST SELLER</div>
+              <h4>Premium Bundle - $129.99/mo</h4>
+              <p>
+                Internet + TV + Home Security with 30% off for first 12 months
+              </p>
+              <a href="pages/article-template.html" class="read-more"
+                >View details <i class="fas fa-arrow-right"></i
+              ></a>
+            </div>
+            <div class="offer-item">
+              <div class="offer-badge">LIMITED TIME</div>
+              <h4>Gigabit Internet Upgrade</h4>
+              <p>Free speed upgrade with 2-year commitment</p>
+              <a href="pages/article-template.html" class="read-more"
+                >View details <i class="fas fa-arrow-right"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Billing Information Section -->
+      <section class="billing-section">
+        <div class="section-header">
+          <h2>Billing Rules & Guidelines</h2>
+          <a href="pages/article-template.html" class="view-all"
+            >View All <i class="fas fa-chevron-right"></i
+          ></a>
+        </div>
+        <div class="billing-cards">
+          <div class="billing-card">
+            <div class="billing-icon">
+              <i class="fas fa-file-invoice-dollar"></i>
+            </div>
+            <h3>Quick Billing Guide</h3>
+            <p>Reference for common billing scenarios and procedures</p>
+            <a href="pages/article-template.html" class="card-link"
+              >Access Guide</a
+            >
+          </div>
+          <div class="billing-card">
+            <div class="billing-icon">
+              <i class="fas fa-tools"></i>
+            </div>
+            <h3>Repair Billing Guidelines</h3>
+            <p>Standard procedures for billing repair services</p>
+            <a href="pages/article-template.html" class="card-link"
+              >Access Guide</a
+            >
+          </div>
+          <div class="billing-card">
+            <div class="billing-icon">
+              <i class="fas fa-exclamation-circle"></i>
+            </div>
+            <h3>Recent Billing Updates</h3>
+            <p>New changes to billing policies and procedures</p>
+            <a href="pages/article-template.html" class="card-link"
+              >View Updates</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <!-- Featured Topics Section -->
+      <section class="featured-topics">
+        <div class="section-header">
+          <h2>Featured Topics</h2>
+          <a href="pages/article-template.html" class="view-all"
+            >View All <i class="fas fa-chevron-right"></i
+          ></a>
+        </div>
+        <div class="topic-cards">
+          <div class="topic-card">
+            <div class="topic-icon"><i class="fas fa-wifi"></i></div>
+            <h3>WiFi 6 Implementation</h3>
+            <p>
+              Best practices for new WiFi 6 equipment installation and
+              troubleshooting
+            </p>
+            <div class="topic-meta">
+              <span class="topic-views"
+                ><i class="fas fa-eye"></i> 1.2k views</span
+              >
+              <span class="topic-priority"
+                ><i class="fas fa-star"></i> High priority</span
+              >
+            </div>
+            <a href="pages/article-template.html" class="read-more hidden-link"
+              >View Article</a
+            >
+          </div>
+          <div class="topic-card">
+            <div class="topic-icon"><i class="fas fa-satellite-dish"></i></div>
+            <h3>5G Service Expansion</h3>
+            <p>Resources for the ongoing 5G infrastructure deployment</p>
+            <div class="topic-meta">
+              <span class="topic-views"
+                ><i class="fas fa-eye"></i> 856 views</span
+              >
+              <span class="topic-priority"
+                ><i class="fas fa-star"></i> High priority</span
+              >
+            </div>
+          </div>
+          <div class="topic-card">
+            <div class="topic-icon"><i class="fas fa-server"></i></div>
+            <h3>New Server Infrastructure</h3>
+            <p>Updated protocols for data center maintenance procedures</p>
+            <div class="topic-meta">
+              <span class="topic-views"
+                ><i class="fas fa-eye"></i> 742 views</span
+              >
+              <span class="topic-priority"
+                ><i class="fas fa-star"></i> Medium priority</span
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Job Aids & Resources Section -->
+      <section class="job-aids-section">
+        <div class="section-header">
+          <h2>Job Aids & Resources</h2>
+          <a href="pages/article-template.html" class="view-all"
+            >View All <i class="fas fa-chevron-right"></i
+          ></a>
+        </div>
+
+        <div class="resource-categories">
+          <div class="resource-category">
+            <div class="category-header">
+              <i class="fas fa-toolbox"></i>
+              <h3>Installation</h3>
+            </div>
+            <ul class="resource-list">
+              <li>
+                <a href="pages/article-template.html"
+                  ><i class="fas fa-file-alt"></i> Fiber Installation Guide</a
+                >
+              </li>
+              <li>
+                <a href="pages/article-template.html"
+                  ><i class="fas fa-file-alt"></i> WiFi 6 Setup Instructions</a
+                >
+              </li>
+              <li>
+                <a href="pages/article-template.html"
+                  ><i class="fas fa-file-alt"></i> Multi-Room Installation</a
+                >
+              </li>
+              <li>
+                <a href="pages/article-template.html"
+                  ><i class="fas fa-file-alt"></i> Smart Home Integration</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div class="resource-category">
+            <div class="category-header">
+              <i class="fas fa-tools"></i>
+              <h3>Troubleshooting</h3>
+            </div>
+            <ul class="resource-list">
+              <li>
+                <a href="pages/article-template.html"
+                  ><i class="fas fa-file-alt"></i> Signal Issues Diagnosis</a
+                >
+              </li>
+              <li>
+                <a href="pages/article-template.html"
+                  ><i class="fas fa-file-alt"></i> Router Reset Procedures</a
+                >
+              </li>
+              <li>
+                <a href="pages/article-template.html"
+                  ><i class="fas fa-file-alt"></i> Connectivity Problems</a
+                >
+              </li>
+              <li>
+                <a href="pages/article-template.html"
+                  ><i class="fas fa-file-alt"></i> Speed Test Guide</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div class="resource-category">
+            <div class="category-header">
+              <i class="fas fa-file-invoice-dollar"></i>
+              <h3>Billing Resources</h3>
+            </div>
+            <ul class="resource-list grouped-list">
+              <li class="group-header">By Job Type</li>
+              <li>
+                <a href="pages/article-template.html"
+                  ><i class="fas fa-file-alt"></i> New Installations</a
+                >
+              </li>
+              <li>
+                <a href="pages/article-template.html"
+                  ><i class="fas fa-file-alt"></i> Service Upgrades</a
+                >
+              </li>
+              <li class="group-header">By Product</li>
+              <li>
+                <a href="pages/article-template.html"
+                  ><i class="fas fa-file-alt"></i> Internet Services</a
+                >
+              </li>
+              <li>
+                <a href="pages/article-template.html"
+                  ><i class="fas fa-file-alt"></i> TV & Entertainment</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div class="resource-category">
+            <div class="category-header">
+              <i class="fas fa-book"></i>
+              <h3>Product Manuals</h3>
+            </div>
+            <ul class="resource-list">
+              <li>
+                <a href="pages/article-template.html"
+                  ><i class="fas fa-file-pdf"></i> Router User Guides</a
+                >
+              </li>
+              <li>
+                <a href="pages/article-template.html"
+                  ><i class="fas fa-file-pdf"></i> Set-Top Box Manual</a
+                >
+              </li>
+              <li>
+                <a href="pages/article-template.html"
+                  ><i class="fas fa-file-pdf"></i> Smart Home Devices</a
+                >
+              </li>
+              <li>
+                <a href="pages/article-template.html"
+                  ><i class="fas fa-file-pdf"></i> Mesh WiFi Systems</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="hardware-business-rules">
+          <div class="hardware-icon">
+            <i class="fas fa-microchip"></i>
+          </div>
+          <div class="hardware-content">
+            <h3>Hardware Business Rules</h3>
+            <p>Access equipment policies and procedures for installations</p>
+            <a href="pages/article-template.html" class="hardware-link"
+              >View Hardware Business Rules</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <section class="hub-categories">
+        <div class="category-card">
+          <h2>Learning Hub</h2>
+          <p>
+            Access educational resources and professional development materials
+          </p>
+          <a href="pages/learning-hub.html" class="card-link"
+            >Enter Learning Hub</a
+          >
+        </div>
+        <div class="category-card">
+          <h2>Comms News</h2>
+          <p>
+            Stay updated with the latest company announcements and
+            communications
+          </p>
+          <a href="pages/comms-news.html" class="card-link">View News</a>
+        </div>
+        <div class="category-card">
+          <h2>ValueGen</h2>
+          <p>Explore value generation initiatives and opportunities</p>
+          <a href="pages/valuegen.html" class="card-link">ValueGen Portal</a>
+        </div>
+        <div class="category-card">
+          <h2>ValueCenter</h2>
+          <p>Access core business value resources and information</p>
+          <a href="pages/valuecenter.html" class="card-link"
+            >Enter ValueCenter</a
+          >
+        </div>
+        <div class="category-card">
+          <h2>Partners</h2>
+          <p>Connect with our partner network and resources</p>
+          <a href="pages/partners.html" class="card-link">Partners Area</a>
+        </div>
+        <div class="category-card">
+          <h2>Training</h2>
+          <p>Access training materials and development programs</p>
+          <a href="pages/training.html" class="card-link">Training Center</a>
+        </div>
+        <div class="category-card managers-only">
+          <h2>Managers</h2>
+          <p>Management-specific resources and tools</p>
+          <a href="pages/managers.html" class="card-link">Managers Portal</a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4>Company Hub</h4>
+          <p>Your centralized portal for all company resources</p>
+        </div>
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="pages/learning-hub.html">Learning Hub</a></li>
+            <li><a href="pages/comms-news.html">Comms News</a></li>
+            <li><a href="pages/valuegen.html">ValueGen</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="#">Help Center</a></li>
+            <li><a href="#">Contact IT</a></li>
+            <li><a href="#">FAQs</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2023 Company Hub. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/personalized-feed.js"></script>
+  </body>
+</html>

@@ -1,0 +1,1579 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Search Results - Company Hub</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link rel="stylesheet" href="../css/search.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Critical Outage Alert Banner -->
+    <div class="critical-alert-banner">
+      <div class="alert-container">
+        <i class="fas fa-exclamation-triangle"></i>
+        <div class="alert-message">
+          <strong>SYSTEM ALERT:</strong> eFulfillment experiencing intermittent
+          issues. Use DSLE as alternate. <a href="#">View Details</a>
+        </div>
+        <button class="alert-dismiss"><i class="fas fa-times"></i></button>
+      </div>
+    </div>
+
+    <header>
+      <div class="language-toggle">
+        <div class="language-container">
+          <div class="language-selector">
+            <button class="active language-btn" data-lang="en">EN</button>
+            <button class="language-btn" data-lang="fr">FR</button>
+            <div class="language-dropdown-icon">
+              <i class="fas fa-chevron-down"></i>
+            </div>
+          </div>
+          <div class="language-preferences-panel">
+            <div class="language-pref-section">
+              <h4>Language Settings</h4>
+              <div class="language-option">
+                <input
+                  type="radio"
+                  id="lang-en"
+                  name="language"
+                  value="en"
+                  checked
+                />
+                <label for="lang-en">English</label>
+              </div>
+              <div class="language-option">
+                <input type="radio" id="lang-fr" name="language" value="fr" />
+                <label for="lang-fr">Français</label>
+              </div>
+              <div class="remember-preference">
+                <input type="checkbox" id="remember-lang" checked />
+                <label for="remember-lang"
+                  >Remember my language preference</label
+                >
+              </div>
+            </div>
+            <div class="region-pref-section">
+              <h4>Region</h4>
+              <select id="region-selector">
+                <option value="all">All Regions</option>
+                <option value="qc">Quebec</option>
+                <option value="on">Ontario</option>
+                <option value="ab-bc">Alberta/British Columbia</option>
+                <option value="atlantic">Atlantic</option>
+              </select>
+              <div class="region-info">
+                <i class="fas fa-info-circle"></i>
+                <span>Content will be filtered based on your region.</span>
+              </div>
+            </div>
+            <div class="pref-actions">
+              <button id="save-preferences" class="save-pref-btn">
+                Save Preferences
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <nav>
+        <div class="logo">Company Hub</div>
+        <button class="mobile-menu-btn">
+          <i class="fas fa-bars"></i>
+        </button>
+        <ul class="nav-links">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="learning-hub.html">Learning Hub</a></li>
+          <li><a href="comms-news.html">Comms News</a></li>
+          <li><a href="valuegen.html">ValueGen</a></li>
+          <li><a href="valuecenter.html">ValueCenter</a></li>
+          <li><a href="partners.html">Partners</a></li>
+          <li><a href="training.html">Training</a></li>
+          <li class="managers-only">
+            <a href="managers.html">Managers</a>
+          </li>
+          <li><a href="profile-dashboard.html">My Dashboard</a></li>
+        </ul>
+      </nav>
+
+      <!-- Breadcrumb Navigation -->
+      <div class="breadcrumb-container">
+        <ul class="breadcrumb">
+          <li><a href="../index.html">Home</a></li>
+          <li>Search Results</li>
+        </ul>
+      </div>
+    </header>
+
+    <!-- Tech Floating Menu -->
+    <div class="tech-floating-menu">
+      <div class="tech-menu-toggle">
+        <button class="tech-menu-btn">
+          <i class="fas fa-tools"></i>
+          <span>Tech Resources</span>
+        </button>
+      </div>
+      <div class="tech-menu-dropdown">
+        <div class="tech-menu-header">
+          <h2>Field Tech Resources</h2>
+          <div class="tech-menu-tabs">
+            <button class="tech-tab active" data-tab="install">
+              Install & Repair
+            </button>
+            <button class="tech-tab" data-tab="sales">Sales & Offers</button>
+            <button class="tech-tab" data-tab="billing">Billing</button>
+            <button class="tech-tab" data-tab="support">Support</button>
+            <button class="tech-tab" data-tab="training">Training</button>
+          </div>
+        </div>
+
+        <!-- Install & Repair Tab -->
+        <div class="tech-menu-tab-content active" id="install-tab">
+          <div class="tech-menu-section">
+            <h3><i class="fas fa-book"></i> Installation Guides</h3>
+            <ul>
+              <li>
+                <a href="#"><i class="fas fa-wifi"></i> Internet Setup</a>
+              </li>
+              <li>
+                <a href="#"><i class="fas fa-tv"></i> TV Installation</a>
+              </li>
+              <li>
+                <a href="#"><i class="fas fa-home"></i> Smart Home Setup</a>
+              </li>
+              <li>
+                <a href="#"><i class="fas fa-phone-alt"></i> Voice Services</a>
+              </li>
+              <li>
+                <a href="#"><i class="fas fa-video"></i> All Video Tutorials</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="tech-menu-section">
+            <h3><i class="fas fa-clipboard-list"></i> QA Checklists</h3>
+            <ul>
+              <li>
+                <a href="#"
+                  ><i class="fas fa-check-square"></i> Internet Installation
+                  QA</a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><i class="fas fa-check-square"></i> TV Installation QA</a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><i class="fas fa-check-square"></i> Smart Home QA</a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><i class="fas fa-check-square"></i> Safety Standards</a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><i class="fas fa-check-square"></i> Customer Service QA</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div class="tech-menu-section">
+            <h3><i class="fas fa-project-diagram"></i> Network Topology</h3>
+            <ul>
+              <li>
+                <a href="#"
+                  ><i class="fas fa-sitemap"></i> Basic Home Network</a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><i class="fas fa-sitemap"></i> Advanced WiFi Setup</a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><i class="fas fa-sitemap"></i> Smart Home Integration</a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><i class="fas fa-sitemap"></i> Multi-Unit Deployments</a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><i class="fas fa-th-large"></i> All Network Diagrams</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div class="tech-menu-section">
+            <h3><i class="fas fa-hard-hat"></i> Safety & Equipment</h3>
+            <ul>
+              <li>
+                <a href="#"
+                  ><i class="fas fa-helmet-safety"></i> Safety Protocols</a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><i class="fas fa-toolbox"></i> Equipment Handling</a
+                >
+              </li>
+              <li>
+                <a href="#"><i class="fas fa-car"></i> Vehicle Safety</a>
+              </li>
+              <li>
+                <a href="#"
+                  ><i class="fas fa-house-user"></i> Home Entry Protocol</a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><i class="fas fa-video"></i> Safety Training Videos</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div class="tech-menu-section">
+            <h3><i class="fas fa-tools"></i> Apps & Tools</h3>
+            <ul>
+              <li>
+                <a href="#"><i class="fas fa-search"></i> Insight</a>
+              </li>
+              <li>
+                <a href="#"
+                  ><i class="fas fa-clipboard-check"></i> eFulfillment</a
+                >
+              </li>
+              <li>
+                <a href="#"><i class="fas fa-network-wired"></i> DST</a>
+              </li>
+              <li>
+                <a href="#"><i class="fas fa-terminal"></i> DSLE</a>
+              </li>
+              <li>
+                <a href="#"><i class="fas fa-project-diagram"></i> ADC</a>
+              </li>
+              <li>
+                <a href="#"><i class="fas fa-tasks"></i> BOLD</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Sales & Offers Tab -->
+        <div class="tech-menu-tab-content" id="sales-tab">
+          <div class="tech-menu-section">
+            <h3><i class="fas fa-tags"></i> Current Promotions</h3>
+            <ul>
+              <li>
+                <a href="#"><i class="fas fa-bolt"></i> Internet Promotions</a>
+              </li>
+              <li>
+                <a href="#"><i class="fas fa-tv"></i> TV Promotions</a>
+              </li>
+              <li>
+                <a href="#"><i class="fas fa-home"></i> Smart Home Offers</a>
+              </li>
+              <li>
+                <a href="#"
+                  ><i class="fas fa-phone-alt"></i> Phone Promotions</a
+                >
+              </li>
+              <li>
+                <a href="#"><i class="fas fa-globe"></i> Bundle Deals</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="tech-menu-section">
+            <h3><i class="fas fa-dollar-sign"></i> Pricing Charts</h3>
+            <ul>
+              <li>
+                <a href="#"
+                  ><i class="fas fa-file-invoice-dollar"></i> Standard
+                  Pricing</a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><i class="fas fa-percentage"></i> Promotional Pricing</a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><i class="fas fa-hand-holding-usd"></i> Bundle Pricing</a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><i class="fas fa-file-contract"></i> Contract Terms</a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><i class="fas fa-calculator"></i> Price Calculator</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div class="tech-menu-section">
+            <h3><i class="fas fa-mobile-alt"></i> Customer Apps</h3>
+            <ul>
+              <li>
+                <a href="#"><i class="fas fa-home"></i> SmartHome Connect</a>
+              </li>
+              <li>
+                <a href="#"><i class="fas fa-user"></i> MyTELUS</a>
+              </li>
+              <li>
+                <a href="#"><i class="fas fa-heartbeat"></i> TELUS Health</a>
+              </li>
+              <li>
+                <a href="#"><i class="fas fa-paw"></i> TELUS Pet</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="tech-menu-section">
+            <h3><i class="fas fa-handshake"></i> Solicitation Policies</h3>
+            <ul>
+              <li>
+                <a href="#"
+                  ><i class="fas fa-file-alt"></i> Solicitation Guidelines</a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><i class="fas fa-clipboard-list"></i> Do's and Don'ts</a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><i class="fas fa-user-check"></i> Customer Approach</a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><i class="fas fa-award"></i> President's Club Info</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Billing Tab -->
+        <div class="tech-menu-tab-content" id="billing-tab">
+          <div class="tech-menu-section">
+            <h3><i class="fas fa-file-invoice-dollar"></i> Billing Rules</h3>
+            <ul>
+              <li>
+                <a href="#"
+                  ><i class="fas fa-tools"></i> Additional Work Charges</a
+                >
+              </li>
+              <li>
+                <a href="#"><i class="fas fa-boxes"></i> Equipment Charges</a>
+              </li>
+              <li>
+                <a href="#"><i class="fas fa-wrench"></i> Repair Billing</a>
+              </li>
+              <li>
+                <a href="#"
+                  ><i class="fas fa-network-wired"></i> Custom Network Setup</a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><i class="fas fa-question-circle"></i> Report Unclear
+                  Rules</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div class="tech-menu-section">
+            <h3><i class="fas fa-desktop"></i> Billing Tools</h3>
+            <ul>
+              <li>
+                <a href="#"
+                  ><i class="fas fa-calculator"></i> Service Quote Tool</a
+                >
+              </li>
+              <li>
+                <a href="#"><i class="fas fa-receipt"></i> Invoice Generator</a>
+              </li>
+              <li>
+                <a href="#"
+                  ><i class="fas fa-credit-card"></i> Payment Processing</a
+                >
+              </li>
+              <li>
+                <a href="#"><i class="fas fa-sync"></i> Billing Status Check</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="tech-menu-section">
+            <h3><i class="fas fa-comment-dollar"></i> Billing Help</h3>
+            <ul>
+              <li>
+                <a href="#"><i class="fas fa-question"></i> Billing FAQs</a>
+              </li>
+              <li>
+                <a href="#"><i class="fas fa-headset"></i> Billing Support</a>
+              </li>
+              <li>
+                <a href="#"
+                  ><i class="fas fa-comments"></i> Explaining Charges</a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><i class="fas fa-exclamation-circle"></i> Common Issues</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Support Tab -->
+        <div class="tech-menu-tab-content" id="support-tab">
+          <div class="tech-menu-section">
+            <h3><i class="fas fa-phone-alt"></i> Support Numbers</h3>
+            <ul class="support-numbers">
+              <li>
+                <a href="tel:+18005551234"
+                  ><i class="fas fa-headset"></i> Tech Support:
+                  1-800-555-1234</a
+                >
+              </li>
+              <li>
+                <a href="tel:+18005551235"
+                  ><i class="fas fa-tools"></i> Field Support: 1-800-555-1235</a
+                >
+              </li>
+              <li>
+                <a href="tel:+18005551236"
+                  ><i class="fas fa-user-tie"></i> Manager Escalation:
+                  1-800-555-1236</a
+                >
+              </li>
+              <li>
+                <a href="tel:+18005551237"
+                  ><i class="fas fa-truck"></i> Dispatch: 1-800-555-1237</a
+                >
+              </li>
+              <li>
+                <a href="tel:+18005551238"
+                  ><i class="fas fa-warehouse"></i> Inventory: 1-800-555-1238</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div class="tech-menu-section">
+            <h3><i class="fas fa-graduation-cap"></i> Training Resources</h3>
+            <ul>
+              <li>
+                <a href="#"><i class="fas fa-book"></i> Learning Hub</a>
+              </li>
+              <li>
+                <a href="#"><i class="fas fa-video"></i> Training Videos</a>
+              </li>
+              <li>
+                <a href="#"
+                  ><i class="fas fa-certificate"></i> Certifications</a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><i class="fas fa-calendar-alt"></i> Training Calendar</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div class="tech-menu-section">
+            <h3><i class="fas fa-question-circle"></i> Troubleshooting</h3>
+            <ul>
+              <li>
+                <a href="#"><i class="fas fa-wifi"></i> Internet Issues</a>
+              </li>
+              <li>
+                <a href="#"><i class="fas fa-tv"></i> TV Problems</a>
+              </li>
+              <li>
+                <a href="#"><i class="fas fa-phone-alt"></i> Voice Services</a>
+              </li>
+              <li>
+                <a href="#"
+                  ><i class="fas fa-home"></i> Smart Home Troubleshooting</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div class="tech-menu-section">
+            <h3>
+              <i class="fas fa-exclamation-triangle"></i> Safety & Emergencies
+            </h3>
+            <ul>
+              <li>
+                <a href="#"
+                  ><i class="fas fa-first-aid"></i> Emergency Procedures</a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><i class="fas fa-car-crash"></i> Accident Reporting</a
+                >
+              </li>
+              <li>
+                <a href="#"><i class="fas fa-bolt"></i> Electrical Safety</a>
+              </li>
+              <li>
+                <a href="#"><i class="fas fa-hard-hat"></i> PPE Guidelines</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Training Tab -->
+        <div class="tech-menu-tab-content" id="training-tab">
+          <div class="tech-menu-section">
+            <h3><i class="fas fa-calendar-alt"></i> Training Calendar</h3>
+            <div class="calendar-preview">
+              <div class="calendar-header">
+                <span class="calendar-month">June 2023</span>
+                <div class="calendar-nav">
+                  <button><i class="fas fa-chevron-left"></i></button>
+                  <button><i class="fas fa-chevron-right"></i></button>
+                </div>
+              </div>
+              <div class="calendar-grid">
+                <div class="calendar-day header">Sun</div>
+                <div class="calendar-day header">Mon</div>
+                <div class="calendar-day header">Tue</div>
+                <div class="calendar-day header">Wed</div>
+                <div class="calendar-day header">Thu</div>
+                <div class="calendar-day header">Fri</div>
+                <div class="calendar-day header">Sat</div>
+
+                <div class="calendar-day">28</div>
+                <div class="calendar-day">29</div>
+                <div class="calendar-day">30</div>
+                <div class="calendar-day">31</div>
+                <div class="calendar-day">1</div>
+                <div class="calendar-day">2</div>
+                <div class="calendar-day">3</div>
+
+                <div class="calendar-day">4</div>
+                <div class="calendar-day">5</div>
+                <div
+                  class="calendar-day has-event"
+                  data-event="Fiber Installation Training"
+                >
+                  6
+                </div>
+                <div class="calendar-day">7</div>
+                <div
+                  class="calendar-day has-event"
+                  data-event="First Aid Certification"
+                >
+                  8
+                </div>
+                <div class="calendar-day">9</div>
+                <div class="calendar-day">10</div>
+
+                <div class="calendar-day">11</div>
+                <div
+                  class="calendar-day has-event"
+                  data-event="Smart Home Security Workshop"
+                >
+                  12
+                </div>
+                <div class="calendar-day">13</div>
+                <div class="calendar-day">14</div>
+                <div
+                  class="calendar-day has-event"
+                  data-event="Network Troubleshooting"
+                >
+                  15
+                </div>
+                <div class="calendar-day">16</div>
+                <div class="calendar-day">17</div>
+              </div>
+            </div>
+            <div class="calendar-actions">
+              <a href="#" class="view-full-calendar"
+                ><i class="fas fa-external-link-alt"></i> View Full Calendar</a
+              >
+              <a href="#" class="schedule-tech"
+                ><i class="fas fa-user-plus"></i> Schedule Technician</a
+              >
+            </div>
+          </div>
+
+          <div class="tech-menu-section">
+            <h3><i class="fas fa-route"></i> Learning Paths</h3>
+            <ul>
+              <li>
+                <a href="#"
+                  ><i class="fas fa-wifi"></i> Internet & WiFi Specialist</a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><i class="fas fa-tv"></i> TV & Entertainment Expert</a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><i class="fas fa-shield-alt"></i> Smart Home Security Pro</a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><i class="fas fa-network-wired"></i> Network Topologies</a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><i class="fas fa-home"></i> Custom Homes Specialist</a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><i class="fas fa-user-plus"></i> New Hire Essentials</a
+                >
+              </li>
+            </ul>
+            <div class="role-selector">
+              <label for="role-filter">Filter by technician role:</label>
+              <select id="role-filter">
+                <option value="all">All Roles</option>
+                <option value="shs">Smart Home Security</option>
+                <option value="custom">Custom Homes</option>
+                <option value="legacy">Legacy</option>
+                <option value="copper">Copper</option>
+                <option value="internet">Internet</option>
+                <option value="tv">TV</option>
+                <option value="wifi">WiFi+</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="tech-menu-section">
+            <h3><i class="fas fa-graduation-cap"></i> Available Courses</h3>
+            <div class="course-list">
+              <div class="course-item">
+                <span class="course-badge virtual"
+                  ><i class="fas fa-video"></i> Virtual</span
+                >
+                <h4>Advanced WiFi Troubleshooting</h4>
+                <div class="course-details">
+                  <span><i class="fas fa-clock"></i> 2 hours</span>
+                  <span><i class="fas fa-calendar"></i> Jun 24</span>
+                </div>
+                <a href="#" class="enroll-btn">Enroll</a>
+              </div>
+
+              <div class="course-item">
+                <span class="course-badge in-person"
+                  ><i class="fas fa-users"></i> In-Person</span
+                >
+                <h4>Fiber Splicing Certification</h4>
+                <div class="course-details">
+                  <span><i class="fas fa-clock"></i> 8 hours</span>
+                  <span><i class="fas fa-calendar"></i> Jul 3</span>
+                </div>
+                <a href="#" class="enroll-btn">Enroll</a>
+              </div>
+
+              <div class="course-item">
+                <span class="course-badge self-paced"
+                  ><i class="fas fa-book-reader"></i> Self-paced</span
+                >
+                <h4>Network Security Fundamentals</h4>
+                <div class="course-details">
+                  <span><i class="fas fa-clock"></i> 4 hours</span>
+                  <span><i class="fas fa-award"></i> Certificate</span>
+                </div>
+                <a href="#" class="enroll-btn">Start Now</a>
+              </div>
+            </div>
+            <a href="#" class="view-all-courses"
+              ><i class="fas fa-list"></i> View All Available Courses</a
+            >
+          </div>
+
+          <div class="tech-menu-section">
+            <h3><i class="fas fa-clipboard-check"></i> Manager Tools</h3>
+            <ul class="manager-tools">
+              <li>
+                <a href="#"
+                  ><i class="fas fa-user-plus"></i> New Hire Onboarding</a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><i class="fas fa-list-check"></i> Training Completion
+                  Tracking</a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><i class="fas fa-certificate"></i> Certification
+                  Management</a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><i class="fas fa-users-cog"></i> Team Training Schedule</a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><i class="fas fa-file-alt"></i> Request Equipment/Access</a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><i class="fas fa-chart-bar"></i> Training Analytics</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div class="tech-menu-section">
+            <h3><i class="fas fa-medal"></i> Skill Development</h3>
+            <div class="skill-badges">
+              <div class="skill-badge">
+                <div class="badge-icon"><i class="fas fa-wifi"></i></div>
+                <span class="badge-name">WiFi Pro</span>
+                <div class="badge-progress" data-progress="75">
+                  <div class="progress-bar" style="width: 75%"></div>
+                </div>
+              </div>
+
+              <div class="skill-badge">
+                <div class="badge-icon"><i class="fas fa-shield-alt"></i></div>
+                <span class="badge-name">Security Expert</span>
+                <div class="badge-progress" data-progress="45">
+                  <div class="progress-bar" style="width: 45%"></div>
+                </div>
+              </div>
+
+              <div class="skill-badge">
+                <div class="badge-icon">
+                  <i class="fas fa-network-wired"></i>
+                </div>
+                <span class="badge-name">Network Guru</span>
+                <div class="badge-progress" data-progress="90">
+                  <div class="progress-bar" style="width: 90%"></div>
+                </div>
+              </div>
+
+              <div class="skill-badge">
+                <div class="badge-icon"><i class="fas fa-tv"></i></div>
+                <span class="badge-name">TV Specialist</span>
+                <div class="badge-progress" data-progress="60">
+                  <div class="progress-bar" style="width: 60%"></div>
+                </div>
+              </div>
+            </div>
+            <a href="#" class="skill-dev-link"
+              ><i class="fas fa-trophy"></i> View Your Learning Progress</a
+            >
+          </div>
+
+          <div class="tech-menu-section">
+            <h3><i class="fas fa-users"></i> Mentorship Program</h3>
+            <div class="mentorship-options">
+              <div class="mentorship-role">
+                <h4><i class="fas fa-user-graduate"></i> Find a Mentor</h4>
+                <p>
+                  Connect with experienced technicians to enhance your skills.
+                </p>
+                <a href="#" class="mentorship-btn">Search Mentors</a>
+              </div>
+
+              <div class="mentorship-role">
+                <h4>
+                  <i class="fas fa-chalkboard-teacher"></i> Become a Mentor
+                </h4>
+                <p>Share your expertise with newer technicians.</p>
+                <a href="#" class="mentorship-btn">Apply Now</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tech-menu-footer">
+          <div class="menu-minimize">
+            <button id="minimize-tech-menu">
+              <i class="fas fa-minus"></i> Minimize
+            </button>
+          </div>
+          <div class="menu-settings">
+            <button id="tech-menu-settings"><i class="fas fa-cog"></i></button>
+            <span class="pin-menu">
+              <input type="checkbox" id="pin-tech-menu" />
+              <label for="pin-tech-menu">Keep menu open</label>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <main>
+      <!-- Enhanced Search Bar -->
+      <div class="search-container advanced">
+        <div class="search-wrapper">
+          <i class="fas fa-search search-icon"></i>
+          <input
+            type="text"
+            id="global-search"
+            placeholder="Search for articles, documentation, guides, videos..."
+            value=""
+          />
+          <div class="search-controls">
+            <button class="search-button">Search</button>
+            <button class="toggle-advanced-search">
+              <i class="fas fa-sliders-h"></i>
+              <span>Filters</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Advanced Search Options (hidden by default) -->
+        <div class="advanced-search-panel">
+          <div class="filter-section">
+            <h3>Filter Results</h3>
+            <div class="filter-groups">
+              <div class="filter-group">
+                <h4>Content Type</h4>
+                <div class="filter-options">
+                  <div class="filter-option">
+                    <input type="checkbox" id="filter-articles" checked />
+                    <label for="filter-articles">Articles</label>
+                  </div>
+                  <div class="filter-option">
+                    <input type="checkbox" id="filter-videos" checked />
+                    <label for="filter-videos">Videos</label>
+                  </div>
+                  <div class="filter-option">
+                    <input type="checkbox" id="filter-jobaid" checked />
+                    <label for="filter-jobaid">Job Aids</label>
+                  </div>
+                  <div class="filter-option">
+                    <input type="checkbox" id="filter-training" checked />
+                    <label for="filter-training">Training</label>
+                  </div>
+                  <div class="filter-option">
+                    <input type="checkbox" id="filter-billing" checked />
+                    <label for="filter-billing">Billing Rules</label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="filter-group">
+                <h4>Language</h4>
+                <div class="filter-options">
+                  <div class="filter-option">
+                    <input
+                      type="radio"
+                      id="filter-lang-any"
+                      name="filter-language"
+                      checked
+                    />
+                    <label for="filter-lang-any">Any</label>
+                  </div>
+                  <div class="filter-option">
+                    <input
+                      type="radio"
+                      id="filter-lang-en"
+                      name="filter-language"
+                    />
+                    <label for="filter-lang-en">English Only</label>
+                  </div>
+                  <div class="filter-option">
+                    <input
+                      type="radio"
+                      id="filter-lang-fr"
+                      name="filter-language"
+                    />
+                    <label for="filter-lang-fr">French Only</label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="filter-group">
+                <h4>Region</h4>
+                <div class="filter-options">
+                  <div class="filter-option">
+                    <input
+                      type="radio"
+                      id="filter-region-any"
+                      name="filter-region"
+                      checked
+                    />
+                    <label for="filter-region-any">All Regions</label>
+                  </div>
+                  <div class="filter-option">
+                    <input
+                      type="radio"
+                      id="filter-region-on"
+                      name="filter-region"
+                    />
+                    <label for="filter-region-on">Ontario</label>
+                  </div>
+                  <div class="filter-option">
+                    <input
+                      type="radio"
+                      id="filter-region-qc"
+                      name="filter-region"
+                    />
+                    <label for="filter-region-qc">Quebec</label>
+                  </div>
+                  <div class="filter-option">
+                    <input
+                      type="radio"
+                      id="filter-region-west"
+                      name="filter-region"
+                    />
+                    <label for="filter-region-west">Alberta/BC</label>
+                  </div>
+                  <div class="filter-option">
+                    <input
+                      type="radio"
+                      id="filter-region-atlantic"
+                      name="filter-region"
+                    />
+                    <label for="filter-region-atlantic">Atlantic</label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="filter-group">
+                <h4>Content Source</h4>
+                <div class="filter-options">
+                  <div class="filter-option">
+                    <input type="checkbox" id="filter-techhub" checked />
+                    <label for="filter-techhub">Company Hub</label>
+                  </div>
+                  <div class="filter-option">
+                    <input type="checkbox" id="filter-onesource" />
+                    <label for="filter-onesource">OneSource</label>
+                  </div>
+                  <div class="filter-option">
+                    <input type="checkbox" id="filter-telus" />
+                    <label for="filter-telus">Company.com</label>
+                  </div>
+                  <div class="filter-option">
+                    <input type="checkbox" id="filter-topps" />
+                    <label for="filter-topps">TOPPS</label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="filter-group time-based">
+                <h4>Learning Duration</h4>
+                <div class="filter-options">
+                  <div class="filter-option">
+                    <input
+                      type="radio"
+                      id="filter-duration-any"
+                      name="filter-duration"
+                      checked
+                    />
+                    <label for="filter-duration-any">Any Length</label>
+                  </div>
+                  <div class="filter-option">
+                    <input
+                      type="radio"
+                      id="filter-duration-5"
+                      name="filter-duration"
+                    />
+                    <label for="filter-duration-5">Under 5 minutes</label>
+                  </div>
+                  <div class="filter-option">
+                    <input
+                      type="radio"
+                      id="filter-duration-15"
+                      name="filter-duration"
+                    />
+                    <label for="filter-duration-15">5-15 minutes</label>
+                  </div>
+                  <div class="filter-option">
+                    <input
+                      type="radio"
+                      id="filter-duration-30"
+                      name="filter-duration"
+                    />
+                    <label for="filter-duration-30">15-30 minutes</label>
+                  </div>
+                  <div class="filter-option">
+                    <input
+                      type="radio"
+                      id="filter-duration-60"
+                      name="filter-duration"
+                    />
+                    <label for="filter-duration-60">30-60 minutes</label>
+                  </div>
+                  <div class="filter-option">
+                    <input
+                      type="radio"
+                      id="filter-duration-over60"
+                      name="filter-duration"
+                    />
+                    <label for="filter-duration-over60">Over 60 minutes</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="filter-actions">
+              <button class="apply-filters-btn">Apply Filters</button>
+              <button class="reset-filters-btn">Reset Filters</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="search-results-container">
+        <div class="search-terms">
+          <h1>
+            Search Results for "<span id="search-term">fiber installation</span
+            >"
+          </h1>
+          <p class="result-count">
+            <span id="result-count">42</span> results found
+          </p>
+
+          <div class="active-filters">
+            <span class="filter-label">Active Filters:</span>
+            <div class="filter-tags">
+              <div class="filter-tag">
+                Articles
+                <button class="remove-filter">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+              <div class="filter-tag">
+                Job Aids
+                <button class="remove-filter">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+              <div class="filter-tag">
+                Videos
+                <button class="remove-filter">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+              <div class="filter-tag filter-tag-language">
+                Any Language
+                <button class="remove-filter">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            </div>
+            <button class="clear-all-filters">Clear All Filters</button>
+          </div>
+        </div>
+
+        <div class="search-results-layout">
+          <!-- Search Results List -->
+          <div class="search-results-list">
+            <!-- Content Type Categories -->
+            <div class="results-category">
+              <h2>Featured Results</h2>
+
+              <div class="result-item featured">
+                <div class="result-icon"><i class="fas fa-star"></i></div>
+                <div class="result-content">
+                  <div class="result-meta">
+                    <span class="result-type job-aid">Job Aid</span>
+                    <span class="result-language bilingual">
+                      <span class="lang-indicator en">EN</span>
+                      <span class="lang-indicator fr">FR</span>
+                    </span>
+                  </div>
+                  <h3>
+                    <a href="article-template.html"
+                      >Fiber Optic Installation Guide for Residential
+                      Customers</a
+                    >
+                  </h3>
+                  <p>
+                    Comprehensive step-by-step guide for installing fiber optic
+                    service in residential settings, including equipment setup,
+                    troubleshooting, and quality standards.
+                  </p>
+                  <div class="result-tags">
+                    <span class="result-tag">Fiber</span>
+                    <span class="result-tag">Installation</span>
+                    <span class="result-tag">Residential</span>
+                  </div>
+                  <div class="result-metadata">
+                    <span class="result-source">Company Hub</span>
+                    <span class="result-date">Updated May 30, 2023</span>
+                    <span class="result-views"
+                      ><i class="fas fa-eye"></i> 2,548 views</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="results-category">
+              <h2>Videos <span class="category-count">(12)</span></h2>
+
+              <div class="result-item">
+                <div class="result-icon video">
+                  <i class="fas fa-play-circle"></i>
+                </div>
+                <div class="result-content">
+                  <div class="result-meta">
+                    <span class="result-type video">Video</span>
+                    <span class="result-duration"
+                      ><i class="fas fa-clock"></i> 8:24</span
+                    >
+                    <span class="result-language"
+                      ><span class="lang-indicator en">EN</span></span
+                    >
+                  </div>
+                  <h3>
+                    <a href="article-template.html"
+                      >Fiber Splicing Technique Demonstration</a
+                    >
+                  </h3>
+                  <p>
+                    Video demonstration of proper fiber optic splicing
+                    techniques for residential installations.
+                  </p>
+                  <div class="result-metadata">
+                    <span class="result-source">Learning Hub</span>
+                    <span class="result-date">Published Apr 12, 2023</span>
+                    <span class="result-views"
+                      ><i class="fas fa-eye"></i> 1,872 views</span
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <div class="result-item">
+                <div class="result-icon video">
+                  <i class="fas fa-play-circle"></i>
+                </div>
+                <div class="result-content">
+                  <div class="result-meta">
+                    <span class="result-type video">Video</span>
+                    <span class="result-duration"
+                      ><i class="fas fa-clock"></i> 4:15</span
+                    >
+                    <span class="result-language bilingual">
+                      <span class="lang-indicator en">EN</span>
+                      <span class="lang-indicator fr">FR</span>
+                    </span>
+                  </div>
+                  <h3>
+                    <a href="article-template.html"
+                      >Quick Guide: Testing Fiber Connections</a
+                    >
+                  </h3>
+                  <p>
+                    Short video showing the proper method for testing fiber
+                    connections after installation.
+                  </p>
+                  <div class="result-metadata">
+                    <span class="result-source">Learning Hub</span>
+                    <span class="result-date">Published May 15, 2023</span>
+                    <span class="result-views"
+                      ><i class="fas fa-eye"></i> 956 views</span
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <button class="load-more-btn">
+                <i class="fas fa-plus"></i> View All 12 Videos
+              </button>
+            </div>
+
+            <div class="results-category">
+              <h2>Job Aids <span class="category-count">(15)</span></h2>
+
+              <div class="result-item">
+                <div class="result-icon job-aid">
+                  <i class="fas fa-file-alt"></i>
+                </div>
+                <div class="result-content">
+                  <div class="result-meta">
+                    <span class="result-type job-aid">Job Aid</span>
+                    <span class="result-language bilingual">
+                      <span class="lang-indicator en">EN</span>
+                      <span class="lang-indicator fr">FR</span>
+                    </span>
+                    <span class="region-specific">Ontario</span>
+                  </div>
+                  <h3>
+                    <a href="article-template.html"
+                      >Ontario Fiber Installation Checklist</a
+                    >
+                  </h3>
+                  <p>
+                    Step-by-step checklist for Ontario region fiber
+                    installations, including region-specific building code
+                    requirements.
+                  </p>
+                  <div class="result-tags">
+                    <span class="result-tag">Ontario</span>
+                    <span class="result-tag">Checklist</span>
+                    <span class="result-tag">Fiber</span>
+                  </div>
+                  <div class="result-metadata">
+                    <span class="result-source">Company Hub</span>
+                    <span class="result-date">Updated June 5, 2023</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="result-item">
+                <div class="result-icon job-aid">
+                  <i class="fas fa-file-alt"></i>
+                </div>
+                <div class="result-content">
+                  <div class="result-meta">
+                    <span class="result-type job-aid">Job Aid</span>
+                    <span class="result-language"
+                      ><span class="lang-indicator fr">FR</span></span
+                    >
+                    <span class="region-specific">Quebec</span>
+                  </div>
+                  <h3>
+                    <a href="article-template.html"
+                      >Guide d'installation de fibre pour Québec</a
+                    >
+                  </h3>
+                  <p>
+                    Guide d'installation de fibre optique spécifique pour la
+                    région du Québec, incluant les exigences du code du bâtiment
+                    local.
+                  </p>
+                  <div class="result-tags">
+                    <span class="result-tag">Quebec</span>
+                    <span class="result-tag">Fibre</span>
+                    <span class="result-tag">Installation</span>
+                  </div>
+                  <div class="result-metadata">
+                    <span class="result-source">Company Hub</span>
+                    <span class="result-date">Updated May 22, 2023</span>
+                  </div>
+                </div>
+              </div>
+
+              <button class="load-more-btn">
+                <i class="fas fa-plus"></i> View All 15 Job Aids
+              </button>
+            </div>
+
+            <div class="results-category">
+              <h2>
+                Training Materials <span class="category-count">(8)</span>
+              </h2>
+
+              <div class="result-item">
+                <div class="result-icon training">
+                  <i class="fas fa-graduation-cap"></i>
+                </div>
+                <div class="result-content">
+                  <div class="result-meta">
+                    <span class="result-type training">Training</span>
+                    <span class="result-duration"
+                      ><i class="fas fa-clock"></i> 45 minutes</span
+                    >
+                    <span class="result-language"
+                      ><span class="lang-indicator en">EN</span></span
+                    >
+                  </div>
+                  <h3>
+                    <a href="article-template.html"
+                      >Fiber Installation Certification Module</a
+                    >
+                  </h3>
+                  <p>
+                    Comprehensive training module for fiber installation
+                    certification, including interactive simulations and
+                    quizzes.
+                  </p>
+                  <div class="result-metadata">
+                    <span class="result-source">Learning Hub</span>
+                    <span class="result-date">Updated May 1, 2023</span>
+                    <span class="result-completion">Completion: 75%</span>
+                  </div>
+                </div>
+              </div>
+
+              <button class="load-more-btn">
+                <i class="fas fa-plus"></i> View All 8 Training Materials
+              </button>
+            </div>
+
+            <div class="results-category">
+              <h2>Billing Rules <span class="category-count">(7)</span></h2>
+
+              <div class="result-item">
+                <div class="result-icon billing">
+                  <i class="fas fa-file-invoice-dollar"></i>
+                </div>
+                <div class="result-content">
+                  <div class="result-meta">
+                    <span class="result-type billing">Billing Rules</span>
+                    <span class="result-language bilingual">
+                      <span class="lang-indicator en">EN</span>
+                      <span class="lang-indicator fr">FR</span>
+                    </span>
+                  </div>
+                  <h3>
+                    <a href="article-template.html"
+                      >Fiber Installation Billing Guidelines</a
+                    >
+                  </h3>
+                  <p>
+                    Comprehensive billing guidelines for residential and
+                    commercial fiber installations.
+                  </p>
+                  <div class="result-metadata">
+                    <span class="result-source">ValueCenter</span>
+                    <span class="result-date">Updated June 1, 2023</span>
+                  </div>
+                </div>
+              </div>
+
+              <button class="load-more-btn">
+                <i class="fas fa-plus"></i> View All 7 Billing Rules
+              </button>
+            </div>
+
+            <div class="results-category external-results">
+              <h2>External Sources <span class="category-count">(14)</span></h2>
+
+              <div class="result-item external">
+                <div class="result-icon external">
+                  <i class="fas fa-external-link-alt"></i>
+                </div>
+                <div class="result-content">
+                  <div class="result-meta">
+                    <span class="result-type external">External</span>
+                    <span class="result-language"
+                      ><span class="lang-indicator en">EN</span></span
+                    >
+                    <span class="result-source-label">OneSource</span>
+                  </div>
+                  <h3>
+                    <a href="article-template.html"
+                      >Fiber Installation Technical Specifications</a
+                    >
+                  </h3>
+                  <p>
+                    Technical specifications document for all fiber installation
+                    equipment, including connection requirements and testing
+                    parameters.
+                  </p>
+                  <div class="result-metadata">
+                    <span class="result-date">Updated May 10, 2023</span>
+                  </div>
+                </div>
+              </div>
+
+              <button class="load-more-btn">
+                <i class="fas fa-plus"></i> View All 14 External Results
+              </button>
+            </div>
+          </div>
+
+          <!-- Related Content Sidebar -->
+          <div class="related-content-sidebar">
+            <div class="sidebar-section">
+              <h3>Temporary Inventory Notices</h3>
+              <div class="inventory-alert">
+                <div class="alert-header">
+                  <i class="fas fa-exclamation-circle"></i>
+                  <h4>Fiber ONT Shortage</h4>
+                </div>
+                <p>
+                  Temporary shortage of XG-400 ONTs until June 25. Use XG-300
+                  ONTs as substitute.
+                </p>
+                <a href="article-template.html" class="alert-link"
+                  >View Details</a
+                >
+              </div>
+              <div class="inventory-alert">
+                <div class="alert-header">
+                  <i class="fas fa-exclamation-circle"></i>
+                  <h4>Fiber Patch Cable Allocation</h4>
+                </div>
+                <p>
+                  Limited stock of 3m patch cables. Restrict to priority
+                  installations only.
+                </p>
+                <a href="article-template.html" class="alert-link"
+                  >View Details</a
+                >
+              </div>
+            </div>
+
+            <div class="sidebar-section">
+              <h3>Related Videos</h3>
+              <div class="video-thumbnail">
+                <div class="thumbnail-img">
+                  <img
+                    src="../img/fiber-video-thumb.jpg"
+                    alt="Fiber Installation Video Thumbnail"
+                  />
+                  <span class="video-duration">8:24</span>
+                </div>
+                <h4>
+                  <a href="article-template.html">Fiber Splicing Technique</a>
+                </h4>
+              </div>
+              <div class="video-thumbnail">
+                <div class="thumbnail-img">
+                  <img
+                    src="../img/ont-video-thumb.jpg"
+                    alt="ONT Setup Video Thumbnail"
+                  />
+                  <span class="video-duration">4:15</span>
+                </div>
+                <h4><a href="article-template.html">ONT Setup Guide</a></h4>
+              </div>
+              <a href="#" class="view-all-videos"
+                >View All Videos <i class="fas fa-arrow-right"></i
+              ></a>
+            </div>
+
+            <div class="sidebar-section">
+              <h3>Current Promotions</h3>
+              <div class="promotion-item">
+                <h4>Fiber + TV Bundle</h4>
+                <div class="promo-details">
+                  <p>
+                    <strong>Offer Code:</strong>
+                    <span class="copyable" data-clipboard-text="FIBER2023"
+                      >FIBER2023</span
+                    >
+                    <button class="copy-btn" title="Copy to clipboard">
+                      <i class="fas fa-copy"></i>
+                    </button>
+                  </p>
+                  <p>$30 off monthly rate for 12 months</p>
+                </div>
+                <a href="article-template.html" class="promo-link"
+                  >View Details</a
+                >
+              </div>
+              <div class="promotion-item">
+                <h4>Smart Home Add-on</h4>
+                <div class="promo-details">
+                  <p>
+                    <strong>Offer Code:</strong>
+                    <span class="copyable" data-clipboard-text="SMARTHOME5"
+                      >SMARTHOME5</span
+                    >
+                    <button class="copy-btn" title="Copy to clipboard">
+                      <i class="fas fa-copy"></i>
+                    </button>
+                  </p>
+                  <p>$5 monthly credit when adding Smart Home Security</p>
+                </div>
+                <a href="article-template.html" class="promo-link"
+                  >View Details</a
+                >
+              </div>
+            </div>
+
+            <div class="sidebar-section">
+              <h3>Recently Viewed</h3>
+              <ul class="recently-viewed-list">
+                <li>
+                  <a href="article-template.html">WiFi Troubleshooting Guide</a>
+                </li>
+                <li>
+                  <a href="article-template.html"
+                    >Customer Premises Equipment Setup</a
+                  >
+                </li>
+                <li>
+                  <a href="article-template.html"
+                    >Billing Process for New Installations</a
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <div class="chat-assistant">
+              <div class="chat-header">
+                <h3><i class="fas fa-robot"></i> AI Assistant</h3>
+              </div>
+              <div class="chat-content">
+                <p>
+                  Need help finding specific information about fiber
+                  installation?
+                </p>
+                <button class="chat-action-btn">Ask the Assistant</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4>Company Hub</h4>
+          <p>Your centralized portal for all company resources</p>
+        </div>
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="learning-hub.html">Learning Hub</a></li>
+            <li><a href="comms-news.html">Comms News</a></li>
+            <li><a href="valuegen.html">ValueGen</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="#">Help Center</a></li>
+            <li><a href="#">Contact IT</a></li>
+            <li><a href="#">FAQs</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2023 Company Hub. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/search.js"></script>
+  </body>
+</html>
