@@ -1,0 +1,153 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+
+:root {
+	--primary-color: #4b286d;
+	--secondary-color: #6c757d;
+	--background-color: #f8f9fa;
+	--text-color: #333;
+	--border-color: #dee2e6;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family:
+		-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans',
+		'Helvetica Neue', sans-serif;
+	line-height: 1.6;
+	color: var(--text-color);
+	background-color: var(--background-color);
+}
+
+/* Language Toggle Styles */
+.language-toggle {
+	background: #f8f9fa;
+	padding: 0.5rem 1rem;
+	border-bottom: 1px solid var(--border-color);
+}
+
+.language-container {
+	max-width: 1200px;
+	margin: 0 auto;
+	position: relative;
+}
+
+.language-selector {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+.language-btn {
+	padding: 0.25rem 0.5rem;
+	border: 1px solid var(--border-color);
+	background: white;
+	cursor: pointer;
+}
+
+.language-btn.active {
+	background: var(--primary-color);
+	color: white;
+	border-color: var(--primary-color);
+}
+
+.language-preferences-panel {
+	display: none;
+	position: absolute;
+	top: 100%;
+	right: 0;
+	background: white;
+	padding: 1rem;
+	border: 1px solid var(--border-color);
+	border-radius: 4px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	z-index: 1000;
+}
+
+.language-container:hover .language-preferences-panel {
+	display: block;
+}
+
+/* Navigation Styles */
+.logo {
+	font-size: 1.5rem;
+	font-weight: bold;
+	color: var(--primary-color);
+}
+
+/* Button Styles */
+button {
+	cursor: pointer;
+	padding: 0.5rem 1rem;
+	border: none;
+	border-radius: 4px;
+	font-weight: 500;
+}
+
+.primary-btn {
+	background: var(--primary-color);
+	color: white;
+}
+
+.secondary-btn {
+	background: white;
+	border: 1px solid var(--primary-color);
+	color: var(--primary-color);
+}
+
+/* Form Elements */
+input[type='text'],
+input[type='search'],
+select {
+	padding: 0.5rem;
+	border: 1px solid var(--border-color);
+	border-radius: 4px;
+	font-size: 1rem;
+}
+
+/* Utility Classes */
+.container {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0 1rem;
+}
+
+.text-center {
+	text-align: center;
+}
+
+.mt-1 {
+	margin-top: 0.25rem;
+}
+.mt-2 {
+	margin-top: 0.5rem;
+}
+.mt-3 {
+	margin-top: 1rem;
+}
+.mt-4 {
+	margin-top: 1.5rem;
+}
+.mt-5 {
+	margin-top: 3rem;
+}
+
+.mb-1 {
+	margin-bottom: 0.25rem;
+}
+.mb-2 {
+	margin-bottom: 0.5rem;
+}
+.mb-3 {
+	margin-bottom: 1rem;
+}
+.mb-4 {
+	margin-bottom: 1.5rem;
+}
+.mb-5 {
+	margin-bottom: 3rem;
+}

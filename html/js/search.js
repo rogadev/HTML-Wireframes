@@ -253,7 +253,7 @@ function parseSearchQueryFromURL() {
     }
 
     // Update the page title
-    document.title = `Search Results for "${searchQuery}" - Company Hub`
+    document.title = `Search Results for "${searchQuery}" - Tech Central`
 
     // In a real implementation, this would trigger the actual search
     // but for our wireframe, the static content is sufficient
