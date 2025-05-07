@@ -2,19 +2,31 @@
 	import '../app.css';
 	import Navigation from '$lib/components/Navigation.svelte';
 	import TopBar from '$lib/components/TopBar.svelte';
+	import { userPreferences } from '$lib/stores/userPreferences';
 
 	function handleLanguageChange(event: { language: string }) {
-		// TODO: Implement language change logic
-		console.log('Language changed to:', event.language);
+		// Already handled by the TopBar component
 	}
 
 	function handleRegionChange(event: { region: string }) {
-		// TODO: Implement region change logic
-		console.log('Region changed to:', event.region);
+		// Already handled by the TopBar component
+	}
+
+	function handleRoleChange(event: { role: string }) {
+		// Already handled by the TopBar component
+	}
+
+	function handleTeamTypeChange(event: { teamType: string }) {
+		// Already handled by the TopBar component
 	}
 </script>
 
-<TopBar onLanguageChange={handleLanguageChange} onRegionChange={handleRegionChange} />
+<TopBar
+	onLanguageChange={handleLanguageChange}
+	onRegionChange={handleRegionChange}
+	onRoleChange={handleRoleChange}
+	onTeamTypeChange={handleTeamTypeChange}
+/>
 
 <Navigation />
 
