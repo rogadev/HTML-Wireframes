@@ -61,14 +61,12 @@
 	};
 
 	let loading = true;
-
-	// Reactive statement to fetch data when preferences change
-	$: fetchHomepageData($userPreferences);
+	let error: string | null = null;
 
 	async function fetchHomepageData(preferences: UserPreferences) {
 		loading = true;
+		error = null;
 		try {
-			// Build query parameters based on preferences
 			const params = new URLSearchParams({
 				region: preferences.region,
 				language: preferences.language,
@@ -76,31 +74,31 @@
 				teamType: preferences.teamType,
 				audienceGroup: preferences.audienceGroup
 			});
-
 			if (preferences.skillDesignations && preferences.skillDesignations.length > 0) {
 				params.append('skillDesignations', preferences.skillDesignations.join(','));
 			}
-
 			const response = await fetch(`/api/homepage?${params.toString()}`);
 			homepageData = await response.json();
-		} catch (error) {
-			console.error('Error fetching homepage data:', error);
+		} catch (err) {
+			console.error('Error fetching homepage data:', err);
+			error = 'Failed to load personalized content. Please try again later.';
 		} finally {
 			loading = false;
 		}
 	}
 
 	onMount(() => {
-		// Initial data load happens via the reactive statement
+		let unsubscribe = userPreferences.subscribe((prefs) => {
+			fetchHomepageData(prefs);
+		});
+		return unsubscribe;
 	});
 
 	function handleSearch(query: string) {
-		// TODO: Implement search functionality
 		console.log('Searching for:', query);
 	}
 
 	function handleCustomizeFeed() {
-		// Open user preferences panel
 		document
 			.querySelector('.profile-dropdown-icon')
 			?.dispatchEvent(new MouseEvent('click', { bubbles: true }));
@@ -132,24 +130,12 @@
 		<p>Loading personalized content...</p>
 	</div>
 {:else if homepageData}
-	<div class="personalization-info">
-		<p>
-			<i class="fas fa-info-circle"></i>
-			Content personalized for:
-			<span class="personalization-tag">{$userPreferences.region.toUpperCase()}</span>
-			<span class="personalization-tag">{$userPreferences.role}</span>
-			{#if $userPreferences.teamType !== 'home'}
-				<span class="personalization-tag">{$userPreferences.teamType}</span>
-			{/if}
-			{#if $userPreferences.skillDesignations && $userPreferences.skillDesignations.length > 0}
-				{#each $userPreferences.skillDesignations as skill}
-					<span class="personalization-tag">{skill}</span>
-				{/each}
-			{/if}
-		</p>
-	</div>
-
-	<PersonalizedFeed feedItems={homepageData.personalizedFeed} onCustomize={handleCustomizeFeed} />
+	<PersonalizedFeed
+		feedItems={homepageData.personalizedFeed}
+		onCustomize={handleCustomizeFeed}
+		{loading}
+		{error}
+	/>
 
 	<UserQuickAccess
 		recentArticles={homepageData.recentArticles}
