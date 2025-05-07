@@ -1,1 +1,0 @@
-import{t as o,a as n}from"../chunks/DxE_hgbo.js";import"../chunks/X65t6Fy2.js";var t=o('<div class="valuegen-container svelte-l8i235"><h1>Value Generation</h1> <p>Coming soon...</p></div>');function r(a){var e=t();n(a,e)}export{r as component};

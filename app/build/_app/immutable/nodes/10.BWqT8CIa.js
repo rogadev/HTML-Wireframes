@@ -1,1 +1,0 @@
-import{t as e,a as r}from"../chunks/DxE_hgbo.js";import"../chunks/X65t6Fy2.js";var p=e('<div class="profile-dashboard-container svelte-cyeh04"><h1>Profile Dashboard</h1> <p>Coming soon...</p></div>');function n(o){var a=p();r(o,a)}export{n as component};
