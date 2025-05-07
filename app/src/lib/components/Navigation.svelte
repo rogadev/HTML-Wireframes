@@ -6,6 +6,7 @@
 		{ href: '/', label: 'Home' },
 		{ href: '/managers', label: 'Managers' },
 		{ href: '/news', label: 'News' },
+		{ href: '/learning-hub', label: 'Learning Hub' },
 		{ href: '/valuegen', label: 'ValueGen' },
 		{ href: '/billing', label: 'Billing' },
 		{ href: '/partners', label: 'Partners' },
@@ -41,7 +42,9 @@
 </script>
 
 <nav bind:this={navElement}>
-	<a href="/" class="logo" aria-label="Navigate to home">Tech Central</a>
+	<a href="/" class="logo" aria-label="Navigate to home" style="text-decoration: none;"
+		>Tech Central</a
+	>
 	<button
 		type="button"
 		class="mobile-menu-btn"
@@ -122,7 +125,7 @@
 		padding: 0.5rem;
 	}
 
-	@media (max-width: 1024px) {
+	@media (max-width: 1200px) {
 		.mobile-menu-btn {
 			display: block;
 		}

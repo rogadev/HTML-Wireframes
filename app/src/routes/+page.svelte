@@ -1,45 +1,108 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import CriticalAlert from '$lib/components/CriticalAlert.svelte';
-	import Card from '$lib/components/Card.svelte';
-	import CardGrid from '$lib/components/CardGrid.svelte';
+	import HotOffers from '$lib/components/HotOffers.svelte';
+	import TechnicalBulletins from '$lib/components/TechnicalBulletins.svelte';
+	import BillingUpdates from '$lib/components/BillingUpdates.svelte';
+	import QuickLinks from '$lib/components/QuickLinks.svelte';
+	import PersonalizedFeed from '$lib/components/PersonalizedFeed.svelte';
+	import UserQuickAccess from '$lib/components/UserQuickAccess.svelte';
+	import { userPreferences } from '$lib/stores/userPreferences';
+	import type { UserPreferences } from '$lib/types/userPreferences';
 
-	// Sample content for demonstration
-	const featuredContent = [
-		{
-			title: 'Installing Fiber Optic in Your New Home',
-			description:
-				'A comprehensive guide to installing fiber optic internet in your new home, including best practices and common pitfalls to avoid.',
-			imageUrl: '/images/getting-started.jpg',
-			link: '/articles/fiber-installation-guide',
-			category: 'Guide',
-			tags: ['Fiber', 'Installation', 'Home'],
-			date: 'June 1, 2024',
-			author: 'John Doe'
-		},
-		{
-			title: 'Understanding Fiber Optic Technology',
-			description:
-				"Learn about the technology behind fiber optic internet and why it's the future of high-speed connectivity.",
-			imageUrl: '/images/technical-resources.jpg',
-			link: '/articles/fiber-technology-understanding',
-			category: 'Technology',
-			tags: ['Fiber', 'Technology', 'Internet'],
-			date: 'May 28, 2024',
-			author: 'Jane Smith'
-		},
-		{
-			title: 'Fiber vs. Cable: Making the Right Choice',
-			description:
-				'Compare fiber optic and cable internet to make an informed decision for your home or business.',
-			imageUrl: '/images/product-updates.jpg',
-			link: '/articles/fiber-vs-cable',
-			category: 'Comparison',
-			tags: ['Fiber', 'Cable', 'Internet'],
-			date: 'May 25, 2024',
-			author: 'Tech Central Team'
+	let homepageData: {
+		hotOffers: Array<{
+			title: string;
+			description: string;
+			validUntil: string;
+			link: string;
+		}>;
+		technicalBulletins: Array<{
+			title: string;
+			description: string;
+			date: string;
+			link: string;
+		}>;
+		billingUpdates: Array<{
+			title: string;
+			description: string;
+			date: string;
+			link: string;
+		}>;
+		quickLinks: {
+			billingGuide: {
+				title: string;
+				description: string;
+				link: string;
+			};
+			repairGuidelines: {
+				title: string;
+				description: string;
+				link: string;
+			};
+		};
+		personalizedFeed: Array<{
+			type: string;
+			date: string;
+			title: string;
+			description: string;
+			relevance: string;
+			link: string;
+		}>;
+		recentArticles: Array<{
+			title: string;
+			link: string;
+			timeViewed: string;
+		}>;
+		savedArticles: Array<{
+			title: string;
+			link: string;
+		}>;
+	};
+
+	let loading = true;
+	let error: string | null = null;
+
+	async function fetchHomepageData(preferences: UserPreferences) {
+		loading = true;
+		error = null;
+		try {
+			const params = new URLSearchParams({
+				region: preferences.region,
+				language: preferences.language,
+				role: preferences.role,
+				teamType: preferences.teamType,
+				audienceGroup: preferences.audienceGroup
+			});
+			if (preferences.skillDesignations && preferences.skillDesignations.length > 0) {
+				params.append('skillDesignations', preferences.skillDesignations.join(','));
+			}
+			const response = await fetch(`/api/homepage?${params.toString()}`);
+			homepageData = await response.json();
+		} catch (err) {
+			console.error('Error fetching homepage data:', err);
+			error = 'Failed to load personalized content. Please try again later.';
+		} finally {
+			loading = false;
 		}
-	];
+	}
+
+	onMount(() => {
+		let unsubscribe = userPreferences.subscribe((prefs) => {
+			fetchHomepageData(prefs);
+		});
+		return unsubscribe;
+	});
+
+	function handleSearch(query: string) {
+		console.log('Searching for:', query);
+	}
+
+	function handleCustomizeFeed() {
+		document
+			.querySelector('.profile-dropdown-icon')
+			?.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+	}
 </script>
 
 <CriticalAlert
@@ -52,8 +115,8 @@
 	<h1>Welcome to Tech Central</h1>
 	<p>Your centralized portal for all company resources and information</p>
 	<div class="hero-buttons">
-		<a href="/articles/fiber-installation-guide" class="hero-btn primary-btn">
-			<i class="fas fa-bolt"></i> Fiber Installation Guide
+		<a href="/articles/learn-hub-basics" class="hero-btn primary-btn">
+			<i class="fas fa-bolt"></i> Learn Hub Basics
 		</a>
 		<a href="/articles" class="hero-btn secondary-btn">
 			<i class="fas fa-book"></i> Browse All Articles
@@ -61,33 +124,32 @@
 	</div>
 </section>
 
-<section class="featured-content">
-	<div class="section-header">
-		<h2>Featured Content</h2>
-		<a href="/articles" class="view-all-btn">
-			View All <i class="fas fa-arrow-right"></i>
-		</a>
+{#if loading}
+	<div class="loading-container">
+		<div class="loading-spinner"></div>
+		<p>Loading personalized content...</p>
 	</div>
-	<CardGrid columns={3}>
-		{#each featuredContent as content}
-			<Card {...content} />
-		{/each}
-	</CardGrid>
-</section>
+{:else if homepageData}
+	<PersonalizedFeed
+		feedItems={homepageData.personalizedFeed}
+		onCustomize={handleCustomizeFeed}
+		{loading}
+		{error}
+	/>
 
-<section class="personalized-feed">
-	<div class="section-header">
-		<h2>Your Personalized Feed</h2>
-		<button class="customize-feed-btn">
-			<i class="fas fa-sliders-h"></i> Customize
-		</button>
-	</div>
-	<div class="personalization-notice">
-		<i class="fas fa-info-circle"></i>
-		<span>Content is personalized based on your role, region, and preferences.</span>
-		<a href="/profile-dashboard" class="manage-preferences-link">Manage Preferences</a>
-	</div>
-</section>
+	<UserQuickAccess
+		recentArticles={homepageData.recentArticles}
+		savedArticles={$userPreferences.favorites?.map((id) => ({
+			title: `Saved Article ${id}`,
+			link: `/articles/${id}`
+		})) || []}
+	/>
+
+	<HotOffers offers={homepageData.hotOffers} />
+	<TechnicalBulletins bulletins={homepageData.technicalBulletins} />
+	<BillingUpdates updates={homepageData.billingUpdates} />
+	<QuickLinks links={homepageData.quickLinks} />
+{/if}
 
 <style>
 	.hero {
@@ -109,76 +171,80 @@
 		margin-top: 2rem;
 	}
 
-	.featured-content {
-		max-width: 1200px;
-		margin: 3rem auto;
-		padding: 0 1rem;
-	}
-
-	.section-header {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		margin-bottom: 1.5rem;
-	}
-
-	.view-all-btn {
-		display: flex;
+	.hero-btn {
+		display: inline-flex;
 		align-items: center;
 		gap: 0.5rem;
-		background: none;
-		border: none;
-		color: var(--primary-color);
+		padding: 0.75rem 1.5rem;
+		border-radius: 4px;
+		text-decoration: none;
 		font-weight: 500;
-		cursor: pointer;
-		padding: 0.5rem;
-		text-decoration: none;
-	}
-
-	.view-all-btn:hover {
-		text-decoration: underline;
-	}
-
-	.personalized-feed {
-		max-width: 1200px;
-		margin: 3rem auto;
-		padding: 0 1rem;
-	}
-
-	.personalization-notice {
-		display: flex;
-		align-items: center;
-		gap: 0.5rem;
-		background: #e9ecef;
-		padding: 0.75rem;
-		border-radius: 4px;
-	}
-
-	.manage-preferences-link {
-		color: var(--primary-color);
-		text-decoration: none;
-		margin-left: auto;
-	}
-
-	.manage-preferences-link:hover {
-		text-decoration: underline;
-	}
-
-	.customize-feed-btn {
-		display: flex;
-		align-items: center;
-		gap: 0.5rem;
-		background: white;
-		border: 1px solid var(--border-color);
-		color: var(--text-color);
-		padding: 0.5rem 1rem;
-		border-radius: 4px;
-		cursor: pointer;
 		transition: all 0.2s ease;
 	}
 
-	.customize-feed-btn:hover {
+	.primary-btn {
+		background: white;
+		color: var(--primary-color);
+	}
+
+	.primary-btn:hover {
 		background: #f8f9fa;
-		border-color: var(--primary-color);
+		transform: translateY(-2px);
+	}
+
+	.secondary-btn {
+		background: rgba(255, 255, 255, 0.1);
+		color: white;
+		border: 1px solid rgba(255, 255, 255, 0.2);
+	}
+
+	.secondary-btn:hover {
+		background: rgba(255, 255, 255, 0.2);
+		transform: translateY(-2px);
+	}
+
+	.loading-container {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		padding: 4rem 0;
+		color: var(--secondary-color);
+	}
+
+	.loading-spinner {
+		width: 40px;
+		height: 40px;
+		border: 4px solid rgba(0, 0, 0, 0.1);
+		border-radius: 50%;
+		border-top-color: var(--primary-color);
+		animation: spin 1s ease-in-out infinite;
+		margin-bottom: 1rem;
+	}
+
+	@keyframes spin {
+		to {
+			transform: rotate(360deg);
+		}
+	}
+
+	.personalization-info {
+		background-color: #f8f9fa;
+		border-radius: 4px;
+		padding: 0.75rem 1rem;
+		margin: 1rem 0;
+		font-size: 0.9rem;
+		color: var(--secondary-color);
+	}
+
+	.personalization-tag {
+		display: inline-block;
+		background-color: var(--primary-color-light);
+		color: var(--primary-color);
+		padding: 0.25rem 0.5rem;
+		border-radius: 4px;
+		margin-left: 0.5rem;
+		font-size: 0.8rem;
+		font-weight: 500;
 	}
 </style>
