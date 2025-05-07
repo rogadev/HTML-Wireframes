@@ -1,1 +1,0 @@
-import{t as o,a as n}from"../chunks/DxE_hgbo.js";import"../chunks/X65t6Fy2.js";var p=o('<div class="managers-container svelte-39p61e"><h1>Manager Resources</h1> <p>Coming soon...</p></div>');function s(a){var e=p();n(a,e)}export{s as component};
