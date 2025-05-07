@@ -20,6 +20,16 @@ const config = {
 		// Important: Remove or update this when deploying to a custom domain
 		paths: {
 			base: process.env.BASE_PATH || ''
+		},
+		// Handle prerender errors
+		prerender: {
+			handleHttpError: ({ path, message }) => {
+				// Skip API routes during prerendering
+				if (path.startsWith('/api/')) {
+					return;
+				}
+				throw new Error(message);
+			}
 		}
 	}
 };
