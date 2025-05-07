@@ -1,0 +1,1 @@
+import{t as o,a as i}from"../chunks/DxE_hgbo.js";import"../chunks/X65t6Fy2.js";var t=o('<div class="training-container svelte-4ye25c"><h1>Training</h1> <p>Coming soon...</p></div>');function r(a){var n=t();i(a,n)}export{r as component};
