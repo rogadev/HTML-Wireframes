@@ -269,3 +269,59 @@ $: currentPath = page.url.pathname
 3. Structure data to match future CMS integration
 4. Include loading states and error handling
 5. Maintain consistent UI patterns across sections
+
+## Svelte 5 Event Handling
+
+### Event Handlers
+
+In Svelte 5, event handlers are properties rather than directives:
+
+```typescript
+// ❌ Don't do this (Svelte 4 style)
+<button on:click={handleClick}>Click me</button>
+
+// ✅ Do this instead (Svelte 5 style)
+<button onclick={handleClick}>Click me</button>
+```
+
+### Component Events
+
+For component events, use callback props instead of `createEventDispatcher`:
+
+```typescript
+// ❌ Don't do this (Svelte 4 style)
+import { createEventDispatcher } from 'svelte'
+const dispatch = createEventDispatcher()
+dispatch('event', data)
+
+// ✅ Do this instead (Svelte 5 style)
+export let onEvent: (data: any) => void
+onEvent(data)
+```
+
+### $derived vs $effect
+
+Use $derived for computed values and $effect for side effects:
+
+```typescript
+// ❌ Don't do this
+$effect(() => {
+  doubledCount = count * 2 // Computing values in an effect
+})
+
+// ✅ Do this instead
+const doubledCount = $derived(count * 2)
+
+// ✅ Use $effect only for side effects
+$effect(() => {
+  localStorage.setItem('count', count.toString())
+  document.title = `Count: ${count}`
+})
+```
+
+### Rules of thumb:
+
+1. If you're calculating a value based on other state, use $derived
+2. If you're performing side effects (DOM manipulation, API calls, etc.), use $effect
+3. Never modify state inside a $derived calculation
+4. Keep $effect functions focused on side effects only

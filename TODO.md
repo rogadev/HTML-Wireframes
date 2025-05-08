@@ -199,3 +199,101 @@ This is a sizeable epics umbrella covering stories F128–F159. High-level steps
 1. Create a feature branch named `feat/<topic>`.
 2. Break tasks further into issues & PRs referencing the numbered sections above.
 3. Keep this `TODO.md` updated – **it is the source of truth** until we migrate to Jira / GitHub Projects.
+
+---
+
+## 13 · Log Files
+
+For the purposes of testing our mockup and ensuring all the required links are working, we need to create a log file that will be used in future AI prompting steps to fix broken links, finish missing pages, etc.
+
+- Create a log file that will be used in future AI prompting steps to fix broken links, finish missing pages, etc.
+- The log file should be created in the root of the project and named `log.md`
+- Each log entry should only be created for issues like a 404 not found, and should include the following information:
+  - The URL that was accessed
+  - The status code of the response
+  - A timestamp
+  - A description of the issue
+  - A suggestion for a fix
+  - A link to the documentation for the issue
+
+---
+
+## 14 · Fix legacy items and update to the Svelte 5 way.
+
+```svelte
+<script>
+  $: showNewBadge = isNew(publishDate);
+	$: showUpdatedBadge = isUpdated(publishDate, lastUpdated);
+</script>
+```
+
+This was the old way of doing it. Computed and derived values should now use the `$derived` or `$effect` directives.
+
+```svelte
+<script>
+  let { publishDate, lastUpdated } = $props();
+
+  const showNewBadge = $derived(isNew(publishDate));
+  const showUpdatedBadge = $derived(isUpdated(publishDate, lastUpdated));
+</script>
+```
+
+We'll need to look at each .svelte file and update the computed and derived values to use the `$derived` or `$effect` directives the appropriate way. Look at Svelte 5 documentation for examples if you need additional information. We should also write rules to our .cursorrules file to ensure we don't make the same mistakes in newly generated code.
+
+---
+
+## 15 · Fix event handling to use the new Svelte 5 way.
+
+In Svelte 5, event handlers are now defined using the `$listener` rune instead of `on:event`, allowing better reactivity and integration with the new runes system. Here's how you'd convert your example to the new syntax:
+
+### **Old Svelte 3/4 way (legacy):**
+
+```svelte
+<div
+	class="modal-backdrop"
+	on:click={() => toggleModal(false)}
+	on:keydown={(e) => e.key === 'Escape' && toggleModal(false)}
+	tabindex="0"
+	role="button"
+	aria-label="Close modal"
+>
+```
+
+---
+
+### **New Svelte 5 way (with `$listener`):**
+
+```svelte
+<script>
+	const handleClick = $listener(() => toggleModal(false));
+	const handleKeydown = $listener((e) => {
+		if (e.key === 'Escape') toggleModal(false);
+	});
+</script>
+
+<div
+	class="modal-backdrop"
+	use:handleClick
+	use:handleKeydown
+	tabindex="0"
+	role="button"
+	aria-label="Close modal"
+>
+```
+
+---
+
+### Rule Summary:
+
+- **Old way**: Use `on:event` directly in markup with inline or referenced functions.
+- **Svelte 5 way**: Use `$listener(fn)` to define event handlers and `use:` to apply them to elements.
+
+Lastly, write a rule to our .cursorrules file to ensure we don't make the same mistakes in newly generated code.
+
+---
+
+## 16 · add a way to dismiss system alerts
+
+There should be an confirm box that ensures the user has read, understands, and wants to dismiss the alert. Users should not be just dismissing to make the visual noise go away.
+
+Ideally, the alert will stay dismissed. But, for the sake of mockup, let's have a button that restores the alerts. Let's keep this button small and minimal, but in the same area as the alerts.

@@ -27,9 +27,10 @@ export interface Article {
   productFocus?: ProductFocus[];
 
   // Additional metadata
-  lastUpdated?: string;
+  lastUpdated: string;
   isNew?: boolean;
   isUpdated?: boolean;
+  isOutOfDate?: boolean; // Flag indicating content needs review/update
 }
 
 export type ArticleSummary = Omit<Article, 'content'>; 
