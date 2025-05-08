@@ -227,24 +227,4 @@
 			transform: rotate(360deg);
 		}
 	}
-
-	.personalization-info {
-		background-color: #f8f9fa;
-		border-radius: 4px;
-		padding: 0.75rem 1rem;
-		margin: 1rem 0;
-		font-size: 0.9rem;
-		color: var(--secondary-color);
-	}
-
-	.personalization-tag {
-		display: inline-block;
-		background-color: var(--primary-color-light);
-		color: var(--primary-color);
-		padding: 0.25rem 0.5rem;
-		border-radius: 4px;
-		margin-left: 0.5rem;
-		font-size: 0.8rem;
-		font-weight: 500;
-	}
 </style>

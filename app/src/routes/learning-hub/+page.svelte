@@ -4,7 +4,7 @@
 			title: 'Fiber Installation Guide',
 			description: 'Step-by-step guide for fiber optic installation procedures',
 			category: 'Installation',
-			link: '/articles/fiber-installation-guide'
+			link: '/learning-hub/fiber-installation-guide'
 		},
 		{
 			title: 'Network Troubleshooting',
