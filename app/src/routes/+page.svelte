@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import CriticalAlert from '$lib/components/CriticalAlert.svelte';
 	import HotOffers from '$lib/components/HotOffers.svelte';
 	import TechnicalBulletins from '$lib/components/TechnicalBulletins.svelte';
 	import BillingUpdates from '$lib/components/BillingUpdates.svelte';
@@ -70,7 +69,7 @@
 			const params = new URLSearchParams({
 				region: preferences.region,
 				language: preferences.language,
-				role: preferences.role,
+				roles: preferences.roles ? preferences.roles.join(',') : '',
 				teamType: preferences.teamType,
 				audienceGroup: preferences.audienceGroup
 			});
@@ -104,12 +103,6 @@
 			?.dispatchEvent(new MouseEvent('click', { bubbles: true }));
 	}
 </script>
-
-<CriticalAlert
-	message="All RT-3000 series routers must be updated to firmware v6.2.1 by June 15th."
-	linkText="Read More"
-	linkHref="/critical-update"
-/>
 
 <section class="hero">
 	<h1>Welcome to Tech Central</h1>

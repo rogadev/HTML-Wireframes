@@ -80,14 +80,10 @@ const systemAlerts = [
 
 // GET handler to retrieve all active system alerts
 export const GET: RequestHandler = async ({ url }) => {
-  console.log('API: System alerts request received');
-
   try {
     const activeOnly = url.searchParams.get('active') !== 'false';
     const alertType = url.searchParams.get('type');
     const minSeverity = url.searchParams.get('min_severity');
-
-    console.log('API: Processing system alerts with params:', { activeOnly, alertType, minSeverity });
 
     // Create a deep copy to avoid mutation issues
     let filteredAlerts = JSON.parse(JSON.stringify(systemAlerts));
@@ -116,16 +112,13 @@ export const GET: RequestHandler = async ({ url }) => {
         }
       }
     } catch (err) {
-      console.error('API: Error filtering system alerts:', err);
       filteredAlerts = [];
     }
 
-    console.log(`API: Returning ${filteredAlerts.length} system alerts`);
     return json({
       alerts: filteredAlerts
     });
   } catch (err) {
-    console.error('API: Unexpected error processing system alerts request:', err);
     return json({
       alerts: [],
       error: 'An unexpected error occurred'
@@ -166,7 +159,6 @@ export const POST: RequestHandler = async ({ request }) => {
       alert: newAlert
     });
   } catch (error) {
-    console.error('Error creating system alert:', error);
     return new Response(JSON.stringify({ error: 'Failed to create system alert' }), {
       status: 500,
       headers: {
@@ -225,7 +217,6 @@ export const PATCH: RequestHandler = async ({ request, url }) => {
       alert: systemAlerts[alertIndex]
     });
   } catch (error) {
-    console.error('Error updating system alert:', error);
     return new Response(JSON.stringify({ error: 'Failed to update system alert' }), {
       status: 500,
       headers: {

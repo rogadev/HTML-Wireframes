@@ -70,7 +70,7 @@
       "title": "New Fiber Installation Guidelines",
       "description": "Updated procedures for fiber optic installations in multi-unit buildings",
       "date": "2024-06-01",
-      "link": "/learning-hub/fiber-installation-guidelines",
+      "link": "/fiber-installation-guidelines",
       "bulletinID": "TB-2024-0056",
       "severity": "standard",
       "impactedRegions": [
@@ -118,7 +118,7 @@
       "title": "Critical Security Update for RT-3000 Routers",
       "description": "Urgent firmware update required to patch security vulnerability",
       "date": "2024-06-10",
-      "link": "/learning-hub/rt3000-security-update",
+      "link": "/rt3000-security-update",
       "bulletinID": "TB-2024-0058",
       "severity": "critical",
       "impactedRegions": [
@@ -148,7 +148,7 @@
       "title": "Quebec CRTC Regulation Update",
       "description": "New regulatory requirements for installations in Quebec",
       "date": "2024-06-05",
-      "link": "/learning-hub/quebec-crtc-update",
+      "link": "/quebec-crtc-update",
       "bulletinID": "TB-2024-0059",
       "severity": "standard",
       "impactedRegions": [
@@ -174,7 +174,7 @@
       "title": "Updated Service Call Rates",
       "description": "New rates effective July 1st, 2024",
       "date": "2024-06-15",
-      "link": "/billing/service-call-rates",
+      "link": "/service-call-rates",
       "updateID": "PBS-2024-0089",
       "effectiveDate": "2024-07-01T00:00:00Z",
       "impactedRegions": [
@@ -197,7 +197,7 @@
       "title": "Equipment Replacement Policy",
       "description": "Changes to equipment replacement billing procedures",
       "date": "2024-06-10",
-      "link": "/billing/equipment-replacement",
+      "link": "/equipment-replacement",
       "updateID": "PBS-2024-0090",
       "effectiveDate": "2024-07-01T00:00:00Z",
       "impactedRegions": [
@@ -217,7 +217,7 @@
       "title": "Alberta-BC Repair Service Pricing",
       "description": "Updated rates for repair services in AB/BC region",
       "date": "2024-06-05",
-      "link": "/billing/repair-services-ab-bc",
+      "link": "/repair-services-ab-bc",
       "updateID": "PBS-2024-0091",
       "effectiveDate": "2024-07-15T00:00:00Z",
       "impactedRegions": [
@@ -238,12 +238,12 @@
     "billingGuide": {
       "title": "Quick Billing Guide",
       "description": "Common billing scenarios and procedures",
-      "link": "/billing/quick-guide"
+      "link": "/quick-guide"
     },
     "repairGuidelines": {
       "title": "Repair Billing Guidelines",
       "description": "Billing procedures for repair service calls",
-      "link": "/billing/repair-guidelines"
+      "link": "/repair-guidelines"
     }
   },
   "personalizedFeed": [
@@ -253,7 +253,7 @@
       "title": "New Fiber Installation Training Available",
       "description": "A new training module for the latest fiber installation techniques has been added to your learning dashboard.",
       "relevance": "Relevant to your role",
-      "link": "/training/fiber-installation"
+      "link": "/fiber-installation"
     },
     {
       "type": "Regional",
@@ -261,7 +261,7 @@
       "title": "Ontario Building Code Update",
       "description": "New building code regulations for multi-dwelling installations in Ontario have been published.",
       "relevance": "Specific to your region",
-      "link": "/learning-hub/ontario-building-code"
+      "link": "/ontario-building-code"
     },
     {
       "type": "Technical",
@@ -269,38 +269,38 @@
       "title": "Router Firmware Update Required",
       "description": "Critical security update for all RT-3000 series routers must be completed by June 15th.",
       "relevance": "High priority",
-      "link": "/learning-hub/router-firmware-update"
+      "link": "/router-firmware-update"
     }
   ],
   "recentArticles": [
     {
       "title": "Fiber Installation Guide v2.3",
-      "link": "/learning-hub/fiber-installation-guide",
+      "link": "/fiber-installation-guide",
       "timeViewed": "2h ago"
     },
     {
       "title": "Customer Premises Equipment Setup",
-      "link": "/articles/cpe-setup",
+      "link": "/cpe-setup",
       "timeViewed": "Yesterday"
     },
     {
       "title": "Billing Process for New Installations",
-      "link": "/articles/billing-process",
+      "link": "/billing-process",
       "timeViewed": "3d ago"
     }
   ],
   "savedArticles": [
     {
       "title": "Network Troubleshooting Flowchart",
-      "link": "/articles/network-troubleshooting"
+      "link": "/network-troubleshooting"
     },
     {
       "title": "WiFi Signal Optimization Guide",
-      "link": "/articles/wifi-optimization"
+      "link": "/wifi-optimization"
     },
     {
       "title": "Monthly Promotion Calculator",
-      "link": "/tools/promotion-calculator"
+      "link": "/promotion-calculator"
     }
   ]
 }

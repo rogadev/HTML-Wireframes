@@ -4,19 +4,19 @@
 			title: 'Fiber Installation Guide',
 			description: 'Step-by-step guide for fiber optic installation procedures',
 			category: 'Installation',
-			link: '/learning-hub/fiber-installation-guide'
+			link: '/fiber-installation-guide'
 		},
 		{
 			title: 'Network Troubleshooting',
 			description: 'Common network issues and their solutions',
 			category: 'Troubleshooting',
-			link: '/articles/network-troubleshooting'
+			link: '/network-troubleshooting'
 		},
 		{
 			title: 'Safety Protocols',
 			description: 'Essential safety guidelines for field technicians',
 			category: 'Safety',
-			link: '/articles/safety-protocols'
+			link: '/safety-protocols'
 		}
 	];
 </script>

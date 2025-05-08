@@ -15,21 +15,21 @@
 	// Quick link categories and their items
 	const quickLinks: Record<string, LinkItem[]> = {
 		'Billing & PSB': [
-			{ label: 'Quick Billing Guide', href: '/billing/quick-guide' },
-			{ label: 'Repair Guidelines', href: '/billing/repair-guidelines' },
-			{ label: 'Rate Cards', href: '/billing/rate-cards' },
-			{ label: 'Regional Rules', href: '/billing/regional-rules' }
+			{ label: 'Quick Billing Guide', href: '/quick-guide' },
+			{ label: 'Repair Guidelines', href: '/repair-guidelines' },
+			{ label: 'Rate Cards', href: '/rate-cards' },
+			{ label: 'Regional Rules', href: '/regional-rules' }
 		],
 		'Job Aids': [
-			{ label: 'Installation Guides', href: '/learning-hub/installation-guides' },
-			{ label: 'Troubleshooting', href: '/learning-hub/troubleshooting' },
-			{ label: 'Device Library', href: '/learning-hub/device-library' },
-			{ label: 'Network Topology', href: '/learning-hub/network-topology' }
+			{ label: 'Installation Guides', href: '/installation-guides' },
+			{ label: 'Troubleshooting', href: '/troubleshooting' },
+			{ label: 'Device Library', href: '/device-library' },
+			{ label: 'Network Topology', href: '/network-topology' }
 		],
 		'Hardware Business Rules': [
-			{ label: 'Current HBRs', href: '/learning-hub/hardware-rules' },
-			{ label: 'Equipment Safety', href: '/learning-hub/equipment-safety' },
-			{ label: 'Technical Specifications', href: '/learning-hub/technical-specs' }
+			{ label: 'Current HBRs', href: '/hardware-rules' },
+			{ label: 'Equipment Safety', href: '/equipment-safety' },
+			{ label: 'Technical Specifications', href: '/technical-specs' }
 		],
 		'Apps & Tools': [
 			{ label: 'Insight', href: 'https://insight.telus.com', external: true },

@@ -4,13 +4,13 @@
       "title": "Summer Internet Bundle",
       "description": "Get 50% off your first 3 months with our new summer bundle",
       "validUntil": "2024-08-31",
-      "link": "/valuegen/summer-bundle"
+      "link": "/summer-bundle"
     },
     {
       "title": "Smart Home Security Package",
       "description": "Free installation with any new security system purchase",
       "validUntil": "2024-07-15",
-      "link": "/valuegen/security-package"
+      "link": "/security-package"
     }
   ],
   "technicalBulletins": [
@@ -18,13 +18,13 @@
       "title": "New Fiber Installation Guidelines",
       "description": "Updated procedures for fiber optic installations in multi-unit buildings",
       "date": "2024-06-01",
-      "link": "/learning-hub/fiber-installation-guidelines"
+      "link": "/fiber-installation-guidelines"
     },
     {
       "title": "WiFi 6E Router Configuration",
       "description": "Important updates for configuring new WiFi 6E routers",
       "date": "2024-05-28",
-      "link": "/articles/wifi6e-configuration"
+      "link": "/wifi6e-configuration"
     }
   ],
   "billingUpdates": [
@@ -32,25 +32,25 @@
       "title": "Updated Service Call Rates",
       "description": "New rates effective July 1st, 2024",
       "date": "2024-06-15",
-      "link": "/billing/service-call-rates"
+      "link": "/service-call-rates"
     },
     {
       "title": "Equipment Replacement Policy",
       "description": "Changes to equipment replacement billing procedures",
       "date": "2024-06-10",
-      "link": "/billing/equipment-replacement"
+      "link": "/equipment-replacement"
     }
   ],
   "quickLinks": {
     "billingGuide": {
       "title": "Quick Billing Guide",
       "description": "Common billing scenarios and procedures",
-      "link": "/billing/quick-guide"
+      "link": "/quick-guide"
     },
     "repairGuidelines": {
       "title": "Repair Billing Guidelines",
       "description": "Billing procedures for repair service calls",
-      "link": "/billing/repair-guidelines"
+      "link": "/repair-guidelines"
     }
   },
   "personalizedFeed": [
@@ -60,7 +60,7 @@
       "title": "New Fiber Installation Training Available",
       "description": "A new training module for the latest fiber installation techniques has been added to your learning dashboard.",
       "relevance": "Relevant to your role",
-      "link": "/training/fiber-installation"
+      "link": "/fiber-installation"
     },
     {
       "type": "Regional",
@@ -68,7 +68,7 @@
       "title": "Ontario Building Code Update",
       "description": "New building code regulations for multi-dwelling installations in Ontario have been published.",
       "relevance": "Specific to your region",
-      "link": "/learning-hub/ontario-building-code"
+      "link": "/ontario-building-code"
     },
     {
       "type": "Technical",
@@ -76,38 +76,38 @@
       "title": "Router Firmware Update Required",
       "description": "Critical security update for all RT-3000 series routers must be completed by June 15th.",
       "relevance": "High priority",
-      "link": "/learning-hub/router-firmware-update"
+      "link": "/router-firmware-update"
     }
   ],
   "recentArticles": [
     {
       "title": "Fiber Installation Guide v2.3",
-      "link": "/learning-hub/fiber-installation-guide",
+      "link": "/fiber-installation-guide",
       "timeViewed": "2h ago"
     },
     {
       "title": "Customer Premises Equipment Setup",
-      "link": "/articles/cpe-setup",
+      "link": "/cpe-setup",
       "timeViewed": "Yesterday"
     },
     {
       "title": "Billing Process for New Installations",
-      "link": "/articles/billing-process",
+      "link": "/billing-process",
       "timeViewed": "3d ago"
     }
   ],
   "savedArticles": [
     {
       "title": "Network Troubleshooting Flowchart",
-      "link": "/articles/network-troubleshooting"
+      "link": "/network-troubleshooting"
     },
     {
       "title": "WiFi Signal Optimization Guide",
-      "link": "/articles/wifi-optimization"
+      "link": "/wifi-optimization"
     },
     {
       "title": "Monthly Promotion Calculator",
-      "link": "/tools/promotion-calculator"
+      "link": "/promotion-calculator"
     }
   ]
 }

@@ -15,7 +15,7 @@ Our Tech Central application currently uses simplified models in `homepage.json`
 	"title": "Summer Internet Bundle",
 	"description": "Get 50% off your first 3 months with our new summer bundle",
 	"validUntil": "2024-08-31",
-	"link": "/valuegen/summer-bundle"
+	"link": "/summer-bundle"
 }
 ```
 
@@ -43,13 +43,13 @@ Our Tech Central application currently uses simplified models in `homepage.json`
 	"thumbnail": "https://cms.telus.com/images/summer-bundle-2024.jpg",
 	"cta": {
 		"text": "View Offer Details",
-		"link": "/valuegen/summer-bundle",
+		"link": "/summer-bundle",
 		"tracking": "vg_summer_int_2024"
 	},
 	"relatedDocuments": [
 		{
 			"title": "Offer Training Document",
-			"link": "/training/summer-bundle-2024"
+			"link": "/summer-bundle-2024"
 		}
 	],
 	"languages": ["en", "fr"],
@@ -83,7 +83,7 @@ Our Tech Central application currently uses simplified models in `homepage.json`
 	"title": "New Fiber Installation Guidelines",
 	"description": "Updated procedures for fiber optic installations in multi-unit buildings",
 	"date": "2024-06-01",
-	"link": "/learning-hub/fiber-installation-guidelines"
+	"link": "/fiber-installation-guidelines"
 }
 ```
 
@@ -108,7 +108,7 @@ Our Tech Central application currently uses simplified models in `homepage.json`
 	"attachments": [
 		{
 			"name": "Full Guidelines PDF",
-			"url": "/documents/fiber-guidelines-2024.pdf",
+			"url": "/fiber-guidelines-2024.pdf",
 			"size": "1.2MB",
 			"type": "application/pdf"
 		}
@@ -156,7 +156,7 @@ Our Tech Central application currently uses simplified models in `homepage.json`
 	"title": "Updated Service Call Rates",
 	"description": "New rates effective July 1st, 2024",
 	"date": "2024-06-15",
-	"link": "/billing/service-call-rates"
+	"link": "/service-call-rates"
 }
 ```
 
@@ -191,14 +191,14 @@ Our Tech Central application currently uses simplified models in `homepage.json`
 	"approvedBy": "Finance Department",
 	"rateCard": {
 		"name": "July 2024 Rate Card",
-		"url": "/documents/rate-card-july-2024.pdf"
+		"url": "/rate-card-july-2024.pdf"
 	},
 	"acknowledgementRequired": true,
 	"priority": 1,
 	"relatedDocuments": [
 		{
 			"title": "Rate Change Procedure",
-			"link": "/billing/rate-change-procedure"
+			"link": "/rate-change-procedure"
 		}
 	],
 	"languages": ["en", "fr"],

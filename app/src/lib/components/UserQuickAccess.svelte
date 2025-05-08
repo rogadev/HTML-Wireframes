@@ -21,6 +21,10 @@
 	let hasRecentlyViewed = false;
 	let hasFavorites = false;
 
+	function getArticleSlug(link: string) {
+		return link.replace(/^\//, '').split('/').pop();
+	}
+
 	onMount(() => {
 		// Check if we have recently viewed articles
 		const unsubscribe1 = recentlyViewed.subscribe((state) => {
@@ -56,7 +60,7 @@
 				<ul>
 					{#each recentArticles as article}
 						<li>
-							<a href={article.link}>{article.title}</a>
+							<a href={`/article/${getArticleSlug(article.link)}`}>{article.title}</a>
 							{#if article.timeViewed}
 								<span class="time-viewed">{article.timeViewed}</span>
 							{/if}
@@ -73,7 +77,7 @@
 				<ul>
 					{#each savedArticles as article}
 						<li>
-							<a href={article.link}>{article.title}</a>
+							<a href={`/article/${getArticleSlug(article.link)}`}>{article.title}</a>
 						</li>
 					{/each}
 				</ul>

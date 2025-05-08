@@ -11,6 +11,10 @@
 			link: string;
 		};
 	};
+
+	function getArticleSlug(link: string) {
+		return link.replace(/^\//, '').split('/').pop();
+	}
 </script>
 
 <section class="quick-links">
@@ -19,14 +23,14 @@
 	</div>
 
 	<div class="links-grid">
-		<a href={links.billingGuide.link} class="link-card">
+		<a href={`/article/${getArticleSlug(links.billingGuide.link)}`} class="link-card">
 			<div class="link-content">
 				<h3>{links.billingGuide.title}</h3>
 				<p>{links.billingGuide.description}</p>
 			</div>
 		</a>
 
-		<a href={links.repairGuidelines.link} class="link-card">
+		<a href={`/article/${getArticleSlug(links.repairGuidelines.link)}`} class="link-card">
 			<div class="link-content">
 				<h3>{links.repairGuidelines.title}</h3>
 				<p>{links.repairGuidelines.description}</p>

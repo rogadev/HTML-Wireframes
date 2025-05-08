@@ -5,6 +5,10 @@
 		validUntil: string;
 		link: string;
 	}>;
+
+	function getArticleSlug(link: string) {
+		return link.replace(/^\//, '').split('/').pop();
+	}
 </script>
 
 <section class="hot-offers">
@@ -17,7 +21,7 @@
 
 	<div class="offers-grid">
 		{#each offers as offer}
-			<a href={offer.link} class="offer-card">
+			<a href={`/article/${getArticleSlug(offer.link)}`} class="offer-card">
 				<div class="offer-content">
 					<h3>{offer.title}</h3>
 					<p>{offer.description}</p>

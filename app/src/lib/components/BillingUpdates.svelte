@@ -5,6 +5,10 @@
 		date: string;
 		link: string;
 	}>;
+
+	function getArticleSlug(link: string) {
+		return link.replace(/^\//, '').split('/').pop();
+	}
 </script>
 
 <section class="billing-updates">
@@ -15,15 +19,15 @@
 		</a>
 	</div>
 
-	<div class="updates-list">
+	<div class="updates-grid">
 		{#each updates as update}
-			<a href={update.link} class="update-card">
+			<a href={`/article/${getArticleSlug(update.link)}`} class="update-card">
 				<div class="update-content">
 					<h3>{update.title}</h3>
 					<p>{update.description}</p>
 					<div class="update-meta">
 						<span class="date">
-							<i class="fas fa-calendar"></i>
+							<i class="fas fa-calendar-alt"></i>
 							{new Date(update.date).toLocaleDateString()}
 						</span>
 					</div>
@@ -60,7 +64,7 @@
 		text-decoration: underline;
 	}
 
-	.updates-list {
+	.updates-grid {
 		display: flex;
 		flex-direction: column;
 		gap: 1rem;
