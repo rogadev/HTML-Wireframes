@@ -247,5 +247,152 @@
         "content": "For specific questions about how this maintenance might affect your services, please contact our Technical Support team at support@techcentral.example.com or call our dedicated maintenance hotline at 1-800-555-TECH. Our priority support line will be fully staffed during the maintenance window to address any urgent issues that may arise."
       }
     ]
+  },
+  {
+    "id": "billing-001",
+    "title": "Standard Billing Procedures",
+    "summary": "Overview of common billing procedures for all technicians",
+    "category": "billing",
+    "regions": [
+      "all"
+    ],
+    "publishedDate": "2023-11-15",
+    "lastUpdated": "2024-03-10",
+    "content": "This guide provides standard billing procedures that apply across all regions. Follow these guidelines to ensure consistent billing practices."
+  },
+  {
+    "id": "billing-002",
+    "title": "Quebec-Specific Billing Rules",
+    "summary": "Special billing considerations for Quebec province",
+    "category": "billing",
+    "regions": [
+      "qc"
+    ],
+    "publishedDate": "2023-12-05",
+    "lastUpdated": "2024-02-15",
+    "content": "Due to Quebec's unique consumer protection regulations, the following billing procedures must be followed when working in this region..."
+  },
+  {
+    "id": "billing-003",
+    "title": "Alberta/BC Billing Guidelines",
+    "summary": "Regional billing rules for Alberta and British Columbia",
+    "category": "billing",
+    "regions": [
+      "ab-bc"
+    ],
+    "publishedDate": "2023-10-21",
+    "lastUpdated": "2024-01-30",
+    "content": "These billing guidelines apply specifically to services provided in Alberta and British Columbia provinces..."
+  },
+  {
+    "id": "billing-004",
+    "title": "Ontario Rate Cards",
+    "summary": "Current rate cards for services in Ontario",
+    "category": "billing",
+    "regions": [
+      "on"
+    ],
+    "publishedDate": "2023-09-15",
+    "lastUpdated": "2024-04-05",
+    "content": "This document outlines the current rate cards for all service types in Ontario..."
+  },
+  {
+    "id": "billing-005",
+    "title": "Atlantic Provinces Billing Guide",
+    "summary": "Billing procedures for Atlantic region",
+    "category": "billing",
+    "regions": [
+      "atlantic"
+    ],
+    "publishedDate": "2023-11-30",
+    "lastUpdated": "2024-03-22",
+    "content": "Follow these billing procedures when providing services in Nova Scotia, New Brunswick, PEI, and Newfoundland & Labrador..."
+  },
+  {
+    "id": "billing-006",
+    "title": "Manitoba/Saskatchewan Special Considerations",
+    "summary": "Region-specific billing rules for Manitoba and Saskatchewan",
+    "category": "billing",
+    "regions": [
+      "mb-sk"
+    ],
+    "publishedDate": "2023-10-10",
+    "lastUpdated": "2024-02-28",
+    "content": "These special billing considerations apply only to Manitoba and Saskatchewan provinces..."
+  },
+  {
+    "id": "install-001",
+    "title": "Fiber Installation Guidelines",
+    "summary": "Standard procedures for fiber installation",
+    "category": "installation",
+    "regions": [
+      "all"
+    ],
+    "publishedDate": "2023-11-02",
+    "lastUpdated": "2024-04-15",
+    "content": "Follow these standard fiber installation procedures when performing installations across all regions..."
+  },
+  {
+    "id": "install-002",
+    "title": "Quebec Building Code Requirements",
+    "summary": "Special installation requirements for Quebec",
+    "category": "installation",
+    "regions": [
+      "qc"
+    ],
+    "publishedDate": "2023-12-10",
+    "lastUpdated": "2024-03-05",
+    "content": "Quebec has specific building code requirements that must be followed during installation. This document outlines these requirements..."
+  },
+  {
+    "id": "install-003",
+    "title": "Cold Weather Installation Protocol",
+    "summary": "Special procedures for cold climate regions",
+    "category": "installation",
+    "regions": [
+      "qc",
+      "mb-sk",
+      "ab-bc"
+    ],
+    "publishedDate": "2023-09-28",
+    "lastUpdated": "2024-01-20",
+    "content": "When performing installations in cold climate regions, these additional steps must be taken to ensure equipment functions properly..."
+  },
+  {
+    "id": "install-004",
+    "title": "High-Density Urban Installation Guide",
+    "summary": "Installation guidelines for urban areas",
+    "category": "installation",
+    "regions": [
+      "on",
+      "qc"
+    ],
+    "publishedDate": "2023-10-15",
+    "lastUpdated": "2024-02-10",
+    "content": "This guide provides special considerations for installations in high-density urban areas in Ontario and Quebec..."
+  },
+  {
+    "id": "hw-001",
+    "title": "Standard Hardware Business Rules",
+    "summary": "General hardware business rules for all regions",
+    "category": "hardware",
+    "regions": [
+      "all"
+    ],
+    "publishedDate": "2023-11-10",
+    "lastUpdated": "2024-04-01",
+    "content": "These hardware business rules apply to all technicians regardless of region..."
+  },
+  {
+    "id": "hw-002",
+    "title": "Quebec-Specific Hardware Regulations",
+    "summary": "Special hardware requirements for Quebec",
+    "category": "hardware",
+    "regions": [
+      "qc"
+    ],
+    "publishedDate": "2023-12-15",
+    "lastUpdated": "2024-03-10",
+    "content": "Due to Quebec's language laws and electrical regulations, follow these specific hardware guidelines..."
   }
 ]

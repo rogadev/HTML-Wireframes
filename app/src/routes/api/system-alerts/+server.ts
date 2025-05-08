@@ -80,38 +80,57 @@ const systemAlerts = [
 
 // GET handler to retrieve all active system alerts
 export const GET: RequestHandler = async ({ url }) => {
-  const activeOnly = url.searchParams.get('active') !== 'false';
-  const alertType = url.searchParams.get('type');
-  const minSeverity = url.searchParams.get('min_severity');
+  console.log('API: System alerts request received');
 
-  let filteredAlerts = systemAlerts;
+  try {
+    const activeOnly = url.searchParams.get('active') !== 'false';
+    const alertType = url.searchParams.get('type');
+    const minSeverity = url.searchParams.get('min_severity');
 
-  // Filter by active status if requested
-  if (activeOnly) {
-    filteredAlerts = filteredAlerts.filter(alert => alert.active);
-  }
+    console.log('API: Processing system alerts with params:', { activeOnly, alertType, minSeverity });
 
-  // Filter by alert type if specified
-  if (alertType) {
-    filteredAlerts = filteredAlerts.filter(alert => alert.type === alertType);
-  }
+    // Create a deep copy to avoid mutation issues
+    let filteredAlerts = JSON.parse(JSON.stringify(systemAlerts));
 
-  // Filter by minimum severity if specified
-  if (minSeverity) {
-    const severityLevels = ['low', 'moderate', 'warning', 'critical'];
-    const minSeverityIndex = severityLevels.indexOf(minSeverity);
+    try {
+      // Filter by active status if requested
+      if (activeOnly) {
+        filteredAlerts = filteredAlerts.filter(alert => alert.active);
+      }
 
-    if (minSeverityIndex !== -1) {
-      filteredAlerts = filteredAlerts.filter(alert => {
-        const alertSeverityIndex = severityLevels.indexOf(alert.severity);
-        return alertSeverityIndex >= minSeverityIndex;
-      });
+      // Filter by alert type if specified
+      if (alertType) {
+        filteredAlerts = filteredAlerts.filter(alert => alert.type === alertType);
+      }
+
+      // Filter by minimum severity if specified
+      if (minSeverity) {
+        const severityLevels = ['low', 'moderate', 'warning', 'critical'];
+        const minSeverityIndex = severityLevels.indexOf(minSeverity);
+
+        if (minSeverityIndex !== -1) {
+          filteredAlerts = filteredAlerts.filter(alert => {
+            const alertSeverityIndex = severityLevels.indexOf(alert.severity);
+            return alertSeverityIndex >= minSeverityIndex;
+          });
+        }
+      }
+    } catch (err) {
+      console.error('API: Error filtering system alerts:', err);
+      filteredAlerts = [];
     }
-  }
 
-  return json({
-    alerts: filteredAlerts
-  });
+    console.log(`API: Returning ${filteredAlerts.length} system alerts`);
+    return json({
+      alerts: filteredAlerts
+    });
+  } catch (err) {
+    console.error('API: Unexpected error processing system alerts request:', err);
+    return json({
+      alerts: [],
+      error: 'An unexpected error occurred'
+    });
+  }
 };
 
 // POST handler for creating a new system alert (would require authentication in production)

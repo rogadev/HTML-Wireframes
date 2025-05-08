@@ -4,13 +4,13 @@
 
 	const navItems = [
 		{ href: '/', label: 'Home' },
-		{ href: '/managers', label: 'Managers' },
 		{ href: '/news', label: 'News' },
 		{ href: '/learning-hub', label: 'Learning Hub' },
-		{ href: '/valuegen', label: 'ValueGen' },
+		{ href: '/valuegen', label: 'Deals & Offers' },
 		{ href: '/billing', label: 'Billing' },
+		{ href: '/training', label: 'Training' },
 		{ href: '/partners', label: 'Partners' },
-		{ href: '/training', label: 'Training' }
+		{ href: '/managers', label: 'Managers' }
 	];
 
 	let isMobileMenuOpen = false;
@@ -21,24 +21,75 @@
 	}
 
 	function handleClickOutside(event: MouseEvent) {
-		if (isMobileMenuOpen && navElement && !navElement.contains(event.target as Node)) {
+		try {
+			if (isMobileMenuOpen && navElement && !navElement.contains(event.target as Node)) {
+				isMobileMenuOpen = false;
+			}
+		} catch (err) {
+			console.error('Error in Navigation click outside handler:', err);
+			// Default to closing the menu on error
 			isMobileMenuOpen = false;
 		}
 	}
 
 	function handleNavigation() {
-		isMobileMenuOpen = false;
+		try {
+			isMobileMenuOpen = false;
+		} catch (err) {
+			console.error('Error in Navigation handleNavigation:', err);
+		}
 	}
 
 	onMount(() => {
-		document.addEventListener('click', handleClickOutside);
-		return () => {
-			document.removeEventListener('click', handleClickOutside);
-		};
+		console.log('Navigation component initializing');
+
+		try {
+			// Create a safe handler with error handling
+			const safeClickHandler = (event: MouseEvent) => {
+				try {
+					handleClickOutside(event);
+				} catch (err) {
+					console.error('Error in Navigation click handler:', err);
+				}
+			};
+
+			document.addEventListener('click', safeClickHandler);
+
+			return () => {
+				console.log('Navigation component unmounting');
+				try {
+					document.removeEventListener('click', safeClickHandler);
+				} catch (err) {
+					console.error('Error cleaning up Navigation event listeners:', err);
+				}
+			};
+		} catch (err) {
+			console.error('Error initializing Navigation component:', err);
+			// Return a no-op cleanup function
+			return () => {};
+		}
 	});
 
-	$: currentPath = page.url.pathname;
-	$: if (currentPath) handleNavigation();
+	// Safe reactive statements
+	let currentPath = '';
+	$: {
+		try {
+			if (page && page.url && page.url.pathname) {
+				currentPath = page.url.pathname;
+			}
+		} catch (err) {
+			console.error('Error processing page path in Navigation:', err);
+			currentPath = '/';
+		}
+	}
+
+	$: {
+		try {
+			if (currentPath) handleNavigation();
+		} catch (err) {
+			console.error('Error in Navigation path change handler:', err);
+		}
+	}
 </script>
 
 <nav bind:this={navElement}>

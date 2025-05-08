@@ -9,12 +9,13 @@ export type ProductFocus = 'SHS' | 'TV' | 'Internet' | 'WiFi' | 'ValueGen' | 'Cu
 export interface UserPreferences {
   language: Language;
   region: Region;
-  role: Role;
+  roles: Role[];
+  primaryRole: Role;
   teamType: TeamType;
   audienceGroup: AudienceGroup;
-  skillDesignations?: SkillDesignation[];
-  productFocus?: ProductFocus[];
-  favorites?: string[]; // article IDs
+  skillDesignations: SkillDesignation[];
+  productFocus: ProductFocus[];
+  favorites: string[];
   learningProfile?: {
     newHire: boolean;
     outstandingCourses: string[];
@@ -24,11 +25,12 @@ export interface UserPreferences {
 export const DEFAULT_PREFERENCES: UserPreferences = {
   language: 'en',
   region: 'all',
-  role: 'technician',
+  roles: ['technician'],
+  primaryRole: 'technician',
   teamType: 'home',
   audienceGroup: 'tech',
   skillDesignations: [],
-  productFocus: undefined,
+  productFocus: [],
   favorites: [],
   learningProfile: {
     newHire: false,

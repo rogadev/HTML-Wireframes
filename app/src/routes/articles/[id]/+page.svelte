@@ -8,6 +8,8 @@
 	import FeedbackWidget from '$lib/components/FeedbackWidget.svelte';
 	import { goto } from '$app/navigation';
 	import { onMount } from 'svelte';
+	import { userPreferences } from '$lib/stores/userPreferences';
+	import { recentlyViewed } from '$lib/stores/recentlyViewed';
 
 	export let data;
 
@@ -15,6 +17,7 @@
 	let error = data.error;
 	let isOutOfDate = false;
 	let currentUrl = '';
+	let isFavorite = false;
 
 	// Format date for display
 	const formatDate = (dateString: string) => {
@@ -27,27 +30,40 @@
 	};
 
 	// Fetch the out-of-date status on mount
-	onMount(async () => {
+	onMount(() => {
 		// Get the current full URL for the feedback form
 		currentUrl = window.location.href;
+		let unsubscribe: () => void = () => {};
 
 		if (article) {
+			// Add to recently viewed
+			recentlyViewed.addArticle(article.id);
+
+			// Check if this article is a favorite
+			unsubscribe = userPreferences.subscribe((prefs) => {
+				isFavorite = prefs.favorites?.includes(article?.id || '') || false;
+			});
+
 			// First check if it's set in the article data (initial state)
 			if (article.isOutOfDate !== undefined) {
 				isOutOfDate = article.isOutOfDate;
 			} else {
 				// Otherwise fetch from API
-				try {
-					const response = await fetch(`/api/articles/out-of-date?articleId=${article.id}`);
-					if (response.ok) {
-						const data = await response.json();
+				fetch(`/api/articles/out-of-date?articleId=${article.id}`)
+					.then((response) => {
+						if (response.ok) return response.json();
+						throw new Error('Failed to fetch out-of-date status');
+					})
+					.then((data) => {
 						isOutOfDate = !!data.isOutOfDate;
-					}
-				} catch (err) {
-					console.error('Failed to fetch out-of-date status:', err);
-				}
+					})
+					.catch((err) => {
+						console.error('Failed to fetch out-of-date status:', err);
+					});
 			}
 		}
+
+		return unsubscribe;
 	});
 
 	// Toggle the out-of-date status
@@ -74,6 +90,14 @@
 			}
 		} catch (err) {
 			console.error('Error toggling out-of-date status:', err);
+		}
+	}
+
+	// Toggle favorite status
+	function toggleFavorite() {
+		if (article) {
+			userPreferences.toggleFavorite(article.id);
+			isFavorite = !isFavorite;
 		}
 	}
 </script>
@@ -143,6 +167,19 @@
 				<p class="subtitle">{article.subtitle}</p>
 
 				<div class="article-actions">
+					<button
+						class="favorite-button"
+						on:click={toggleFavorite}
+						aria-label={isFavorite ? 'Remove from favorites' : 'Add to favorites'}
+					>
+						{#if isFavorite}
+							<i class="fas fa-star"></i>
+							<span>Saved</span>
+						{:else}
+							<i class="far fa-star"></i>
+							<span>Save</span>
+						{/if}
+					</button>
 					<DownloadButton articleId={article.id} lastUpdated={article.lastUpdated} />
 				</div>
 
@@ -374,5 +411,31 @@
 
 	.status-badge {
 		margin-left: 0.5rem;
+	}
+
+	.favorite-button {
+		display: flex;
+		align-items: center;
+		background-color: transparent;
+		border: 1px solid #d1d5db;
+		border-radius: 0.375rem;
+		padding: 0.5rem 1rem;
+		font-size: 0.875rem;
+		color: #4b5563;
+		cursor: pointer;
+		transition: all 0.2s;
+		margin-right: 0.5rem;
+	}
+
+	.favorite-button:hover {
+		background-color: #f3f4f6;
+	}
+
+	.favorite-button i {
+		margin-right: 0.5rem;
+	}
+
+	.fa-star {
+		color: #fbbf24;
 	}
 </style>

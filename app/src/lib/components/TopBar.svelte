@@ -1,12 +1,15 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { goto } from '$app/navigation';
 	import SearchBar from './SearchBar.svelte';
 	import OfflineToggle from './OfflineToggle.svelte';
 	import { userPreferences } from '$lib/stores/userPreferences';
-	import type { Region, Language } from '$lib/types/userPreferences';
+	import type { Region, Language, Role, SkillDesignation } from '$lib/types/userPreferences';
 
 	export let onLanguageChange: (event: { language: string }) => void = () => {};
 	export let onRegionChange: (event: { region: string }) => void = () => {};
+	export let onRolesChange: (event: { roles: Role[] }) => void = () => {};
+	export let onSkillDesignationsChange: (event: { skills: SkillDesignation[] }) => void = () => {};
 
 	let isPanelOpen = false;
 	let isMobile = false;
@@ -27,34 +30,91 @@
 		{ code: 'mb-sk', label: 'Manitoba/Saskatchewan' }
 	];
 
+	const roles: { code: Role; label: string }[] = [
+		{ code: 'technician', label: 'Technician' },
+		{ code: 'manager', label: 'Manager' },
+		{ code: 'partner', label: 'Partner' },
+		{ code: 'admin', label: 'Administrator' }
+	];
+
+	const skillDesignations: { code: SkillDesignation; label: string }[] = [
+		{ code: 'copper', label: 'Copper' },
+		{ code: 'fiber', label: 'Fiber' },
+		{ code: 'wifi_plus', label: 'WiFi Plus' },
+		{ code: 'shs', label: 'SHS' },
+		{ code: 'tv', label: 'TV' },
+		{ code: 'clec-qc', label: 'CLEC-QC' },
+		{ code: 'ilec-qc', label: 'ILEC-QC' }
+	];
+
 	// Function to handle outside clicks
 	function handleClickOutside(event: MouseEvent) {
-		// Check if the panel is open and if the click was outside the panel and not on the toggle button
-		if (
-			isPanelOpen &&
-			panelElement &&
-			!panelElement.contains(event.target as Node) &&
-			!(event.target as Element).classList.contains('profile-dropdown-icon')
-		) {
+		try {
+			// Check if the panel is open and if the click was outside the panel and not on the toggle button
+			if (
+				isPanelOpen &&
+				panelElement &&
+				!panelElement.contains(event.target as Node) &&
+				!(event.target as Element).classList.contains('profile-dropdown-icon')
+			) {
+				isPanelOpen = false;
+			}
+		} catch (err) {
+			console.error('Error in TopBar click outside handler:', err);
+			// Default to closing the panel on error
 			isPanelOpen = false;
 		}
 	}
 
 	onMount(() => {
-		// Check if we're on mobile
-		const checkMobile = () => {
-			isMobile = window.innerWidth <= 768;
-		};
-		checkMobile();
-		window.addEventListener('resize', checkMobile);
+		console.log('TopBar component initializing');
 
-		// Add click outside event listener
-		document.addEventListener('click', handleClickOutside);
+		try {
+			// Check if we're on mobile
+			const checkMobile = () => {
+				try {
+					isMobile = window.innerWidth <= 768;
+				} catch (err) {
+					console.error('Error checking mobile state:', err);
+				}
+			};
 
-		return () => {
-			window.removeEventListener('resize', checkMobile);
-			document.removeEventListener('click', handleClickOutside);
-		};
+			checkMobile();
+
+			// Wrap event listeners in try/catch for safety
+			const safeResizeHandler = () => {
+				try {
+					checkMobile();
+				} catch (err) {
+					console.error('Error in resize handler:', err);
+				}
+			};
+
+			const safeClickHandler = (event: MouseEvent) => {
+				try {
+					handleClickOutside(event);
+				} catch (err) {
+					console.error('Error in click handler:', err);
+				}
+			};
+
+			window.addEventListener('resize', safeResizeHandler);
+			document.addEventListener('click', safeClickHandler);
+
+			return () => {
+				console.log('TopBar component unmounting');
+				try {
+					window.removeEventListener('resize', safeResizeHandler);
+					document.removeEventListener('click', safeClickHandler);
+				} catch (err) {
+					console.error('Error cleaning up TopBar event listeners:', err);
+				}
+			};
+		} catch (err) {
+			console.error('Error initializing TopBar component:', err);
+			// Return a no-op cleanup function
+			return () => {};
+		}
 	});
 
 	function togglePanel(event: MouseEvent) {
@@ -71,18 +131,46 @@
 
 	function handleLanguageChange(event: Event) {
 		const target = event.target as HTMLInputElement;
-		userPreferences.updatePreference('language', target.value as Language);
+		userPreferences.setLanguage(target.value as Language);
 		onLanguageChange({ language: target.value });
 	}
 
 	function handleRegionChange(event: Event) {
 		const target = event.target as HTMLSelectElement;
-		userPreferences.updatePreference('region', target.value as Region);
+		userPreferences.setRegion(target.value as Region);
 		onRegionChange({ region: target.value });
+	}
+
+	function toggleRole(role: Role) {
+		userPreferences.toggleRole(role);
+		onRolesChange({ roles: $userPreferences.roles });
+	}
+
+	function setPrimaryRole(role: Role) {
+		if ($userPreferences.roles.includes(role)) {
+			userPreferences.setPrimaryRole(role);
+		}
+	}
+
+	function toggleSkillDesignation(skill: SkillDesignation) {
+		const currentSkills = $userPreferences.skillDesignations || [];
+		const isSelected = currentSkills.includes(skill);
+
+		const updatedSkills = isSelected
+			? currentSkills.filter((s) => s !== skill)
+			: [...currentSkills, skill];
+
+		userPreferences.setSkillDesignations(updatedSkills);
+		onSkillDesignationsChange({ skills: updatedSkills });
 	}
 
 	function closePanel() {
 		isPanelOpen = false;
+	}
+
+	function navigateToProfile() {
+		closePanel();
+		goto('/profile');
 	}
 </script>
 
@@ -108,7 +196,7 @@
 					aria-expanded={isPanelOpen}
 					aria-label="User preferences"
 				>
-					<i class="fas fa-cog"></i>
+					<i class="fas fa-user-cog"></i>
 				</button>
 			</div>
 		</div>
@@ -120,7 +208,7 @@
 				aria-label="User preferences"
 				bind:this={panelElement}
 			>
-				<h3>Quick Settings</h3>
+				<h3>User Preferences</h3>
 
 				<div class="pref-section">
 					<h4>Language</h4>
@@ -156,19 +244,73 @@
 					</div>
 				</div>
 
+				<div class="pref-section">
+					<h4>Roles</h4>
+					<div class="roles-grid">
+						{#each roles as role}
+							<div class="role-option">
+								<input
+									type="checkbox"
+									id="role-{role.code}"
+									checked={$userPreferences.roles.includes(role.code)}
+									onchange={() => toggleRole(role.code)}
+								/>
+								<label for="role-{role.code}">{role.label}</label>
+								{#if $userPreferences.roles.includes(role.code)}
+									<div class="primary-role-selector">
+										<input
+											type="radio"
+											id="primary-{role.code}"
+											name="primary-role"
+											checked={$userPreferences.primaryRole === role.code}
+											onchange={() => setPrimaryRole(role.code)}
+										/>
+										<label for="primary-{role.code}" class="primary-label">Primary</label>
+									</div>
+								{/if}
+							</div>
+						{/each}
+					</div>
+					<div class="pref-info">
+						<i class="fas fa-info-circle"></i>
+						<span>Select your roles and designate a primary role for default view</span>
+					</div>
+				</div>
+
+				<div class="pref-section">
+					<h4>Skills</h4>
+					<div class="skills-grid">
+						{#each skillDesignations as skill}
+							<div class="skill-option">
+								<input
+									type="checkbox"
+									id="skill-{skill.code}"
+									checked={$userPreferences.skillDesignations?.includes(skill.code)}
+									onchange={() => toggleSkillDesignation(skill.code)}
+								/>
+								<label for="skill-{skill.code}">{skill.label}</label>
+							</div>
+						{/each}
+					</div>
+					<div class="pref-info">
+						<i class="fas fa-info-circle"></i>
+						<span>Select skills to customize your content experience</span>
+					</div>
+				</div>
+
 				<div class="pref-section profile-link-section">
-					<a href="/profile" class="profile-full-link">
+					<a href="/profile" class="profile-full-link" onclick={navigateToProfile}>
 						<i class="fas fa-user-cog"></i>
-						Go to profile settings
+						Advanced profile settings
 					</a>
 					<div class="pref-info">
 						<i class="fas fa-info-circle"></i>
-						<span>Manage all your preferences in the profile settings</span>
+						<span>Manage additional preferences in the profile settings</span>
 					</div>
 				</div>
 
 				<div class="pref-actions">
-					<button class="save-pref-btn" onclick={closePanel}>Close</button>
+					<button class="save-pref-btn" onclick={closePanel}>Save & Close</button>
 				</div>
 			</div>
 		{/if}
@@ -251,7 +393,7 @@
 		margin-top: 0.5rem;
 		display: block;
 		color: var(--text-color, #333);
-		max-height: 80vh;
+		max-height: 85vh;
 		overflow-y: auto;
 	}
 
@@ -295,11 +437,35 @@
 		font-size: 1rem;
 	}
 
-	.pref-option {
+	.pref-option,
+	.skill-option {
 		display: flex;
 		align-items: center;
 		gap: 0.5rem;
 		margin-bottom: 0.5rem;
+	}
+
+	.role-option {
+		display: flex;
+		align-items: center;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		margin-bottom: 0.5rem;
+		padding: 0.5rem;
+		border-radius: 4px;
+		background-color: #f9f9f9;
+	}
+
+	.primary-role-selector {
+		margin-left: auto;
+		display: flex;
+		align-items: center;
+		gap: 0.25rem;
+	}
+
+	.primary-label {
+		font-size: 0.8rem;
+		color: #666;
 	}
 
 	select {
@@ -309,6 +475,20 @@
 		border-radius: 4px;
 		margin-bottom: 0.5rem;
 		font-size: 0.9rem;
+	}
+
+	.roles-grid,
+	.skills-grid {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+		margin-bottom: 0.5rem;
+	}
+
+	.skills-grid {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 0.5rem;
 	}
 
 	.pref-info {
@@ -380,6 +560,10 @@
 			max-width: none;
 			border-radius: 0;
 			margin-top: 0;
+		}
+
+		.skills-grid {
+			grid-template-columns: 1fr;
 		}
 	}
 </style>

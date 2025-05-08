@@ -1,14 +1,27 @@
 <script lang="ts">
 	import Badge from './Badge.svelte';
 
-	export let title: string;
-	export let description: string;
-	export let imageUrl: string | undefined = undefined;
-	export let link: string | undefined = undefined;
-	export let tags: string[] = [];
-	export let date: string | undefined = undefined;
-	export let author: string | undefined = undefined;
-	export let category: string | undefined = undefined;
+	const {
+		title,
+		description,
+		imageUrl = undefined,
+		link = undefined,
+		tags = [],
+		date = undefined,
+		author = undefined,
+		category = undefined,
+		children = undefined
+	} = $props<{
+		title: string;
+		description: string;
+		imageUrl?: string;
+		link?: string;
+		tags?: string[];
+		date?: string;
+		author?: string;
+		category?: string;
+		children?: any;
+	}>();
 </script>
 
 <div class="card">
@@ -49,6 +62,7 @@
 					{author}
 				</span>
 			{/if}
+			{@render children()}
 		</div>
 	</div>
 </div>
@@ -115,6 +129,7 @@
 
 	.card-meta {
 		display: flex;
+		flex-wrap: wrap;
 		gap: 1rem;
 		font-size: 0.875rem;
 		color: var(--secondary-color);
