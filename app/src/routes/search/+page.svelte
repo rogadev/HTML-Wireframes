@@ -353,23 +353,15 @@
 	{:else}
 		<CardGrid columns={3}>
 			{#each searchResults as result}
-				<div
-					onclick={(e: MouseEvent) => handleArticleClick(e, result.slug || result.id)}
-					onkeydown={(e: any) =>
-						e.key === 'Enter' && handleArticleClick(e, result.slug || result.id)}
-					role="button"
-					tabindex="0"
-				>
-					<Card
-						{...result}
-						link={`/articles/${result.slug || result.id}`}
-						isOutOfDate={result.isOutOfDate}
-						isUpdated={result.isUpdated}
-						isNew={result.isNew}
-						lastUpdated={result.lastUpdated}
-						children={createLanguageBadge(result.languages)}
-					/>
-				</div>
+				<Card
+					{...result}
+					link={`/articles/${result.slug || result.id}`}
+					isOutOfDate={result.isOutOfDate}
+					isUpdated={result.isUpdated}
+					isNew={result.isNew}
+					lastUpdated={result.lastUpdated}
+					children={createLanguageBadge(result.languages)}
+				/>
 			{/each}
 		</CardGrid>
 	{/if}

@@ -35,62 +35,20 @@
 	const isRecentlyUpdated = $derived(
 		lastUpdated && new Date(lastUpdated) > new Date(Date.now() - 7 * 24 * 60 * 60 * 1000)
 	);
+
+	// Generate the article URL from the title if no link is provided
+	const articleUrl = $derived(
+		link
+			? link
+			: `/articles/${title
+					.toLowerCase()
+					.replace(/\s+/g, '-')
+					.replace(/[^\w-]+/g, '')}`
+	);
 </script>
 
 <div class="card" role="article">
-	{#if link}
-		<a href={link} class="card-link" aria-label={`Read article: ${title}`}>
-			{#if imageUrl}
-				<div class="card-image">
-					<img src={imageUrl} alt={title} />
-				</div>
-			{/if}
-			<div class="card-content">
-				<div class="card-header">
-					{#if category}
-						<Badge variant="primary" size="small">{category}</Badge>
-					{/if}
-					<div class="status-indicators">
-						{#if isOutOfDate}
-							<Badge variant="warning" size="small" icon="fas fa-exclamation-triangle"
-								>Out of Date</Badge
-							>
-						{:else if isNew}
-							<Badge variant="success" size="small" icon="fas fa-star">New</Badge>
-						{:else if isUpdated || isRecentlyUpdated}
-							<Badge variant="info" size="small" icon="fas fa-sync">Updated</Badge>
-						{/if}
-					</div>
-				</div>
-				<h3 class="card-title">
-					{title}
-				</h3>
-				<p class="card-description">{description}</p>
-				{#if tags.length > 0}
-					<div class="card-tags" role="list" aria-label="Article tags">
-						{#each tags as tag}
-							<Badge variant="info" size="small" pill>{tag}</Badge>
-						{/each}
-					</div>
-				{/if}
-				<div class="card-meta">
-					{#if date}
-						<span class="card-date">
-							<i class="fas fa-calendar" aria-hidden="true"></i>
-							<span>{date}</span>
-						</span>
-					{/if}
-					{#if author}
-						<span class="card-author">
-							<i class="fas fa-user" aria-hidden="true"></i>
-							<span>{author}</span>
-						</span>
-					{/if}
-					{@render children()}
-				</div>
-			</div>
-		</a>
-	{:else}
+	<a href={articleUrl} class="card-link" aria-label={`Read article: ${title}`}>
 		{#if imageUrl}
 			<div class="card-image">
 				<img src={imageUrl} alt={title} />
@@ -140,7 +98,7 @@
 				{@render children()}
 			</div>
 		</div>
-	{/if}
+	</a>
 </div>
 
 <style>
@@ -197,15 +155,6 @@
 		line-height: 1.4;
 	}
 
-	.card-title a {
-		color: var(--text-color);
-		text-decoration: none;
-	}
-
-	.card-title a:hover {
-		color: var(--primary-color);
-	}
-
 	.card-description {
 		color: var(--secondary-color);
 		margin-bottom: 1rem;
@@ -250,20 +199,5 @@
 	.status-indicators {
 		display: flex;
 		gap: 0.5rem;
-	}
-
-	/* Add warning styles for out-of-date articles */
-	.card:has(.badge.warning) {
-		border-left: 4px solid var(--warning-color, #f59e0b);
-	}
-
-	/* Add success styles for new articles */
-	.card:has(.badge.success) {
-		border-left: 4px solid var(--success-color, #10b981);
-	}
-
-	/* Add info styles for updated articles */
-	.card:has(.badge.info) {
-		border-left: 4px solid var(--info-color, #3b82f6);
 	}
 </style>
