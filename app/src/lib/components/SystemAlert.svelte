@@ -30,11 +30,7 @@
 	let expandedAlertId: string | null = null;
 	let lastPolled: Date | null = null;
 	let pollingIntervalId: ReturnType<typeof setInterval> | null = null;
-
-	// Get and format current time for the "last checked" info
-	$: formattedLastPolled = lastPolled
-		? new Date(lastPolled).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
-		: '';
+	let dismissedAlertIds: string[] = [];
 
 	/**
 	 * Fetch active system alerts
@@ -54,7 +50,6 @@
 			alerts = data.alerts;
 			lastPolled = new Date();
 		} catch (err) {
-			console.error('Error fetching system alerts:', err);
 			error = 'Failed to load system alerts';
 		} finally {
 			isLoading = false;
@@ -65,32 +60,20 @@
 	 * Initialize polling for alerts
 	 */
 	function initializePolling() {
-		// Clear any existing interval first
 		if (pollingIntervalId) {
 			clearInterval(pollingIntervalId);
 		}
-
-		// Set up the polling interval
 		pollingIntervalId = setInterval(fetchAlerts, pollingInterval);
 	}
 
-	/**
-	 * Toggle expanded view for an alert
-	 */
 	function toggleAlertDetails(alertId: string) {
 		expandedAlertId = expandedAlertId === alertId ? null : alertId;
 	}
 
-	/**
-	 * Navigate to the alert details page
-	 */
 	function viewFullDetails(alertId: string) {
 		goto(`/system-alerts/${alertId}`);
 	}
 
-	/**
-	 * Format ISO date string to readable format
-	 */
 	function formatDate(isoString: string): string {
 		return new Date(isoString).toLocaleString([], {
 			month: 'short',
@@ -100,41 +83,25 @@
 		});
 	}
 
-	/**
-	 * Calculate time remaining until estimated resolution
-	 */
 	function getTimeRemaining(estimatedResolution: string): string {
 		const now = new Date();
 		const resolution = new Date(estimatedResolution);
 		const diffMs = resolution.getTime() - now.getTime();
-
-		if (diffMs <= 0) {
-			return 'Overdue';
-		}
-
+		if (diffMs <= 0) return 'Overdue';
 		const diffHours = Math.floor(diffMs / (1000 * 60 * 60));
 		const diffMinutes = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60));
-
 		if (diffHours > 24) {
 			const days = Math.floor(diffHours / 24);
 			return `${days} day${days > 1 ? 's' : ''} remaining`;
 		}
-
-		if (diffHours > 0) {
-			return `${diffHours}h ${diffMinutes}m remaining`;
-		}
-
+		if (diffHours > 0) return `${diffHours}h ${diffMinutes}m remaining`;
 		return `${diffMinutes} min remaining`;
 	}
 
-	/**
-	 * Get the appropriate badge variant based on alert type and severity
-	 */
 	function getBadgeVariant(
 		alert: SystemAlert
 	): 'primary' | 'success' | 'warning' | 'danger' | 'info' {
 		if (alert.type === 'resolved') return 'success';
-
 		switch (alert.severity) {
 			case 'critical':
 				return 'danger';
@@ -147,9 +114,6 @@
 		}
 	}
 
-	/**
-	 * Get icon for alert type
-	 */
 	function getAlertIcon(alert: SystemAlert): string {
 		switch (alert.type) {
 			case 'outage':
@@ -165,8 +129,28 @@
 		}
 	}
 
+	function getDismissedAlertIds(): string[] {
+		try {
+			const stored = sessionStorage.getItem('dismissedSystemAlerts');
+			return stored ? JSON.parse(stored) : [];
+		} catch {
+			return [];
+		}
+	}
+
+	function setDismissedAlertIds(ids: string[]) {
+		sessionStorage.setItem('dismissedSystemAlerts', JSON.stringify(ids));
+	}
+
+	function dismissAlert(alertId: string) {
+		dismissedAlertIds = [...dismissedAlertIds, alertId];
+		setDismissedAlertIds(dismissedAlertIds);
+	}
+
 	// Initialize on component mount
 	onMount(() => {
+		// Load dismissed alert IDs from sessionStorage
+		dismissedAlertIds = getDismissedAlertIds();
 		fetchAlerts();
 		initializePolling();
 	});
@@ -189,13 +173,13 @@
 	<div class="system-alert-error">
 		<i class="fas fa-exclamation-circle"></i>
 		<span>{error}</span>
-		<button class="retry-button" on:click={fetchAlerts} aria-label="Retry">
+		<button class="retry-button" onclick={fetchAlerts} aria-label="Retry">
 			<i class="fas fa-sync-alt"></i>
 		</button>
 	</div>
 {:else if alerts.length > 0}
 	<div class="system-alerts-container">
-		{#each alerts as alert (alert.id)}
+		{#each alerts.filter((alert) => !dismissedAlertIds.includes(alert.id)) as alert (alert.id)}
 			<div
 				class="system-alert-banner"
 				class:expanded={expandedAlertId === alert.id}
@@ -207,8 +191,8 @@
 				<!-- Alert header (always visible) -->
 				<div
 					class="alert-header"
-					on:click={() => toggleAlertDetails(alert.id)}
-					on:keydown={(e) => e.key === 'Enter' && toggleAlertDetails(alert.id)}
+					onclick={() => toggleAlertDetails(alert.id)}
+					onkeydown={(e) => e.key === 'Enter' && toggleAlertDetails(alert.id)}
 					tabindex="0"
 					role="button"
 					aria-expanded={expandedAlertId === alert.id}
@@ -228,6 +212,14 @@
 					<div class="alert-actions">
 						<i class={expandedAlertId === alert.id ? 'fas fa-chevron-up' : 'fas fa-chevron-down'}
 						></i>
+						<!-- Dismiss button -->
+						<button
+							class="alert-dismiss-btn"
+							onclick={() => dismissAlert(alert.id)}
+							aria-label="Dismiss alert"
+						>
+							<i class="fas fa-times"></i>
+						</button>
 					</div>
 				</div>
 
@@ -281,7 +273,7 @@
 						{/if}
 
 						<div class="view-more">
-							<button class="view-more-button" on:click={() => viewFullDetails(alert.id)}>
+							<button class="view-more-button" onclick={() => viewFullDetails(alert.id)}>
 								View Full Details
 								<i class="fas fa-arrow-right"></i>
 							</button>
@@ -290,15 +282,6 @@
 				{/if}
 			</div>
 		{/each}
-
-		<div class="alerts-footer">
-			<span class="last-checked">
-				Status last checked at {formattedLastPolled}
-				<button class="refresh-button" on:click={fetchAlerts} aria-label="Refresh system status">
-					<i class="fas fa-sync-alt"></i>
-				</button>
-			</span>
-		</div>
 	</div>
 {/if}
 
@@ -607,5 +590,19 @@
 		.alert-message {
 			font-size: 0.85rem;
 		}
+	}
+
+	.alert-dismiss-btn {
+		background: none;
+		border: none;
+		color: #6b7280;
+		padding: 0.25rem;
+		margin-left: 0.5rem;
+		cursor: pointer;
+		font-size: 1rem;
+		transition: color 0.2s;
+	}
+	.alert-dismiss-btn:hover {
+		color: #dc3545;
 	}
 </style>

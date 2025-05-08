@@ -1,306 +1,329 @@
 {
-  "hotOffers": [
-    {
-      "title": "Summer Internet Bundle",
-      "description": "Get 50% off your first 3 months with our new summer bundle",
-      "validUntil": "2024-08-31",
-      "link": "/valuegen/summer-bundle",
-      "priority": 2,
-      "offerID": "VG-2024-0128",
-      "validFrom": "2024-06-01T00:00:00Z",
-      "eligibleRegions": [
-        "on",
-        "qc",
-        "ab-bc"
-      ],
-      "eligibleTeamTypes": [
-        "home",
-        "custom_home"
-      ],
-      "languages": [
-        "en",
-        "fr"
-      ],
-      "productCategory": "Internet"
-    },
-    {
-      "title": "Smart Home Security Package",
-      "description": "Free installation with any new security system purchase",
-      "validUntil": "2024-07-15",
-      "link": "/valuegen/security-package",
-      "priority": 1,
-      "offerID": "VG-2024-0129",
-      "validFrom": "2024-05-15T00:00:00Z",
-      "eligibleRegions": [
-        "all"
-      ],
-      "eligibleTeamTypes": [
-        "home"
-      ],
-      "languages": [
-        "en",
-        "fr"
-      ],
-      "productCategory": "Security"
-    },
-    {
-      "title": "Quebec Summer Fiber Promotion",
-      "description": "Special 2-year pricing for fiber installations in Quebec",
-      "validUntil": "2024-08-31",
-      "link": "/valuegen/quebec-fiber-promo",
-      "priority": 3,
-      "offerID": "VG-2024-0130",
-      "validFrom": "2024-06-01T00:00:00Z",
-      "eligibleRegions": [
-        "qc"
-      ],
-      "eligibleTeamTypes": [
-        "home",
-        "custom_home"
-      ],
-      "languages": [
-        "en",
-        "fr"
-      ],
-      "productCategory": "Fiber"
-    }
-  ],
-  "technicalBulletins": [
-    {
-      "title": "New Fiber Installation Guidelines",
-      "description": "Updated procedures for fiber optic installations in multi-unit buildings",
-      "date": "2024-06-01",
-      "link": "/learning-hub/fiber-installation-guidelines",
-      "bulletinID": "TB-2024-0056",
-      "severity": "standard",
-      "impactedRegions": [
-        "on",
-        "qc",
-        "ab-bc",
-        "atlantic",
-        "mb-sk"
-      ],
-      "impactedRoles": [
-        "technician",
-        "manager"
-      ],
-      "impactedSkills": [
-        "fiber"
-      ],
-      "priority": 2,
-      "languages": [
-        "en",
-        "fr"
-      ]
-    },
-    {
-      "title": "WiFi 6E Router Configuration",
-      "description": "Important updates for configuring new WiFi 6E routers",
-      "date": "2024-05-28",
-      "link": "/articles/wifi6e-configuration",
-      "bulletinID": "TB-2024-0057",
-      "severity": "informational",
-      "impactedRegions": [
-        "all"
-      ],
-      "impactedRoles": [
-        "technician"
-      ],
-      "impactedSkills": [
-        "wifi_plus"
-      ],
-      "priority": 3,
-      "languages": [
-        "en"
-      ]
-    },
-    {
-      "title": "Critical Security Update for RT-3000 Routers",
-      "description": "Urgent firmware update required to patch security vulnerability",
-      "date": "2024-06-10",
-      "link": "/learning-hub/rt3000-security-update",
-      "bulletinID": "TB-2024-0058",
-      "severity": "critical",
-      "impactedRegions": [
-        "all"
-      ],
-      "impactedRoles": [
-        "technician",
-        "manager",
-        "admin",
-        "partner"
-      ],
-      "impactedSkills": [
-        "all"
-      ],
-      "priority": 1,
-      "languages": [
-        "en",
-        "fr"
-      ],
-      "requiredAction": {
-        "actionable": true,
-        "deadline": "2024-06-17T23:59:59Z",
-        "verificationRequired": true
+  "hotOffers": {
+    "image": "/images/summer-bundle.jpg",
+    "items": [
+      {
+        "title": "Summer Internet Bundle",
+        "description": "Get 50% off your first 3 months with our new summer bundle",
+        "validUntil": "2024-08-31",
+        "link": "/articles/summer-bundle",
+        "priority": 2,
+        "offerID": "VG-2024-0128",
+        "validFrom": "2024-06-01T00:00:00Z",
+        "eligibleRegions": [
+          "on",
+          "qc",
+          "ab-bc"
+        ],
+        "eligibleTeamTypes": [
+          "home",
+          "custom_home"
+        ],
+        "languages": [
+          "en",
+          "fr"
+        ],
+        "productCategory": "Internet"
+      },
+      {
+        "title": "Smart Home Security Package",
+        "description": "Free installation with any new security system purchase",
+        "validUntil": "2024-07-15",
+        "link": "/articles/security-package",
+        "image": "/images/smart-home-security.jpg",
+        "priority": 1,
+        "offerID": "VG-2024-0129",
+        "validFrom": "2024-05-15T00:00:00Z",
+        "eligibleRegions": [
+          "all"
+        ],
+        "eligibleTeamTypes": [
+          "home"
+        ],
+        "languages": [
+          "en",
+          "fr"
+        ],
+        "productCategory": "Security"
+      },
+      {
+        "title": "Quebec Summer Fiber Promotion",
+        "description": "Special 2-year pricing for fiber installations in Quebec",
+        "validUntil": "2024-08-31",
+        "link": "/articles/quebec-fiber-promo",
+        "image": "/images/quebec-fiber-promo.jpg",
+        "priority": 3,
+        "offerID": "VG-2024-0130",
+        "validFrom": "2024-06-01T00:00:00Z",
+        "eligibleRegions": [
+          "qc"
+        ],
+        "eligibleTeamTypes": [
+          "home",
+          "custom_home"
+        ],
+        "languages": [
+          "en",
+          "fr"
+        ],
+        "productCategory": "Fiber"
       }
-    },
-    {
-      "title": "Quebec CRTC Regulation Update",
-      "description": "New regulatory requirements for installations in Quebec",
-      "date": "2024-06-05",
-      "link": "/learning-hub/quebec-crtc-update",
-      "bulletinID": "TB-2024-0059",
-      "severity": "standard",
-      "impactedRegions": [
-        "qc"
-      ],
-      "impactedRoles": [
-        "technician",
-        "manager",
-        "admin"
-      ],
-      "impactedSkills": [
-        "all"
-      ],
-      "priority": 2,
-      "languages": [
-        "en",
-        "fr"
-      ]
-    }
-  ],
-  "billingUpdates": [
-    {
-      "title": "Updated Service Call Rates",
-      "description": "New rates effective July 1st, 2024",
-      "date": "2024-06-15",
-      "link": "/billing/service-call-rates",
-      "updateID": "PBS-2024-0089",
-      "effectiveDate": "2024-07-01T00:00:00Z",
-      "impactedRegions": [
-        "on",
-        "qc"
-      ],
-      "impactedSkills": [
-        "copper",
-        "fiber",
-        "wifi_plus"
-      ],
-      "priority": 1,
-      "acknowledgementRequired": true,
-      "languages": [
-        "en",
-        "fr"
-      ]
-    },
-    {
-      "title": "Equipment Replacement Policy",
-      "description": "Changes to equipment replacement billing procedures",
-      "date": "2024-06-10",
-      "link": "/billing/equipment-replacement",
-      "updateID": "PBS-2024-0090",
-      "effectiveDate": "2024-07-01T00:00:00Z",
-      "impactedRegions": [
-        "all"
-      ],
-      "impactedSkills": [
-        "all"
-      ],
-      "priority": 2,
-      "acknowledgementRequired": false,
-      "languages": [
-        "en",
-        "fr"
-      ]
-    },
-    {
-      "title": "Alberta-BC Repair Service Pricing",
-      "description": "Updated rates for repair services in AB/BC region",
-      "date": "2024-06-05",
-      "link": "/billing/repair-services-ab-bc",
-      "updateID": "PBS-2024-0091",
-      "effectiveDate": "2024-07-15T00:00:00Z",
-      "impactedRegions": [
-        "ab-bc"
-      ],
-      "impactedSkills": [
-        "copper",
-        "fiber"
-      ],
-      "priority": 3,
-      "acknowledgementRequired": true,
-      "languages": [
-        "en"
-      ]
-    }
-  ],
+    ]
+  },
+  "technicalBulletins": {
+    "image": "/images/fiber-installation.jpg",
+    "items": [
+      {
+        "title": "New Fiber Installation Guidelines",
+        "description": "Updated procedures for fiber optic installations in multi-unit buildings",
+        "date": "2024-06-01",
+        "link": "/articles/fiber-installation-guidelines",
+        "bulletinID": "TB-2024-0056",
+        "severity": "standard",
+        "impactedRegions": [
+          "on",
+          "qc",
+          "ab-bc",
+          "atlantic",
+          "mb-sk"
+        ],
+        "impactedRoles": [
+          "technician",
+          "manager"
+        ],
+        "impactedSkills": [
+          "fiber"
+        ],
+        "priority": 2,
+        "languages": [
+          "en",
+          "fr"
+        ]
+      },
+      {
+        "title": "WiFi 6E Router Configuration",
+        "description": "Important updates for configuring new WiFi 6E routers",
+        "date": "2024-05-28",
+        "link": "/articles/wifi6e-configuration",
+        "bulletinID": "TB-2024-0057",
+        "severity": "informational",
+        "impactedRegions": [
+          "all"
+        ],
+        "impactedRoles": [
+          "technician"
+        ],
+        "impactedSkills": [
+          "wifi_plus"
+        ],
+        "priority": 3,
+        "languages": [
+          "en"
+        ]
+      },
+      {
+        "title": "Critical Security Update for RT-3000 Routers",
+        "description": "Urgent firmware update required to patch security vulnerability",
+        "date": "2024-06-10",
+        "link": "/articles/rt3000-security-update",
+        "bulletinID": "TB-2024-0058",
+        "severity": "critical",
+        "impactedRegions": [
+          "all"
+        ],
+        "impactedRoles": [
+          "technician",
+          "manager",
+          "admin",
+          "partner"
+        ],
+        "impactedSkills": [
+          "all"
+        ],
+        "priority": 1,
+        "languages": [
+          "en",
+          "fr"
+        ],
+        "requiredAction": {
+          "actionable": true,
+          "deadline": "2024-06-17T23:59:59Z",
+          "verificationRequired": true
+        }
+      },
+      {
+        "title": "Quebec CRTC Regulation Update",
+        "description": "New regulatory requirements for installations in Quebec",
+        "date": "2024-06-05",
+        "link": "/articles/quebec-crtc-update",
+        "bulletinID": "TB-2024-0059",
+        "severity": "standard",
+        "impactedRegions": [
+          "qc"
+        ],
+        "impactedRoles": [
+          "technician",
+          "manager",
+          "admin"
+        ],
+        "impactedSkills": [
+          "all"
+        ],
+        "priority": 2,
+        "languages": [
+          "en",
+          "fr"
+        ]
+      }
+    ]
+  },
+  "billingUpdates": {
+    "image": "/images/service-rates.jpg",
+    "items": [
+      {
+        "title": "Updated Service Call Rates",
+        "description": "New rates effective July 1st, 2024",
+        "date": "2024-06-15",
+        "link": "/articles/service-call-rates",
+        "updateID": "PBS-2024-0089",
+        "effectiveDate": "2024-07-01T00:00:00Z",
+        "impactedRegions": [
+          "on",
+          "qc"
+        ],
+        "impactedSkills": [
+          "copper",
+          "fiber",
+          "wifi_plus"
+        ],
+        "priority": 1,
+        "acknowledgementRequired": true,
+        "languages": [
+          "en",
+          "fr"
+        ]
+      },
+      {
+        "title": "Equipment Replacement Policy",
+        "description": "Changes to equipment replacement billing procedures",
+        "date": "2024-06-10",
+        "link": "/articles/equipment-replacement",
+        "updateID": "PBS-2024-0090",
+        "effectiveDate": "2024-07-01T00:00:00Z",
+        "impactedRegions": [
+          "all"
+        ],
+        "impactedSkills": [
+          "all"
+        ],
+        "priority": 2,
+        "acknowledgementRequired": false,
+        "languages": [
+          "en",
+          "fr"
+        ]
+      },
+      {
+        "title": "Alberta-BC Repair Service Pricing",
+        "description": "Updated rates for repair services in AB/BC region",
+        "date": "2024-06-05",
+        "link": "/articles/repair-services-ab-bc",
+        "updateID": "PBS-2024-0091",
+        "effectiveDate": "2024-07-15T00:00:00Z",
+        "impactedRegions": [
+          "ab-bc"
+        ],
+        "impactedSkills": [
+          "copper",
+          "fiber"
+        ],
+        "priority": 3,
+        "acknowledgementRequired": true,
+        "languages": [
+          "en"
+        ]
+      }
+    ]
+  },
   "quickLinks": {
-    "billingGuide": {
-      "title": "Quick Billing Guide",
-      "description": "Common billing scenarios and procedures",
-      "link": "/billing/quick-guide"
-    },
-    "repairGuidelines": {
-      "title": "Repair Billing Guidelines",
-      "description": "Billing procedures for repair service calls",
-      "link": "/billing/repair-guidelines"
+    "image": "/images/billing-guide.jpg",
+    "items": {
+      "billingGuide": {
+        "title": "Quick Billing Guide",
+        "description": "Common billing scenarios and procedures",
+        "link": "/articles/quick-guide"
+      },
+      "repairGuidelines": {
+        "title": "Repair Billing Guidelines",
+        "description": "Billing procedures for repair service calls",
+        "link": "/articles/repair-guidelines"
+      }
     }
   },
-  "personalizedFeed": [
-    {
-      "type": "Learning",
-      "date": "Today",
-      "title": "New Fiber Installation Training Available",
-      "description": "A new training module for the latest fiber installation techniques has been added to your learning dashboard.",
-      "relevance": "Relevant to your role",
-      "link": "/training/fiber-installation"
-    },
-    {
-      "type": "Regional",
-      "date": "Yesterday",
-      "title": "Ontario Building Code Update",
-      "description": "New building code regulations for multi-dwelling installations in Ontario have been published.",
-      "relevance": "Specific to your region",
-      "link": "/learning-hub/ontario-building-code"
-    },
-    {
-      "type": "Technical",
-      "date": "Jun 8",
-      "title": "Router Firmware Update Required",
-      "description": "Critical security update for all RT-3000 series routers must be completed by June 15th.",
-      "relevance": "High priority",
-      "link": "/learning-hub/router-firmware-update"
-    }
-  ],
-  "recentArticles": [
-    {
-      "title": "Fiber Installation Guide v2.3",
-      "link": "/learning-hub/fiber-installation-guide",
-      "timeViewed": "2h ago"
-    },
-    {
-      "title": "Customer Premises Equipment Setup",
-      "link": "/articles/cpe-setup",
-      "timeViewed": "Yesterday"
-    },
-    {
-      "title": "Billing Process for New Installations",
-      "link": "/articles/billing-process",
-      "timeViewed": "3d ago"
-    }
-  ],
-  "savedArticles": [
-    {
-      "title": "Network Troubleshooting Flowchart",
-      "link": "/articles/network-troubleshooting"
-    },
-    {
-      "title": "WiFi Signal Optimization Guide",
-      "link": "/articles/wifi-optimization"
-    },
-    {
-      "title": "Monthly Promotion Calculator",
-      "link": "/tools/promotion-calculator"
-    }
-  ]
+  "personalizedFeed": {
+    "image": "/images/fiber-training.jpg",
+    "items": [
+      {
+        "type": "Learning",
+        "date": "Today",
+        "title": "New Fiber Installation Training Available",
+        "description": "A new training module for the latest fiber installation techniques has been added to your learning dashboard.",
+        "relevance": "Relevant to your role",
+        "link": "/articles/fiber-installation"
+      },
+      {
+        "type": "Regional",
+        "date": "Yesterday",
+        "title": "Ontario Building Code Update",
+        "description": "New building code regulations for multi-dwelling installations in Ontario have been published.",
+        "relevance": "Specific to your region",
+        "link": "/articles/ontario-building-code"
+      },
+      {
+        "type": "Technical",
+        "date": "Jun 8",
+        "title": "Router Firmware Update Required",
+        "description": "Critical security update for all RT-3000 series routers must be completed by June 15th.",
+        "relevance": "High priority",
+        "link": "/articles/router-firmware-update"
+      }
+    ]
+  },
+  "recentArticles": {
+    "image": "/images/fiber-guide.jpg",
+    "items": [
+      {
+        "title": "Fiber Installation Guide v2.3",
+        "link": "/articles/fiber-installation-guide",
+        "timeViewed": "2h ago"
+      },
+      {
+        "title": "Customer Premises Equipment Setup",
+        "link": "/articles/cpe-setup",
+        "timeViewed": "Yesterday"
+      },
+      {
+        "title": "Billing Process for New Installations",
+        "link": "/articles/billing-process",
+        "timeViewed": "3d ago"
+      }
+    ]
+  },
+  "savedArticles": {
+    "image": "/images/network-troubleshooting.jpg",
+    "items": [
+      {
+        "title": "Network Troubleshooting Flowchart",
+        "link": "/articles/network-troubleshooting"
+      },
+      {
+        "title": "WiFi Signal Optimization Guide",
+        "link": "/articles/wifi-optimization"
+      },
+      {
+        "title": "Monthly Promotion Calculator",
+        "link": "/articles/promotion-calculator"
+      }
+    ]
+  }
 }

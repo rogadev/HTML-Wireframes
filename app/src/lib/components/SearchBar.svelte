@@ -1,15 +1,27 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
 	import { page } from '$app/state';
+	import { userPreferences } from '$lib/stores/userPreferences';
 
-	export let isMobile = false;
-	export let isExpanded = false;
+	let { isMobile, isExpanded } = $props<{
+		isMobile: boolean;
+		isExpanded: boolean;
+	}>();
 
-	let searchQuery = '';
+	let searchQuery = $state('');
+	let searchLanguage = $state('en');
+	let showLanguageFilters = $state(false);
+
+	// Set default language from user preferences
+	$effect(() => {
+		userPreferences.subscribe((prefs) => {
+			searchLanguage = prefs.language || 'en';
+		});
+	});
 
 	function handleSearch() {
 		if (searchQuery.trim()) {
-			const searchUrl = `/search?q=${encodeURIComponent(searchQuery.trim())}`;
+			const searchUrl = `/search?q=${encodeURIComponent(searchQuery.trim())}&lang=${searchLanguage}`;
 
 			// If we're already on the search page, force a page reload
 			if (page.url.pathname === '/search') {
@@ -43,6 +55,15 @@
 			}, 0);
 		}
 	}
+
+	function toggleLanguageFilters() {
+		showLanguageFilters = !showLanguageFilters;
+	}
+
+	function setLanguage(lang: 'en' | 'fr') {
+		searchLanguage = lang;
+		showLanguageFilters = false;
+	}
 </script>
 
 <div class="search-container" class:expanded={isExpanded}>
@@ -53,11 +74,41 @@
 				type="text"
 				class="search-input"
 				bind:value={searchQuery}
-				on:keydown={handleKeydown}
+				onkeydown={handleKeydown}
 				placeholder="Search for articles, documentation, or guides..."
 				aria-label="Search"
 			/>
-			<button class="search-button" on:click={handleSearch} aria-label="Submit search">
+			<button
+				type="button"
+				class="language-toggle"
+				onclick={toggleLanguageFilters}
+				aria-label="Toggle language filters"
+				aria-haspopup="true"
+				aria-expanded={showLanguageFilters}
+			>
+				<span class="language-indicator">{searchLanguage.toUpperCase()}</span>
+				<i class="fas fa-chevron-down"></i>
+			</button>
+			{#if showLanguageFilters}
+				<div class="language-dropdown">
+					<button
+						type="button"
+						class:active={searchLanguage === 'en'}
+						onclick={() => setLanguage('en')}
+					>
+						English
+					</button>
+					<button
+						type="button"
+						class:active={searchLanguage === 'fr'}
+						onclick={() => setLanguage('fr')}
+					>
+						Français
+					</button>
+					<div class="dropdown-info">Search results will be filtered to your selected language</div>
+				</div>
+			{/if}
+			<button type="button" class="search-button" onclick={handleSearch} aria-label="Submit search">
 				Search
 			</button>
 		</div>
@@ -67,14 +118,40 @@
 				type="text"
 				class="search-input"
 				bind:value={searchQuery}
-				on:keydown={handleKeydown}
+				onkeydown={handleKeydown}
 				placeholder="Search..."
 				aria-label="Search"
 			/>
 			<button
 				type="button"
+				class="language-toggle-mobile"
+				onclick={toggleLanguageFilters}
+				aria-label="Toggle language filters"
+			>
+				{searchLanguage.toUpperCase()}
+			</button>
+			{#if showLanguageFilters}
+				<div class="language-dropdown mobile">
+					<button
+						type="button"
+						class:active={searchLanguage === 'en'}
+						onclick={() => setLanguage('en')}
+					>
+						English
+					</button>
+					<button
+						type="button"
+						class:active={searchLanguage === 'fr'}
+						onclick={() => setLanguage('fr')}
+					>
+						Français
+					</button>
+				</div>
+			{/if}
+			<button
+				type="button"
 				class="search-button purple-background"
-				on:click={handleSearch}
+				onclick={handleSearch}
 				aria-label="Submit search"
 			>
 				<div class="search-icon-bg">
@@ -83,7 +160,7 @@
 			</button>
 		</div>
 	{:else}
-		<button type="button" class="search-toggle" on:click={toggleSearch} aria-label="Toggle search">
+		<button type="button" class="search-toggle" onclick={toggleSearch} aria-label="Toggle search">
 			<i class="fas fa-search"></i>
 		</button>
 	{/if}
@@ -115,6 +192,7 @@
 		background: white;
 		border-radius: 4px;
 		padding: 0.25rem;
+		position: relative;
 	}
 
 	.search-wrapper.mobile {
@@ -139,6 +217,86 @@
 		outline: none;
 		border-color: var(--primary-color);
 		box-shadow: 0 0 0 2px rgba(75, 40, 109, 0.1);
+	}
+
+	.language-toggle {
+		background: #f0f0f0;
+		color: #333;
+		border: 1px solid #ddd;
+		border-radius: 4px;
+		padding: 0.25rem 0.5rem;
+		font-size: 0.75rem;
+		cursor: pointer;
+		display: flex;
+		align-items: center;
+		gap: 0.25rem;
+		transition: background-color 0.2s;
+	}
+
+	.language-toggle:hover {
+		background: #e5e5e5;
+	}
+
+	.language-toggle-mobile {
+		background: #4b286d;
+		color: white;
+		border: none;
+		padding: 0.25rem 0.5rem;
+		border-radius: 4px;
+		font-size: 0.75rem;
+		font-weight: 600;
+	}
+
+	.language-indicator {
+		font-weight: 600;
+	}
+
+	.language-dropdown {
+		position: absolute;
+		top: 100%;
+		right: 70px;
+		background: white;
+		border: 1px solid #ddd;
+		border-radius: 4px;
+		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+		z-index: 100;
+		min-width: 150px;
+		padding: 0.5rem;
+		margin-top: 0.25rem;
+	}
+
+	.language-dropdown.mobile {
+		right: 55px;
+		top: 45px;
+	}
+
+	.language-dropdown button {
+		display: block;
+		width: 100%;
+		text-align: left;
+		padding: 0.5rem;
+		border: none;
+		background: none;
+		cursor: pointer;
+		border-radius: 4px;
+	}
+
+	.language-dropdown button:hover {
+		background: #f5f5f5;
+	}
+
+	.language-dropdown button.active {
+		background: rgba(75, 40, 109, 0.1);
+		font-weight: 600;
+		color: var(--primary-color);
+	}
+
+	.dropdown-info {
+		font-size: 0.7rem;
+		color: #666;
+		padding: 0.5rem;
+		border-top: 1px solid #eee;
+		margin-top: 0.5rem;
 	}
 
 	.search-button {

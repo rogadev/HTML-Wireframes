@@ -18,7 +18,7 @@
 			? currentSkills.filter((s) => s !== skill)
 			: [...currentSkills, skill];
 
-		userPreferences.updatePreference('skillDesignations', updatedSkills);
+		userPreferences.setSkillDesignations(updatedSkills);
 	}
 
 	function toggleProductFocus(product: ProductFocus) {
@@ -29,7 +29,17 @@
 			? currentProducts.filter((p) => p !== product)
 			: [...currentProducts, product];
 
-		userPreferences.updatePreference('productFocus', updatedProducts);
+		userPreferences.setProductFocus(updatedProducts);
+	}
+
+	function toggleRole(role: Role) {
+		userPreferences.toggleRole(role);
+	}
+
+	function setPrimaryRole(role: Role) {
+		if ($userPreferences.roles.includes(role)) {
+			userPreferences.setPrimaryRole(role);
+		}
 	}
 </script>
 
@@ -49,7 +59,7 @@
 							name="language"
 							value="en"
 							checked={$userPreferences.language === 'en'}
-							on:change={() => userPreferences.updatePreference('language', 'en')}
+							on:change={() => userPreferences.setLanguage('en')}
 						/>
 						<span>English</span>
 					</label>
@@ -59,7 +69,7 @@
 							name="language"
 							value="fr"
 							checked={$userPreferences.language === 'fr'}
-							on:change={() => userPreferences.updatePreference('language', 'fr')}
+							on:change={() => userPreferences.setLanguage('fr')}
 						/>
 						<span>Français</span>
 					</label>
@@ -71,8 +81,7 @@
 				<div class="setting-options">
 					<select
 						value={$userPreferences.region}
-						on:change={(e) =>
-							userPreferences.updatePreference('region', e.currentTarget.value as Region)}
+						on:change={(e) => userPreferences.setRegion(e.currentTarget.value as Region)}
 					>
 						<option value="all">All Regions</option>
 						<option value="qc">Quebec</option>
@@ -85,18 +94,36 @@
 			</div>
 
 			<div class="setting-group">
-				<h3>Role</h3>
-				<div class="setting-options">
-					<select
-						value={$userPreferences.role}
-						on:change={(e) =>
-							userPreferences.updatePreference('role', e.currentTarget.value as Role)}
-					>
-						<option value="technician">Technician</option>
-						<option value="manager">Manager</option>
-						<option value="admin">Administrator</option>
-						<option value="partner">Partner</option>
-					</select>
+				<h3>Roles</h3>
+				<p class="setting-description">
+					Select all roles that apply to you. Your primary role determines what you see by default.
+				</p>
+				<div class="role-grid">
+					{#each ['technician', 'manager', 'admin', 'partner'] as role}
+						<div class="role-item">
+							<div class="role-checkbox">
+								<input
+									type="checkbox"
+									id="role-{role}"
+									checked={$userPreferences.roles.includes(role as Role)}
+									on:change={() => toggleRole(role as Role)}
+								/>
+								<label for="role-{role}">{role.charAt(0).toUpperCase() + role.slice(1)}</label>
+							</div>
+							{#if $userPreferences.roles.includes(role as Role)}
+								<div class="primary-role">
+									<input
+										type="radio"
+										id="primary-{role}"
+										name="primary-role"
+										checked={$userPreferences.primaryRole === role}
+										on:change={() => setPrimaryRole(role as Role)}
+									/>
+									<label for="primary-{role}">Primary Role</label>
+								</div>
+							{/if}
+						</div>
+					{/each}
 				</div>
 			</div>
 
@@ -105,8 +132,7 @@
 				<div class="setting-options">
 					<select
 						value={$userPreferences.teamType}
-						on:change={(e) =>
-							userPreferences.updatePreference('teamType', e.currentTarget.value as TeamType)}
+						on:change={(e) => userPreferences.setTeamType(e.currentTarget.value as TeamType)}
 					>
 						<option value="home">Home</option>
 						<option value="partner">Partner</option>
@@ -125,10 +151,7 @@
 					<select
 						value={$userPreferences.audienceGroup}
 						on:change={(e) =>
-							userPreferences.updatePreference(
-								'audienceGroup',
-								e.currentTarget.value as AudienceGroup
-							)}
+							userPreferences.setAudienceGroup(e.currentTarget.value as AudienceGroup)}
 					>
 						<option value="tech">Technician</option>
 						<option value="manager">Manager</option>
@@ -141,6 +164,7 @@
 
 			<div class="setting-group">
 				<h3>Skill Designations</h3>
+				<p class="setting-description">Select all skills that apply to your current position.</p>
 				<div class="setting-options checkbox-grid">
 					<label class="checkbox-option">
 						<input
@@ -203,6 +227,9 @@
 
 			<div class="setting-group">
 				<h3>Product Focus</h3>
+				<p class="setting-description">
+					Select all products that you specialize in or need to access regularly.
+				</p>
 				<div class="setting-options checkbox-grid">
 					<label class="checkbox-option">
 						<input
@@ -260,6 +287,39 @@
 			<button type="button" class="reset-button" on:click={() => userPreferences.reset()}>
 				Reset to Defaults
 			</button>
+			<div class="test-profiles">
+				<h4>Development Profiles</h4>
+				<div class="test-buttons">
+					<button
+						type="button"
+						class="test-data-button"
+						on:click={() => userPreferences.loadTechProfile()}
+					>
+						<i class="fas fa-user-hard-hat"></i> Tech Profile
+					</button>
+					<button
+						type="button"
+						class="test-data-button"
+						on:click={() => userPreferences.loadManagerProfile()}
+					>
+						<i class="fas fa-user-tie"></i> Manager Profile
+					</button>
+					<button
+						type="button"
+						class="test-data-button"
+						on:click={() => userPreferences.loadPartnerProfile()}
+					>
+						<i class="fas fa-handshake"></i> Partner Profile
+					</button>
+				</div>
+				<div class="profile-info">
+					<span class="info-text"
+						>Current profile: <strong>{$userPreferences.primaryRole}</strong></span
+					>
+					<span class="info-text">Region: <strong>{$userPreferences.region}</strong></span>
+					<span class="info-text">Language: <strong>{$userPreferences.language}</strong></span>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
@@ -314,6 +374,12 @@
 		color: #2a2c32;
 	}
 
+	.setting-description {
+		font-size: 0.9rem;
+		color: #666;
+		margin-bottom: 1rem;
+	}
+
 	.setting-options {
 		display: flex;
 		flex-direction: column;
@@ -326,6 +392,41 @@
 		align-items: center;
 		gap: 0.5rem;
 		cursor: pointer;
+	}
+
+	.role-grid {
+		display: grid;
+		gap: 1rem;
+		grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+	}
+
+	.role-item {
+		background-color: #f9f9f9;
+		border-radius: 8px;
+		padding: 1rem;
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
+	}
+
+	.role-checkbox {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+	}
+
+	.primary-role {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		margin-top: 0.5rem;
+		padding-top: 0.5rem;
+		border-top: 1px solid #eee;
+	}
+
+	.primary-role label {
+		font-size: 0.85rem;
+		color: #555;
 	}
 
 	select {
@@ -344,8 +445,11 @@
 
 	.actions {
 		display: flex;
-		justify-content: flex-end;
-		margin-top: 1rem;
+		justify-content: space-between;
+		align-items: flex-start;
+		margin-top: 2rem;
+		flex-wrap: wrap;
+		gap: 1rem;
 	}
 
 	.reset-button {
@@ -362,9 +466,71 @@
 		background-color: #e5e5e5;
 	}
 
+	.test-data-button {
+		background-color: #eef0ff;
+		color: #4b286d;
+		border: 1px solid #d1d5ff;
+		padding: 0.5rem 1rem;
+		border-radius: 4px;
+		cursor: pointer;
+		font-size: 0.875rem;
+		margin-left: 0.5rem;
+		font-weight: 500;
+	}
+
+	.test-data-button:hover {
+		background-color: #d1d5ff;
+	}
+
+	.test-profiles {
+		background-color: #f8f9fa;
+		border: 1px solid #e9ecef;
+		padding: 1rem;
+		border-radius: 8px;
+		max-width: 500px;
+	}
+
+	.test-profiles h4 {
+		margin-top: 0;
+		margin-bottom: 0.75rem;
+		color: #4b286d;
+		font-size: 0.9rem;
+	}
+
+	.test-buttons {
+		display: flex;
+		gap: 0.5rem;
+		flex-wrap: wrap;
+		margin-bottom: 1rem;
+	}
+
+	.profile-info {
+		display: flex;
+		flex-direction: column;
+		gap: 0.25rem;
+		font-size: 0.85rem;
+		color: #555;
+	}
+
+	.info-text {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
 	@media (max-width: 768px) {
-		.checkbox-grid {
+		.checkbox-grid,
+		.role-grid {
 			grid-template-columns: 1fr;
+		}
+
+		.actions {
+			flex-direction: column;
+			align-items: stretch;
+		}
+
+		.test-profiles {
+			width: 100%;
 		}
 	}
 </style>

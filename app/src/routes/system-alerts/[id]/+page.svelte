@@ -136,7 +136,6 @@
 				error = 'Alert not found';
 			}
 		} catch (err) {
-			console.error('Error fetching alert details:', err);
 			error = 'Failed to load alert details';
 		} finally {
 			isLoading = false;

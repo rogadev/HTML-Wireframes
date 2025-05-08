@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import CriticalAlert from '$lib/components/CriticalAlert.svelte';
 	import HotOffers from '$lib/components/HotOffers.svelte';
 	import TechnicalBulletins from '$lib/components/TechnicalBulletins.svelte';
 	import BillingUpdates from '$lib/components/BillingUpdates.svelte';
@@ -10,38 +9,47 @@
 	import { userPreferences } from '$lib/stores/userPreferences';
 	import type { UserPreferences } from '$lib/types/userPreferences';
 
-	let homepageData: {
-		hotOffers: Array<{
-			title: string;
-			description: string;
-			validUntil: string;
-			link: string;
-		}>;
-		technicalBulletins: Array<{
-			title: string;
-			description: string;
-			date: string;
-			link: string;
-		}>;
-		billingUpdates: Array<{
-			title: string;
-			description: string;
-			date: string;
-			link: string;
-		}>;
-		quickLinks: {
-			billingGuide: {
+	type HomepageData = {
+		hotOffers?: {
+			image?: string;
+			items?: Array<{
+				title: string;
+				description: string;
+				validUntil: string;
+				link: string;
+			}>;
+		};
+		technicalBulletins?: {
+			image?: string;
+			items?: Array<{
+				title: string;
+				description: string;
+				date: string;
+				link: string;
+			}>;
+		};
+		billingUpdates?: {
+			image?: string;
+			items?: Array<{
+				title: string;
+				description: string;
+				date: string;
+				link: string;
+			}>;
+		};
+		quickLinks?: {
+			billingGuide?: {
 				title: string;
 				description: string;
 				link: string;
 			};
-			repairGuidelines: {
+			repairGuidelines?: {
 				title: string;
 				description: string;
 				link: string;
 			};
 		};
-		personalizedFeed: Array<{
+		personalizedFeed?: Array<{
 			type: string;
 			date: string;
 			title: string;
@@ -49,17 +57,24 @@
 			relevance: string;
 			link: string;
 		}>;
-		recentArticles: Array<{
-			title: string;
-			link: string;
-			timeViewed: string;
-		}>;
-		savedArticles: Array<{
-			title: string;
-			link: string;
-		}>;
+		recentArticles?: {
+			image?: string;
+			items?: Array<{
+				title: string;
+				link: string;
+				timeViewed: string;
+			}>;
+		};
+		savedArticles?: {
+			image?: string;
+			items?: Array<{
+				title: string;
+				link: string;
+			}>;
+		};
 	};
 
+	let homepageData: HomepageData = {};
 	let loading = true;
 	let error: string | null = null;
 
@@ -70,7 +85,7 @@
 			const params = new URLSearchParams({
 				region: preferences.region,
 				language: preferences.language,
-				role: preferences.role,
+				roles: preferences.roles ? preferences.roles.join(',') : '',
 				teamType: preferences.teamType,
 				audienceGroup: preferences.audienceGroup
 			});
@@ -78,10 +93,18 @@
 				params.append('skillDesignations', preferences.skillDesignations.join(','));
 			}
 			const response = await fetch(`/api/homepage?${params.toString()}`);
+
+			if (!response.ok) {
+				throw new Error(`Failed to load homepage data: ${response.status} ${response.statusText}`);
+			}
+
 			homepageData = await response.json();
 		} catch (err) {
 			console.error('Error fetching homepage data:', err);
-			error = 'Failed to load personalized content. Please try again later.';
+			error =
+				err instanceof Error
+					? err.message
+					: 'Failed to load personalized content. Please try again later.';
 		} finally {
 			loading = false;
 		}
@@ -105,12 +128,6 @@
 	}
 </script>
 
-<CriticalAlert
-	message="All RT-3000 series routers must be updated to firmware v6.2.1 by June 15th."
-	linkText="Read More"
-	linkHref="/critical-update"
-/>
-
 <section class="hero">
 	<h1>Welcome to Tech Central</h1>
 	<p>Your centralized portal for all company resources and information</p>
@@ -129,26 +146,36 @@
 		<div class="loading-spinner"></div>
 		<p>Loading personalized content...</p>
 	</div>
-{:else if homepageData}
+{:else if error}
+	<div class="error-container">
+		<i class="fas fa-exclamation-circle"></i>
+		<p>{error}</p>
+		<button class="retry-button" on:click={() => fetchHomepageData($userPreferences)}>
+			<i class="fas fa-sync"></i> Retry
+		</button>
+	</div>
+{:else}
 	<PersonalizedFeed
-		feedItems={homepageData.personalizedFeed}
+		feedItems={homepageData.personalizedFeed || []}
 		onCustomize={handleCustomizeFeed}
 		{loading}
 		{error}
 	/>
 
 	<UserQuickAccess
-		recentArticles={homepageData.recentArticles}
-		savedArticles={$userPreferences.favorites?.map((id) => ({
-			title: `Saved Article ${id}`,
-			link: `/articles/${id}`
-		})) || []}
+		recentArticles={homepageData.recentArticles?.items || []}
+		savedArticles={($userPreferences.favorites || [])
+			.filter((id) => id)
+			.map((id) => ({
+				title: `Saved Article ${id}`,
+				link: `/articles/${id}`
+			}))}
 	/>
 
-	<HotOffers offers={homepageData.hotOffers} />
-	<TechnicalBulletins bulletins={homepageData.technicalBulletins} />
-	<BillingUpdates updates={homepageData.billingUpdates} />
-	<QuickLinks links={homepageData.quickLinks} />
+	<HotOffers offers={homepageData.hotOffers?.items || []} />
+	<TechnicalBulletins bulletins={homepageData.technicalBulletins?.items || []} />
+	<BillingUpdates updates={homepageData.billingUpdates?.items || []} />
+	<QuickLinks links={homepageData.quickLinks || {}} />
 {/if}
 
 <style>
@@ -208,8 +235,7 @@
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
-		padding: 4rem 0;
-		color: var(--secondary-color);
+		padding: 3rem 0;
 	}
 
 	.loading-spinner {
@@ -218,8 +244,49 @@
 		border: 4px solid rgba(0, 0, 0, 0.1);
 		border-radius: 50%;
 		border-top-color: var(--primary-color);
-		animation: spin 1s ease-in-out infinite;
+		animation: spin 1s linear infinite;
 		margin-bottom: 1rem;
+	}
+
+	.error-container {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		padding: 3rem 0;
+		text-align: center;
+		max-width: 1200px;
+		margin: 0 auto;
+	}
+
+	.error-container i {
+		font-size: 2.5rem;
+		color: #e53e3e;
+		margin-bottom: 1rem;
+	}
+
+	.error-container p {
+		margin-bottom: 1.5rem;
+		color: #4b5563;
+	}
+
+	.retry-button {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		padding: 0.75rem 1.5rem;
+		border: none;
+		border-radius: 4px;
+		background: var(--primary-color);
+		color: white;
+		font-weight: 500;
+		cursor: pointer;
+		transition: all 0.2s ease;
+	}
+
+	.retry-button:hover {
+		background: #4f46e5;
+		transform: translateY(-2px);
 	}
 
 	@keyframes spin {

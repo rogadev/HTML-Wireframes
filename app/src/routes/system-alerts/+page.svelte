@@ -158,7 +158,6 @@
 			alerts = data.alerts;
 			applyFilters();
 		} catch (err) {
-			console.error('Error fetching system alerts:', err);
 			error = 'Failed to load system alerts';
 			filteredAlerts = [];
 		} finally {

@@ -4,7 +4,22 @@
 		description: string;
 		validUntil: string;
 		link: string;
-	}>;
+	}> = [];
+
+	function getArticleSlug(link: string) {
+		if (!link) return '';
+		return link.replace(/^\//, '').split('/').pop();
+	}
+
+	function formatLink(linkPath: string): string {
+		if (!linkPath) return '/valuegen';
+
+		// Ensure link starts with /articles/
+		if (!linkPath.startsWith('/articles/')) {
+			return `/articles/${getArticleSlug(linkPath)}`;
+		}
+		return linkPath;
+	}
 </script>
 
 <section class="hot-offers">
@@ -16,21 +31,27 @@
 	</div>
 
 	<div class="offers-grid">
-		{#each offers as offer}
-			<a href={offer.link} class="offer-card">
-				<div class="offer-content">
-					<h3>{offer.title}</h3>
-					<p>{offer.description}</p>
-					<div class="offer-meta">
-						<span class="valid-until">
-							<i class="fas fa-clock"></i> Valid until {new Date(
-								offer.validUntil
-							).toLocaleDateString()}
-						</span>
+		{#if offers.length > 0}
+			{#each offers as offer}
+				<a href={formatLink(offer.link)} class="offer-card">
+					<div class="offer-content">
+						<h3>{offer.title}</h3>
+						<p>{offer.description}</p>
+						<div class="offer-meta">
+							<span class="valid-until">
+								<i class="fas fa-clock"></i> Valid until {new Date(
+									offer.validUntil
+								).toLocaleDateString()}
+							</span>
+						</div>
 					</div>
-				</div>
-			</a>
-		{/each}
+				</a>
+			{/each}
+		{:else}
+			<div class="empty-state">
+				<p>No active offers available at this time.</p>
+			</div>
+		{/if}
 	</div>
 </section>
 
@@ -103,5 +124,15 @@
 		display: flex;
 		align-items: center;
 		gap: 0.5rem;
+	}
+
+	.empty-state {
+		grid-column: 1 / -1;
+		text-align: center;
+		padding: 2rem;
+		background: white;
+		border: 1px solid var(--border-color);
+		border-radius: 8px;
+		color: var(--text-muted);
 	}
 </style>

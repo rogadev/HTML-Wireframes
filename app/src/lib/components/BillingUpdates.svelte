@@ -4,7 +4,22 @@
 		description: string;
 		date: string;
 		link: string;
-	}>;
+	}> = [];
+
+	function getArticleSlug(link: string) {
+		if (!link) return '';
+		return link.replace(/^\//, '').split('/').pop();
+	}
+
+	function formatLink(linkPath: string): string {
+		if (!linkPath) return '/billing';
+
+		// Ensure link starts with /articles/
+		if (!linkPath.startsWith('/articles/')) {
+			return `/articles/${getArticleSlug(linkPath)}`;
+		}
+		return linkPath;
+	}
 </script>
 
 <section class="billing-updates">
@@ -15,21 +30,27 @@
 		</a>
 	</div>
 
-	<div class="updates-list">
-		{#each updates as update}
-			<a href={update.link} class="update-card">
-				<div class="update-content">
-					<h3>{update.title}</h3>
-					<p>{update.description}</p>
-					<div class="update-meta">
-						<span class="date">
-							<i class="fas fa-calendar"></i>
-							{new Date(update.date).toLocaleDateString()}
-						</span>
+	<div class="updates-grid">
+		{#if updates && updates.length > 0}
+			{#each updates as update}
+				<a href={formatLink(update.link)} class="update-card">
+					<div class="update-content">
+						<h3>{update.title}</h3>
+						<p>{update.description}</p>
+						<div class="update-meta">
+							<span class="date">
+								<i class="fas fa-calendar-alt"></i>
+								{new Date(update.date).toLocaleDateString()}
+							</span>
+						</div>
 					</div>
-				</div>
-			</a>
-		{/each}
+				</a>
+			{/each}
+		{:else}
+			<div class="empty-state">
+				<p>No billing updates available at this time.</p>
+			</div>
+		{/if}
 	</div>
 </section>
 
@@ -60,10 +81,10 @@
 		text-decoration: underline;
 	}
 
-	.updates-list {
-		display: flex;
-		flex-direction: column;
-		gap: 1rem;
+	.updates-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		gap: 1.5rem;
 	}
 
 	.update-card {
@@ -102,5 +123,15 @@
 		display: flex;
 		align-items: center;
 		gap: 0.5rem;
+	}
+
+	.empty-state {
+		grid-column: 1 / -1;
+		text-align: center;
+		padding: 2rem;
+		background: white;
+		border: 1px solid var(--border-color);
+		border-radius: 8px;
+		color: var(--text-muted);
 	}
 </style>

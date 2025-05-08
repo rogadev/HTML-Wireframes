@@ -15,6 +15,10 @@
 	}
 
 	export let feedItems: FeedItem[] = [];
+
+	function getArticleSlug(link: string) {
+		return link.replace(/^\//, '').split('/').pop();
+	}
 </script>
 
 <section class="personalized-feed">
@@ -38,7 +42,11 @@
 				<!-- Example: ALL, technician, etc. You can pass these as props if needed -->
 				{#if $userPreferences.region}<span class="tag">{$userPreferences.region.toUpperCase()}</span
 					>{/if}
-				{#if $userPreferences.role}<span class="tag">{$userPreferences.role}</span>{/if}
+				{#if $userPreferences.roles && $userPreferences.roles.length > 0}
+					{#each $userPreferences.roles as role}
+						<span class="tag">{role}</span>
+					{/each}
+				{/if}
 				{#if $userPreferences.teamType !== 'home'}<span class="tag"
 						>{$userPreferences.teamType}</span
 					>{/if}
@@ -90,7 +98,7 @@
 							{item.relevance}
 						</span>
 					</div>
-					<a href={item.link} class="feed-item-link">View Details</a>
+					<a href={`/articles/${getArticleSlug(item.link)}`} class="feed-item-link">View Details</a>
 				</div>
 			{/each}
 		</div>

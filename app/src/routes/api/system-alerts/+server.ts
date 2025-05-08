@@ -80,38 +80,50 @@ const systemAlerts = [
 
 // GET handler to retrieve all active system alerts
 export const GET: RequestHandler = async ({ url }) => {
-  const activeOnly = url.searchParams.get('active') !== 'false';
-  const alertType = url.searchParams.get('type');
-  const minSeverity = url.searchParams.get('min_severity');
+  try {
+    const activeOnly = url.searchParams.get('active') !== 'false';
+    const alertType = url.searchParams.get('type');
+    const minSeverity = url.searchParams.get('min_severity');
 
-  let filteredAlerts = systemAlerts;
+    // Create a deep copy to avoid mutation issues
+    let filteredAlerts = JSON.parse(JSON.stringify(systemAlerts));
 
-  // Filter by active status if requested
-  if (activeOnly) {
-    filteredAlerts = filteredAlerts.filter(alert => alert.active);
-  }
+    try {
+      // Filter by active status if requested
+      if (activeOnly) {
+        filteredAlerts = filteredAlerts.filter(alert => alert.active);
+      }
 
-  // Filter by alert type if specified
-  if (alertType) {
-    filteredAlerts = filteredAlerts.filter(alert => alert.type === alertType);
-  }
+      // Filter by alert type if specified
+      if (alertType) {
+        filteredAlerts = filteredAlerts.filter(alert => alert.type === alertType);
+      }
 
-  // Filter by minimum severity if specified
-  if (minSeverity) {
-    const severityLevels = ['low', 'moderate', 'warning', 'critical'];
-    const minSeverityIndex = severityLevels.indexOf(minSeverity);
+      // Filter by minimum severity if specified
+      if (minSeverity) {
+        const severityLevels = ['low', 'moderate', 'warning', 'critical'];
+        const minSeverityIndex = severityLevels.indexOf(minSeverity);
 
-    if (minSeverityIndex !== -1) {
-      filteredAlerts = filteredAlerts.filter(alert => {
-        const alertSeverityIndex = severityLevels.indexOf(alert.severity);
-        return alertSeverityIndex >= minSeverityIndex;
-      });
+        if (minSeverityIndex !== -1) {
+          filteredAlerts = filteredAlerts.filter(alert => {
+            const alertSeverityIndex = severityLevels.indexOf(alert.severity);
+            return alertSeverityIndex >= minSeverityIndex;
+          });
+        }
+      }
+    } catch (err) {
+      filteredAlerts = [];
     }
-  }
 
-  return json({
-    alerts: filteredAlerts
-  });
+    return json({
+      alerts: filteredAlerts
+    });
+  } catch (err) {
+    return json({
+      alerts: [],
+      error: 'An unexpected error occurred'
+    });
+  }
 };
 
 // POST handler for creating a new system alert (would require authentication in production)
@@ -147,7 +159,6 @@ export const POST: RequestHandler = async ({ request }) => {
       alert: newAlert
     });
   } catch (error) {
-    console.error('Error creating system alert:', error);
     return new Response(JSON.stringify({ error: 'Failed to create system alert' }), {
       status: 500,
       headers: {
@@ -206,7 +217,6 @@ export const PATCH: RequestHandler = async ({ request, url }) => {
       alert: systemAlerts[alertIndex]
     });
   } catch (error) {
-    console.error('Error updating system alert:', error);
     return new Response(JSON.stringify({ error: 'Failed to update system alert' }), {
       status: 500,
       headers: {
