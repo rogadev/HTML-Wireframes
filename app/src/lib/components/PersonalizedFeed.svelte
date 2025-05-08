@@ -98,7 +98,7 @@
 							{item.relevance}
 						</span>
 					</div>
-					<a href={`/article/${getArticleSlug(item.link)}`} class="feed-item-link">View Details</a>
+					<a href={`/articles/${getArticleSlug(item.link)}`} class="feed-item-link">View Details</a>
 				</div>
 			{/each}
 		</div>

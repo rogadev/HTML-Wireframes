@@ -22,7 +22,18 @@
 	let hasFavorites = false;
 
 	function getArticleSlug(link: string) {
+		if (!link) return '';
 		return link.replace(/^\//, '').split('/').pop();
+	}
+
+	function formatLink(linkPath: string): string {
+		if (!linkPath) return '/articles';
+
+		// Ensure link starts with /articles/
+		if (!linkPath.startsWith('/articles/')) {
+			return `/articles/${getArticleSlug(linkPath)}`;
+		}
+		return linkPath;
 	}
 
 	onMount(() => {
@@ -57,33 +68,45 @@
 		<div class="user-links legacy-components">
 			<div class="recent-articles">
 				<h3><i class="fas fa-history"></i> Recently Viewed</h3>
-				<ul>
-					{#each recentArticles as article}
-						<li>
-							<a href={`/article/${getArticleSlug(article.link)}`}>{article.title}</a>
-							{#if article.timeViewed}
-								<span class="time-viewed">{article.timeViewed}</span>
-							{/if}
-						</li>
-					{/each}
-				</ul>
-				<a href="/profile/favorites" class="view-all">
-					View All <i class="fas fa-chevron-right"></i>
-				</a>
+				{#if recentArticles.length > 0}
+					<ul>
+						{#each recentArticles as article}
+							<li>
+								<a href={formatLink(article.link)}>{article.title}</a>
+								{#if article.timeViewed}
+									<span class="time-viewed">{article.timeViewed}</span>
+								{/if}
+							</li>
+						{/each}
+					</ul>
+					<a href="/profile/favorites" class="view-all">
+						View All <i class="fas fa-chevron-right"></i>
+					</a>
+				{:else}
+					<div class="empty-state">
+						<p>No recently viewed articles</p>
+					</div>
+				{/if}
 			</div>
 
 			<div class="saved-articles">
 				<h3><i class="fas fa-bookmark"></i> Bookmarked</h3>
-				<ul>
-					{#each savedArticles as article}
-						<li>
-							<a href={`/article/${getArticleSlug(article.link)}`}>{article.title}</a>
-						</li>
-					{/each}
-				</ul>
-				<a href="/profile/favorites" class="view-all">
-					View All <i class="fas fa-chevron-right"></i>
-				</a>
+				{#if savedArticles.length > 0}
+					<ul>
+						{#each savedArticles as article}
+							<li>
+								<a href={formatLink(article.link)}>{article.title}</a>
+							</li>
+						{/each}
+					</ul>
+					<a href="/profile/favorites" class="view-all">
+						View All <i class="fas fa-chevron-right"></i>
+					</a>
+				{:else}
+					<div class="empty-state">
+						<p>No bookmarked articles</p>
+					</div>
+				{/if}
 			</div>
 		</div>
 	{/if}
@@ -171,5 +194,12 @@
 
 	.view-all:hover {
 		text-decoration: underline;
+	}
+
+	.empty-state {
+		padding: 1rem 0;
+		color: var(--text-muted);
+		font-style: italic;
+		text-align: center;
 	}
 </style>

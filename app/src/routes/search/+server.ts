@@ -1,117 +1,109 @@
 import { json } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
+import articles from '$lib/data/articles.json';
 
-// Mock database of articles with language information
-const articles = [
-  {
-    title: 'Installing Fiber Optic in Your New Home',
-    description: 'A comprehensive guide to installing fiber optic internet in your new home, including best practices and common pitfalls to avoid.',
-    imageUrl: '/images/fiber-installation.jpg',
-    link: '/fiber-installation-guide',
-    category: 'Guide',
-    tags: ['Fiber', 'Installation', 'Home'],
-    date: 'June 1, 2024',
-    author: 'John Doe',
-    language: 'en'
-  },
-  {
-    title: 'Understanding Fiber Optic Technology',
-    description: 'Learn about the technology behind fiber optic internet and why it\'s the future of high-speed connectivity.',
-    imageUrl: '/images/fiber-tech.jpg',
-    link: '/fiber-technology-understanding',
-    category: 'Technology',
-    tags: ['Fiber', 'Technology', 'Internet'],
-    date: 'May 28, 2024',
-    author: 'Jane Smith',
-    language: 'en'
-  },
-  {
-    title: 'Fiber vs. Cable: Making the Right Choice',
-    description: 'Compare fiber optic and cable internet to make an informed decision for your home or business.',
-    imageUrl: '/images/fiber-vs-cable.jpg',
-    link: '/fiber-vs-cable',
-    category: 'Comparison',
-    tags: ['Fiber', 'Cable', 'Internet'],
-    date: 'May 25, 2024',
-    author: 'Mike Johnson',
-    language: 'en'
-  },
-  {
-    title: 'Comprendre la technologie de fibre optique',
-    description: 'Découvrez la technologie derrière l\'internet par fibre optique et pourquoi c\'est l\'avenir de la connectivité à grande vitesse.',
-    imageUrl: '/images/fiber-tech.jpg',
-    link: '/comprendre-technologie-fibre',
-    category: 'Technologie',
-    tags: ['Fibre', 'Technologie', 'Internet'],
-    date: '28 mai 2024',
-    author: 'Marie Dupont',
-    language: 'fr'
-  },
-  {
-    title: 'Guide d\'installation de fibre optique',
-    description: 'Un guide complet pour l\'installation de l\'internet par fibre optique dans votre nouvelle maison.',
-    imageUrl: '/images/fiber-installation.jpg',
-    link: '/guide-installation-fibre',
-    category: 'Guide',
-    tags: ['Fibre', 'Installation', 'Maison'],
-    date: '1 juin 2024',
-    author: 'Jean Tremblay',
-    language: 'fr'
-  },
-  {
-    title: 'Fibre vs. Câble: Faire le bon choix',
-    description: 'Comparez l\'internet par fibre optique et par câble pour prendre une décision éclairée pour votre maison ou entreprise.',
-    imageUrl: '/images/fiber-vs-cable.jpg',
-    link: '/fibre-vs-cable',
-    category: 'Comparaison',
-    tags: ['Fibre', 'Câble', 'Internet'],
-    date: '25 mai 2024',
-    author: 'Sophie Martin',
-    language: 'fr'
-  }
-];
+// Helper function to calculate search relevance score
+function calculateRelevanceScore(article: any, query: string): number {
+  const searchableFields = [
+    { field: article.title, weight: 3 },
+    { field: article.subtitle, weight: 2 },
+    { field: article.description, weight: 2 },
+    { field: article.summary, weight: 2 },
+    { field: article.type, weight: 1 },
+    { field: article.category, weight: 1 },
+    ...(article.tags || []).map((tag: string) => ({ field: tag, weight: 1.5 }))
+  ];
 
-// In a real implementation, this would use a proper search index
-// built with FlexSearch or Lunr that includes multilingual capabilities
+  let score = 0;
+  const queryTerms = query.toLowerCase().split(/\s+/);
+
+  searchableFields.forEach(({ field, weight }) => {
+    if (!field) return;
+    const fieldText = field.toLowerCase();
+
+    // Exact match gets higher score
+    if (fieldText === query) {
+      score += weight * 2;
+    }
+    // Contains all query terms
+    else if (queryTerms.every(term => fieldText.includes(term))) {
+      score += weight * 1.5;
+    }
+    // Contains any query term
+    else if (queryTerms.some(term => fieldText.includes(term))) {
+      score += weight;
+    }
+  });
+
+  return score;
+}
+
 export const GET: RequestHandler = async ({ url }) => {
   const query = url.searchParams.get('q')?.toLowerCase() || '';
-  const lang = url.searchParams.get('lang') || 'all'; // Get language preference
+  const lang = url.searchParams.get('lang') || 'all';
 
   // Simulate a small delay to mimic real API call
   await new Promise(resolve => setTimeout(resolve, 300));
 
-  // Filter articles based on search query
-  let results = articles.filter(article => {
-    const searchableText = [
-      article.title,
-      article.description,
-      article.category,
-      ...article.tags
-    ].join(' ').toLowerCase();
+  // Filter and score articles based on search query
+  let results = articles
+    .map(article => ({
+      ...article,
+      relevanceScore: calculateRelevanceScore(article, query)
+    }))
+    .filter(article => article.relevanceScore > 0);
 
-    return searchableText.includes(query);
-  });
+  // Sort by relevance score
+  results.sort((a, b) => b.relevanceScore - a.relevanceScore);
 
   // Filter by language if specified
   if (lang !== 'all') {
-    results = results.filter(article => article.language === lang);
+    results = results.filter(article =>
+      article.languages?.includes(lang) || article.languages?.includes('all')
+    );
   }
 
   // Count results by language for the language filters
   const languageCounts = {
-    en: results.filter(article => article.language === 'en').length,
-    fr: results.filter(article => article.language === 'fr').length
+    en: results.filter(article =>
+      article.languages?.includes('en') || article.languages?.includes('all')
+    ).length,
+    fr: results.filter(article =>
+      article.languages?.includes('fr') || article.languages?.includes('all')
+    ).length
   };
+
+  // Remove relevance score from final results and ensure consistent language properties
+  results = results.map(({ relevanceScore, ...article }) => {
+    // If article doesn't have languages array property, add it based on known language
+    // This handles potential inconsistency in the articles data structure
+    if (!article.languages) {
+      if (article.language) {
+        article.languages = [article.language];
+      } else {
+        // Default to English if no language property is found
+        article.languages = ['en'];
+      }
+    }
+
+    // Add a language property to be consistent with the client-side type
+    // This is based on the primary language (first one in the languages array)
+    article.language = article.languages[0];
+
+    return article;
+  });
 
   // Mock search explanation information
   const searchInfo = {
     indexType: "FlexSearch multilingual index",
-    indexSize: "5,247 documents (3,812 EN, 1,435 FR)",
+    indexSize: `${articles.length} documents`,
     queryTime: "0.023 seconds",
     advancedFeatures: [
       "Multilingual stemming and normalization",
       "Cross-language semantic matching",
-      "Language-specific relevance scoring"
+      "Language-specific relevance scoring",
+      "Field-weighted search",
+      "Partial term matching"
     ]
   };
 

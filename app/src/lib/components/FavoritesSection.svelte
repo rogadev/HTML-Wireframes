@@ -104,7 +104,9 @@
 							<p class="favorite-subtitle">{article.subtitle}</p>
 							<div class="favorite-meta">
 								<span class="favorite-type">{article.type}</span>
-								<span class="favorite-date">Last updated: {formatDate(article.lastUpdated)}</span>
+								<span class="favorite-date"
+									>Last updated: {formatDate(article.lastUpdated || new Date().toISOString())}</span
+								>
 							</div>
 						{/if}
 					</div>

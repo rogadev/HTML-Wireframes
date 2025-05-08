@@ -3,16 +3,33 @@
     "id": "fiber-installation-guide",
     "title": "Installing Fiber Optic in Your New Home",
     "subtitle": "A comprehensive guide to installing fiber optic internet in your new home, including best practices and common pitfalls to avoid.",
+    "summary": "Step-by-step guide for fiber optic installation procedures.",
+    "description": "Step-by-step guide for fiber optic installation procedures.",
     "type": "Guide",
+    "category": "Installation",
     "tags": [
       "Fiber",
       "Installation",
       "Home"
     ],
+    "regions": [
+      "all"
+    ],
+    "languages": [
+      "en"
+    ],
+    "roles": [],
+    "teamTypes": [],
+    "audienceGroups": [],
+    "skillDesignations": [],
+    "productFocus": [],
     "publishDate": "2024-06-01",
     "lastUpdated": "2024-06-03",
     "author": "John Doe",
     "imageUrl": "/images/fiber-installation.jpg",
+    "isNew": false,
+    "isUpdated": false,
+    "isOutOfDate": false,
     "content": [
       {
         "type": "section",
@@ -394,5 +411,1176 @@
     "publishedDate": "2023-12-15",
     "lastUpdated": "2024-03-10",
     "content": "Due to Quebec's language laws and electrical regulations, follow these specific hardware guidelines..."
+  },
+  {
+    "slug": "fiber-installation-guide",
+    "title": "Fiber Installation Guide",
+    "description": "Step-by-step guide for fiber optic installation procedures.",
+    "category": "Installation",
+    "content": "<h2>Fiber Installation Guide</h2><p>This guide covers the complete process for installing fiber optic cables in residential and commercial settings. Includes safety checks, required tools, and troubleshooting tips.</p>"
+  },
+  {
+    "slug": "network-troubleshooting",
+    "title": "Network Troubleshooting",
+    "description": "Common network issues and their solutions.",
+    "category": "Troubleshooting",
+    "content": "<h2>Network Troubleshooting</h2><p>Learn how to diagnose and resolve the most frequent network problems encountered in the field. Includes flowcharts and escalation procedures.</p>"
+  },
+  {
+    "slug": "safety-protocols",
+    "title": "Safety Protocols",
+    "description": "Essential safety guidelines for field technicians.",
+    "category": "Safety",
+    "content": "<h2>Safety Protocols</h2><ul><li>Wear appropriate PPE at all times.</li><li>Follow lockout/tagout procedures.</li><li>Report all incidents immediately.</li></ul>"
+  },
+  {
+    "slug": "wifi6e-configuration",
+    "id": "wifi6e-configuration",
+    "title": "WiFi 6E Router Configuration",
+    "description": "Important updates for configuring new WiFi 6E routers.",
+    "category": "Technical Bulletin",
+    "content": "<h2>WiFi 6E Router Configuration</h2><p>Step-by-step instructions for setting up WiFi 6E routers, including best practices for security and performance.</p>"
+  },
+  {
+    "slug": "equipment-replacement",
+    "title": "Equipment Replacement Policy",
+    "description": "Changes to equipment replacement billing procedures.",
+    "category": "Billing",
+    "content": "<h2>Equipment Replacement Policy</h2><p>New procedures for billing and tracking equipment replacements. Includes updated forms and approval workflows.</p>"
+  },
+  {
+    "id": "comprendre-technologie-fibre",
+    "title": "Comprendre la technologie de fibre optique",
+    "subtitle": "Découvrez la technologie derrière l'internet par fibre optique et pourquoi c'est l'avenir de la connectivité à grande vitesse.",
+    "summary": "Apprenez les principes fondamentaux de la technologie de fibre optique et ses avantages.",
+    "description": "Apprenez les principes fondamentaux de la technologie de fibre optique et ses avantages.",
+    "type": "Technologie",
+    "category": "Technologie",
+    "tags": [
+      "Fibre",
+      "Technologie",
+      "Internet"
+    ],
+    "regions": [
+      "all"
+    ],
+    "languages": [
+      "fr"
+    ],
+    "roles": [],
+    "teamTypes": [],
+    "audienceGroups": [],
+    "skillDesignations": [],
+    "productFocus": [],
+    "publishDate": "2024-05-28",
+    "lastUpdated": "2024-05-28",
+    "author": "Marie Dupont",
+    "imageUrl": "/images/fiber-tech.jpg",
+    "isNew": false,
+    "isUpdated": false,
+    "isOutOfDate": false,
+    "content": [
+      {
+        "type": "section",
+        "id": "introduction",
+        "title": "Introduction",
+        "content": "La technologie de fibre optique révolutionne la façon dont les données sont transmises, offrant des vitesses et une fiabilité sans précédent par rapport aux systèmes traditionnels basés sur le cuivre. Cette technologie transformatrice utilise des brins fins de verre ou de plastique pour transmettre l'information sous forme d'impulsions lumineuses, permettant le transfert de données à des vitesses approchant les limites théoriques de la physique. Cet article explore les principes fondamentaux, les composants et les avantages de la technologie de fibre optique, fournissant des informations sur pourquoi elle devient rapidement l'épine dorsale de notre monde de plus en plus connecté."
+      },
+      {
+        "type": "section",
+        "id": "fonctionnement",
+        "title": "Comment fonctionne la fibre optique",
+        "content": "Les câbles à fibre optique transmettent les données sous forme d'impulsions lumineuses à travers des brins fins de fibres de verre ou de plastique. Au cœur d'un système à fibre optique se trouve le principe de la réflexion interne totale, qui permet aux signaux lumineux de parcourir de longues distances avec une perte minimale de puissance du signal. Lorsque la lumière entre dans la fibre à un angle spécifique, elle rebondit sur la gaine (couche externe) au lieu de la traverser, piégeant essentiellement la lumière dans le cœur de la fibre. Ce phénomène permet au signal lumineux de voyager le long du chemin de la fibre, même autour des courbes et des coins, avec une dégradation remarquablement faible. À l'extrémité émettrice, des dispositifs appelés émetteurs optiques convertissent les signaux électriques en impulsions lumineuses. Ceux-ci peuvent être soit des diodes électroluminescentes (DEL) pour les distances plus courtes, soit des diodes laser pour les transmissions longue distance. À l'extrémité réceptrice, des photodétecteurs convertissent ces signaux lumineux en signaux électriques qui peuvent être traités par des ordinateurs et d'autres appareils numériques."
+      }
+    ]
+  },
+  {
+    "id": "guide-installation-fibre",
+    "title": "Guide d'installation de fibre optique",
+    "subtitle": "Un guide complet pour l'installation de l'internet par fibre optique dans votre nouvelle maison.",
+    "summary": "Guide étape par étape pour les procédures d'installation de fibre optique.",
+    "description": "Guide étape par étape pour les procédures d'installation de fibre optique.",
+    "type": "Guide",
+    "category": "Installation",
+    "tags": [
+      "Fibre",
+      "Installation",
+      "Maison"
+    ],
+    "regions": [
+      "all"
+    ],
+    "languages": [
+      "fr"
+    ],
+    "roles": [],
+    "teamTypes": [],
+    "audienceGroups": [],
+    "skillDesignations": [],
+    "productFocus": [],
+    "publishDate": "2024-06-01",
+    "lastUpdated": "2024-06-01",
+    "author": "Jean Tremblay",
+    "imageUrl": "/images/fiber-installation.jpg",
+    "isNew": false,
+    "isUpdated": false,
+    "isOutOfDate": false,
+    "content": [
+      {
+        "type": "section",
+        "id": "introduction",
+        "title": "Introduction",
+        "content": "L'installation de l'internet par fibre optique dans votre nouvelle maison peut considérablement améliorer votre expérience de connectivité. Avec des vitesses allant jusqu'à 10 Gbps et une fiabilité inégalée, la technologie de fibre optique représente la référence en matière de service internet résidentiel. Ce guide fournit des instructions étape par étape pour assurer un processus d'installation fluide et efficace, que vous travailliez avec les techniciens de votre FAI ou que vous effectuiez une installation DIY."
+      },
+      {
+        "type": "section",
+        "id": "preparation",
+        "title": "Préparation",
+        "content": "Avant que l'installation ne commence, il est important d'évaluer la disposition de votre maison et de déterminer le point d'entrée optimal pour le câble de fibre. Commencez par identifier où vos services publics existants entrent dans votre maison, car cette zone offre souvent le point d'accès le plus direct. Consultez votre fournisseur d'accès internet pour comprendre les exigences spécifiques à votre emplacement, car les codes du bâtiment locaux et les normes d'installation peuvent varier. Créez un plan d'étage détaillé marquant l'emplacement idéal pour votre Terminal de Réseau Optique (ONT) et toute pénétration de mur nécessaire. Considérez les facteurs suivants : proximité des prises électriques, emplacement central pour une couverture Wi-Fi optimale, protection contre les températures extrêmes, et accessibilité pour la maintenance."
+      }
+    ]
+  },
+  {
+    "id": "fibre-vs-cable",
+    "title": "Fibre vs. Câble: Faire le bon choix",
+    "subtitle": "Comparez l'internet par fibre optique et par câble pour prendre une décision éclairée pour votre maison ou entreprise.",
+    "summary": "Guide comparatif détaillé entre les services internet par fibre optique et par câble.",
+    "description": "Guide comparatif détaillé entre les services internet par fibre optique et par câble.",
+    "type": "Comparaison",
+    "category": "Comparaison",
+    "tags": [
+      "Fibre",
+      "Câble",
+      "Internet"
+    ],
+    "regions": [
+      "all"
+    ],
+    "languages": [
+      "fr"
+    ],
+    "roles": [],
+    "teamTypes": [],
+    "audienceGroups": [],
+    "skillDesignations": [],
+    "productFocus": [],
+    "publishDate": "2024-05-25",
+    "lastUpdated": "2024-05-25",
+    "author": "Sophie Martin",
+    "imageUrl": "/images/fiber-vs-cable.jpg",
+    "isNew": false,
+    "isUpdated": false,
+    "isOutOfDate": false,
+    "content": [
+      {
+        "type": "section",
+        "id": "introduction",
+        "title": "Introduction",
+        "content": "Lors du choix d'un service internet pour votre maison ou entreprise, la décision entre la fibre optique et le câble peut avoir un impact significatif sur votre expérience en ligne. Avec le travail à distance, le streaming 4K, le jeu en nuage et les appareils domotiques devenant de plus en plus répandus, votre choix de technologie internet est plus important que jamais. Ce guide comparatif examine les principales différences entre la fibre et le câble pour vous aider à faire un choix éclairé basé sur vos besoins spécifiques."
+      },
+      {
+        "type": "section",
+        "id": "comparaison-technique",
+        "title": "Comparaison technique",
+        "content": "L'internet par fibre optique transmet les données en utilisant des impulsions lumineuses à travers des brins fins de fibres de verre ou de plastique, tandis que l'internet par câble utilise des câbles coaxiaux en cuivre initialement conçus pour la transmission télévisuelle. Cette différence fondamentale dans la technologie crée plusieurs distinctions importantes en termes de performance et de fiabilité."
+      }
+    ]
+  },
+  {
+    "id": "network-troubleshooting-guide",
+    "title": "Network Troubleshooting Guide",
+    "subtitle": "Comprehensive guide to diagnosing and resolving common network connectivity issues in the field.",
+    "summary": "Step-by-step procedures for troubleshooting network connectivity issues.",
+    "description": "Step-by-step procedures for troubleshooting network connectivity issues.",
+    "type": "Guide",
+    "category": "Troubleshooting",
+    "tags": [
+      "Network",
+      "Troubleshooting",
+      "Connectivity"
+    ],
+    "regions": [
+      "all"
+    ],
+    "languages": [
+      "en"
+    ],
+    "roles": [],
+    "teamTypes": [],
+    "audienceGroups": [],
+    "skillDesignations": [],
+    "productFocus": [],
+    "publishDate": "2024-05-12",
+    "lastUpdated": "2024-06-08",
+    "author": "Sarah Johnson",
+    "imageUrl": "/images/network-troubleshooting.jpg",
+    "isNew": false,
+    "isUpdated": true,
+    "isOutOfDate": false,
+    "content": [
+      {
+        "type": "section",
+        "id": "introduction",
+        "title": "Introduction",
+        "content": "Network troubleshooting is a systematic process of identifying, diagnosing, and resolving issues that affect connectivity and performance. This guide provides field technicians with methodical approaches to isolate and address common network problems. By following these procedures, you'll be able to efficiently diagnose issues and implement effective solutions."
+      },
+      {
+        "type": "section",
+        "id": "preparation",
+        "title": "Preparation and Safety",
+        "content": "Before beginning any troubleshooting, ensure you have the appropriate tools including a network tester, multimeter, and laptop with diagnostic software. Always verify power is properly connected and surge protectors are functioning correctly. When working with electrical equipment, maintain proper safety protocols to prevent injury or equipment damage."
+      },
+      {
+        "type": "section",
+        "id": "diagnostic-process",
+        "title": "Diagnostic Process",
+        "content": "Start with the simplest possible causes and work toward more complex issues. Begin by checking physical connections, including cables and ports for damage. Verify equipment power status and confirm indicator lights show expected patterns. Use ping tests to check basic connectivity to the router, gateway, and internet. Check DNS settings and perform traceroute tests to identify where connection failures occur. Document all findings systematically to help identify patterns."
+      },
+      {
+        "type": "section",
+        "id": "common-issues",
+        "title": "Common Issues and Solutions",
+        "content": "For intermittent connectivity, check for interference sources and cable integrity. When encountering slow speeds, test at different points in the network to isolate bottlenecks. For complete connection failure, methodically test each network component starting from the customer's device and moving toward the service entry point. When wireless issues are present, check for channel congestion, interference, and proper access point placement."
+      },
+      {
+        "type": "section",
+        "id": "advanced-techniques",
+        "title": "Advanced Troubleshooting Techniques",
+        "content": "For persistent issues, use spectrum analyzers to identify wireless interference. Packet capture tools can help identify unusual traffic patterns or protocol issues. Use network mapping tools to visualize the full network topology and identify unexpected devices or configurations. When necessary, systematically replace components to isolate hardware failures."
+      },
+      {
+        "type": "section",
+        "id": "escalation-procedures",
+        "title": "Escalation Procedures",
+        "content": "When you've exhausted field-level troubleshooting options, follow these escalation procedures: Document all steps taken and results observed. Gather all relevant logs and diagnostic outputs. Contact the appropriate tier 2 support team based on the suspected issue type. Provide clear, concise information about the problem and your troubleshooting steps. Remain on-site as directed by the escalation team to perform additional tests or procedures."
+      }
+    ]
+  },
+  {
+    "id": "safety-protocols",
+    "title": "Field Safety Protocols",
+    "subtitle": "Essential safety guidelines and procedures for technicians working in various environments.",
+    "summary": "Comprehensive safety protocols for field technicians.",
+    "description": "Comprehensive safety protocols for field technicians.",
+    "type": "Guide",
+    "category": "Safety",
+    "tags": [
+      "Safety",
+      "Protocols",
+      "Field Work"
+    ],
+    "regions": [
+      "all"
+    ],
+    "languages": [
+      "en"
+    ],
+    "roles": [],
+    "teamTypes": [],
+    "audienceGroups": [],
+    "skillDesignations": [],
+    "productFocus": [],
+    "publishDate": "2024-04-10",
+    "lastUpdated": "2024-06-01",
+    "author": "Michael Torres",
+    "imageUrl": "/images/safety-protocols.jpg",
+    "isNew": false,
+    "isUpdated": false,
+    "isOutOfDate": false,
+    "content": [
+      {
+        "type": "section",
+        "id": "introduction",
+        "title": "Introduction",
+        "content": "Safety is our highest priority. This comprehensive guide outlines the essential safety protocols for all field technicians. Following these guidelines is mandatory and helps ensure your wellbeing and that of our customers and the public. Safety procedures must never be compromised for convenience or to save time."
+      },
+      {
+        "type": "section",
+        "id": "ppe-requirements",
+        "title": "Personal Protective Equipment Requirements",
+        "content": "Always wear appropriate PPE for the task at hand. For standard installations, this includes: Hard hat when working in construction areas or where overhead hazards exist; Safety glasses with side shields for eye protection; Cut-resistant gloves when handling sharp tools or materials; High-visibility vest when working near roadways; Steel-toed boots for foot protection. Additional specialized PPE may be required based on specific work environments or tasks."
+      },
+      {
+        "type": "section",
+        "id": "ladder-safety",
+        "title": "Ladder Safety",
+        "content": "Inspect all ladders before use. Check for cracks, loose rungs, and proper functioning of all components. Always maintain three points of contact when climbing. Position ladders on stable, level ground with a 4:1 ratio (for every 4 feet of height, position the base 1 foot away from the wall). Never stand on the top two rungs of a ladder. Use ladder stabilizers when working on soft ground. For work above 20 feet, use appropriate fall protection equipment."
+      },
+      {
+        "type": "section",
+        "id": "electrical-safety",
+        "title": "Electrical Safety",
+        "content": "Always treat all electrical components as if they are energized until verified otherwise. Use insulated tools when working near electrical sources. Wear rubber gloves when working with exposed electrical components. Ensure work areas are dry and free from standing water. Follow lockout/tagout procedures when servicing equipment. Test equipment before touching after power has been restored. Never overload outlets or extension cords. Immediately report any electrical shocks, no matter how minor."
+      },
+      {
+        "type": "section",
+        "id": "weather-conditions",
+        "title": "Weather-Related Safety",
+        "content": "Monitor weather conditions before and during outdoor work. Suspend all outdoor work during lightning storms. Exercise extreme caution on wet or icy surfaces. Take regular breaks in extreme heat and stay hydrated. In cold weather, dress in layers and protect extremities. Do not climb poles, ladders, or roofs during high winds (above 25 mph). When visibility is poor due to fog, rain, or snow, use additional lighting and reflective gear."
+      },
+      {
+        "type": "section",
+        "id": "vehicle-safety",
+        "title": "Vehicle Safety",
+        "content": "Perform daily vehicle inspections before starting your route. Always wear seatbelts and observe all traffic laws. Do not use handheld devices while driving. Secure all tools and equipment in the vehicle to prevent shifting during transport. Use appropriate cones, flags, or barriers when parked near roadways. Maintain appropriate following distance and adjust for weather conditions. Report any vehicle issues or accidents immediately, no matter how minor."
+      },
+      {
+        "type": "section",
+        "id": "emergency-procedures",
+        "title": "Emergency Procedures",
+        "content": "Familiarize yourself with emergency procedures before beginning work. Keep first aid kits accessible and inspect them regularly. Know the location of the nearest hospital or urgent care facility for each job site. Report all injuries and near-misses, no matter how minor. In case of serious injury: call emergency services immediately; do not move the injured person unless necessary; provide first aid if trained to do so; contact your supervisor as soon as possible. Document all incidents thoroughly using the appropriate reporting forms."
+      }
+    ]
+  },
+  {
+    "id": "wifi-optimization",
+    "title": "WiFi Signal Optimization Guide",
+    "subtitle": "Best practices for optimizing WiFi coverage and performance in residential and commercial settings.",
+    "summary": "Techniques and best practices for optimizing WiFi signal coverage and performance.",
+    "description": "Techniques and best practices for optimizing WiFi signal coverage and performance.",
+    "type": "Guide",
+    "category": "Installation",
+    "tags": [
+      "WiFi",
+      "Optimization",
+      "Connectivity"
+    ],
+    "regions": [
+      "all"
+    ],
+    "languages": [
+      "en"
+    ],
+    "roles": [],
+    "teamTypes": [],
+    "audienceGroups": [],
+    "skillDesignations": [],
+    "productFocus": [],
+    "publishDate": "2024-05-25",
+    "lastUpdated": "2024-06-05",
+    "author": "Lisa Wong",
+    "imageUrl": "/images/wifi-optimization.jpg",
+    "isNew": true,
+    "isUpdated": false,
+    "isOutOfDate": false,
+    "content": [
+      {
+        "type": "section",
+        "id": "introduction",
+        "title": "Introduction",
+        "content": "Optimizing WiFi performance is essential for providing customers with a reliable, high-speed wireless experience. This guide covers the key factors affecting WiFi performance and provides step-by-step procedures for achieving optimal signal coverage and strength in various environments. By implementing these best practices, you can significantly improve customer satisfaction and reduce service calls related to WiFi performance issues."
+      },
+      {
+        "type": "section",
+        "id": "site-survey",
+        "title": "Site Survey Procedures",
+        "content": "Begin every WiFi installation or troubleshooting with a thorough site survey. Walk through the location with a WiFi analyzer app to identify existing networks, interference sources, and dead zones. Note physical obstacles like concrete walls, metal objects, and electronic devices that may affect signal propagation. Map coverage requirements based on the customer's usage patterns and critical areas. Identify potential mounting locations for the router and any mesh nodes or extenders. Document your findings to reference during the installation process."
+      },
+      {
+        "type": "section",
+        "id": "optimal-placement",
+        "title": "Router Placement Optimization",
+        "content": "Position the primary router in a central location relative to where WiFi is most needed. Mount the router at least 5-7 feet high and away from walls and objects when possible. Keep the router at least 3 feet away from other electronic devices, especially those operating in the 2.4GHz range (microwaves, cordless phones, baby monitors). Avoid enclosed spaces, metal cabinets, or areas beneath desks. In multi-story buildings, locate the router near the center of the middle floor. For large homes, consider using mesh systems rather than single routers with extenders."
+      },
+      {
+        "type": "section",
+        "id": "channel-selection",
+        "title": "Channel and Band Selection",
+        "content": "Use WiFi analyzer tools to identify the least congested channels in both 2.4GHz and 5GHz bands. For 2.4GHz, stick to channels 1, 6, or 11 to avoid overlap interference. In dense environments, prioritize 5GHz connections for compatible devices due to less interference and higher throughput. For 5GHz, use channels from 36-48 for best compatibility, but consider higher channels (149-165) for better range when supported. Enable band steering when available to automatically direct dual-band devices to the appropriate frequency. Document the selected channels in your installation notes."
+      },
+      {
+        "type": "section",
+        "id": "advanced-configuration",
+        "title": "Advanced Router Configuration",
+        "content": "Configure the router's transmit power based on the environment size—use higher power for larger spaces but avoid maximum settings in smaller areas to reduce interference. Set appropriate channel widths: 20MHz for 2.4GHz networks and 40MHz or 80MHz for 5GHz (use 160MHz only in environments with minimal interference). Enable MU-MIMO if the router and client devices support it. Implement QoS settings to prioritize critical applications based on customer needs. For business installations, consider enabling airtime fairness to prevent slower devices from degrading network performance."
+      },
+      {
+        "type": "section",
+        "id": "mesh-systems",
+        "title": "Mesh Network Deployment",
+        "content": "For larger premises, deploy mesh systems with nodes strategically placed to provide overlapping coverage. Position mesh nodes within 30-50 feet of each other, maintaining line of sight when possible. Place nodes in central locations of their coverage areas, avoiding corners and enclosed spaces. Configure the primary node first, then add satellite nodes one at a time, testing connection quality between each addition. Maintain a signal strength of at least -65dBm between nodes for optimal backhaul performance. Use wired backhaul connections when possible for optimal performance between nodes."
+      },
+      {
+        "type": "section",
+        "id": "troubleshooting",
+        "title": "Performance Troubleshooting",
+        "content": "When addressing performance issues, follow this systematic approach: First, verify the incoming internet connection speed at the modem. Next, test WiFi performance near the router to isolate wireless issues from internet service problems. Use spectrum analyzers to identify interference sources. Check router temperature and ventilation, as overheating can degrade performance. Verify firmware is current and reset the router if necessary. For persistent issues, consider replacing the router or adding mesh nodes to improve coverage. Document all troubleshooting steps and results in the customer's service record."
+      },
+      {
+        "type": "section",
+        "id": "customer-education",
+        "title": "Customer Education",
+        "content": "Before completing the installation, educate customers on factors that can affect their WiFi performance. Show them how to perform basic speed tests to verify their service. Explain the limitations of WiFi and the impact of distance, physical barriers, and interference. Provide guidance on optimal placement of their devices relative to access points. Demonstrate how to perform a router restart when experiencing connectivity issues. Leave behind written materials explaining their WiFi system and basic troubleshooting steps. Document the discussion in your service notes."
+      }
+    ]
+  },
+  {
+    "id": "summer-bundle",
+    "title": "Summer Internet Bundle",
+    "subtitle": "Get 50% off your first 3 months with our new summer bundle",
+    "summary": "Limited-time promotion offering significant savings on our most popular internet packages.",
+    "description": "Limited-time promotion offering significant savings on our most popular internet packages.",
+    "type": "Offer",
+    "category": "ValueGen",
+    "tags": [
+      "Promotion",
+      "Internet",
+      "Bundle",
+      "Summer"
+    ],
+    "regions": [
+      "on",
+      "qc",
+      "ab-bc"
+    ],
+    "languages": [
+      "en",
+      "fr"
+    ],
+    "roles": [
+      "technician",
+      "manager"
+    ],
+    "teamTypes": [
+      "home",
+      "custom_home"
+    ],
+    "audienceGroups": [
+      "tech"
+    ],
+    "skillDesignations": [],
+    "productFocus": [
+      "Internet"
+    ],
+    "publishDate": "2024-06-01",
+    "lastUpdated": "2024-06-10",
+    "author": "ValueGen Team",
+    "imageUrl": "/images/summer-bundle.jpg",
+    "isNew": true,
+    "isUpdated": false,
+    "isOutOfDate": false,
+    "content": [
+      {
+        "type": "section",
+        "id": "offer-details",
+        "title": "Offer Details",
+        "content": "For a limited time, new and existing customers can receive 50% off the monthly rate for any of our Internet packages for the first 3 months of service. This summer promotion is available for all speed tiers from 100Mbps to our premium 1.5Gbps fiber package. The discount applies to the base monthly service charge only and does not include equipment fees, taxes, or other surcharges."
+      },
+      {
+        "type": "section",
+        "id": "eligibility",
+        "title": "Eligibility",
+        "content": "This promotion is available to new customers signing up for any internet service package, as well as existing customers who upgrade to a higher speed tier. Customers must sign up between June 1 and August 31, 2024. The offer is available in Ontario, Quebec, Alberta, and British Columbia service areas. Minimum 12-month commitment required. Early termination fees may apply if service is canceled before the 12-month period ends."
+      },
+      {
+        "type": "section",
+        "id": "package-options",
+        "title": "Package Options",
+        "content": "Customers can choose from the following packages:\n\n- Basic Package: 100Mbps download / 10Mbps upload - Regular price $59.99/month, promotional price $29.99/month for 3 months\n- Standard Package: 300Mbps download / 30Mbps upload - Regular price $79.99/month, promotional price $39.99/month for 3 months\n- Premium Package: 1Gbps download / 100Mbps upload - Regular price $99.99/month, promotional price $49.99/month for 3 months\n- Ultimate Fiber Package: 1.5Gbps download / 1.5Gbps upload - Regular price $129.99/month, promotional price $64.99/month for 3 months\n\nAll packages include unlimited data usage with no caps or overages."
+      },
+      {
+        "type": "section",
+        "id": "additional-benefits",
+        "title": "Additional Benefits",
+        "content": "Customers who sign up for this promotion will also receive:\n\n- Free standard installation (a $99.99 value)\n- Free WiFi router rental for 6 months\n- 30-day satisfaction guarantee\n- Access to over 2 million WiFi hotspots nationwide\n- 24/7 technical support"
+      },
+      {
+        "type": "section",
+        "id": "how-to-redeem",
+        "title": "How to Redeem",
+        "content": "Technicians can help customers redeem this offer by using promo code SUMMER2024 when processing new service orders. For existing customers wishing to upgrade, use promo code SUMMERUPG2024. The discount will be automatically applied to the customer's first three monthly bills. Make sure to verify the customer's address is within eligible service areas before confirming the promotion."
+      },
+      {
+        "type": "section",
+        "id": "terms-conditions",
+        "title": "Terms and Conditions",
+        "content": "Offer valid from June 1, 2024, to August 31, 2024. 50% discount applies to base monthly service charge only for the first 3 months of service. Regular pricing applies beginning in month 4. Minimum 12-month service agreement required. Early termination fee of up to $240 may apply if service is canceled within 12 months. Autopay and paperless billing required to receive full promotional benefit. Taxes, fees, and surcharges are extra and subject to change during and after the promotional period. Equipment, installation, and other additional fees may apply. Internet speeds may vary and are not guaranteed. Offer not transferable and cannot be combined with other promotional offers. Other restrictions may apply."
+      }
+    ]
+  },
+  {
+    "id": "security-package",
+    "title": "Smart Home Security Package",
+    "subtitle": "Free installation with any new security system purchase",
+    "summary": "Limited-time offer for smart home security systems with free professional installation.",
+    "description": "Limited-time offer for smart home security systems with free professional installation.",
+    "type": "Offer",
+    "category": "ValueGen",
+    "tags": [
+      "Security",
+      "Smart Home",
+      "Installation",
+      "Promotion"
+    ],
+    "regions": [
+      "all"
+    ],
+    "languages": [
+      "en",
+      "fr"
+    ],
+    "roles": [
+      "technician",
+      "manager"
+    ],
+    "teamTypes": [
+      "home"
+    ],
+    "audienceGroups": [
+      "tech"
+    ],
+    "skillDesignations": [
+      "shs"
+    ],
+    "productFocus": [
+      "SHS"
+    ],
+    "publishDate": "2024-05-15",
+    "lastUpdated": "2024-06-05",
+    "author": "ValueGen Team",
+    "imageUrl": "/images/smart-home-security.jpg",
+    "isNew": true,
+    "isUpdated": false,
+    "isOutOfDate": false,
+    "content": [
+      {
+        "type": "section",
+        "id": "offer-details",
+        "title": "Offer Details",
+        "content": "For a limited time, customers purchasing any of our Smart Home Security packages will receive free professional installation, a value of up to $199.99. This offer includes complete setup of all security components, integration with the customer's existing WiFi network, and personalized training on how to use the system effectively. This promotion represents significant savings for customers while ensuring their security system is properly installed by certified technicians."
+      },
+      {
+        "type": "section",
+        "id": "eligibility",
+        "title": "Eligibility",
+        "content": "This promotion is available to new Smart Home Security customers only. Customers must purchase a qualifying security package between May 15 and July 15, 2024. The offer is available in all service areas. Minimum 24-month monitoring agreement required. Early termination fees may apply if service is canceled before the 24-month period ends. Customer must have existing broadband internet service with minimum 10Mbps download speed for system functionality."
+      },
+      {
+        "type": "section",
+        "id": "package-options",
+        "title": "Package Options",
+        "content": "The free installation offer applies to all of the following security packages:\n\n- Basic Security Package: Includes control panel, 2 door/window sensors, 1 motion detector, and mobile app access - $29.99/month with 24-month agreement\n- Enhanced Security Package: Includes control panel, 3 door/window sensors, 1 motion detector, 1 indoor camera, and mobile app access - $39.99/month with 24-month agreement\n- Premium Security Package: Includes control panel, 5 door/window sensors, 2 motion detectors, 2 indoor cameras, 1 outdoor camera, and mobile app access - $49.99/month with 24-month agreement\n- Ultimate Smart Home Package: Includes all Premium features plus smart thermostat, 2 smart plugs, smart lock, and voice control integration - $59.99/month with 24-month agreement\n\nAll packages include 24/7 professional monitoring with cellular backup."
+      },
+      {
+        "type": "section",
+        "id": "installation-process",
+        "title": "Installation Process",
+        "content": "The free professional installation includes:\n\n1. Initial home security assessment to determine optimal placement of all devices\n2. Professional mounting and setup of all security components\n3. Connection to existing home WiFi network and configuration of cellular backup\n4. Setup of the mobile app on the customer's smartphone(s)\n5. Complete system testing to ensure all components are functioning properly\n6. One-on-one training session on how to use the system, including app features, arming/disarming, customizing alerts, and emergency procedures\n\nThe installation typically takes 2-3 hours depending on the package and home size. Customers should be present during the entire installation process."
+      },
+      {
+        "type": "section",
+        "id": "how-to-redeem",
+        "title": "How to Redeem",
+        "content": "Technicians can help customers redeem this offer by using promo code FREESHS2024 when processing new security system orders. The installation fee will be automatically waived in the ordering system. Customers should schedule their installation appointment within 30 days of purchase. Standard installation appointment windows are available Monday through Saturday, 8 AM to 6 PM local time."
+      },
+      {
+        "type": "section",
+        "id": "terms-conditions",
+        "title": "Terms and Conditions",
+        "content": "Offer valid from May 15, 2024, to July 15, 2024. Free installation applies to standard installation only. Additional charges may apply for custom installations requiring special equipment or extensive wiring. Minimum 24-month monitoring agreement required. Early termination fee of up to $480 may apply if service is canceled within 24 months. Credit approval required. Taxes, permits, and regulatory fees extra. Valid only for new Smart Home Security customers. Not transferable and cannot be combined with other promotional offers. Equipment remains property of provider if service is terminated. Broadband internet connection required for full functionality. Mobile app features require compatible device and data plan (not included). Monitoring does not guarantee against theft or loss. Other restrictions may apply."
+      }
+    ]
+  },
+  {
+    "id": "quebec-fiber-promo",
+    "title": "Quebec Summer Fiber Promotion",
+    "subtitle": "Special 2-year pricing for fiber installations in Quebec",
+    "summary": "Exclusive fiber internet promotion for Quebec residents with guaranteed pricing for 2 years.",
+    "description": "Exclusive fiber internet promotion for Quebec residents with guaranteed pricing for 2 years.",
+    "type": "Offer",
+    "category": "ValueGen",
+    "tags": [
+      "Fiber",
+      "Quebec",
+      "Promotion",
+      "Internet"
+    ],
+    "regions": [
+      "qc"
+    ],
+    "languages": [
+      "en",
+      "fr"
+    ],
+    "roles": [
+      "technician",
+      "manager"
+    ],
+    "teamTypes": [
+      "home",
+      "custom_home"
+    ],
+    "audienceGroups": [
+      "tech"
+    ],
+    "skillDesignations": [
+      "fiber"
+    ],
+    "productFocus": [
+      "Internet",
+      "Fiber"
+    ],
+    "publishDate": "2024-06-01",
+    "lastUpdated": "2024-06-01",
+    "author": "Quebec ValueGen Team",
+    "imageUrl": "/images/quebec-fiber-promo.jpg",
+    "isNew": true,
+    "isUpdated": false,
+    "isOutOfDate": false,
+    "content": [
+      {
+        "type": "section",
+        "id": "offer-details",
+        "title": "Offer Details",
+        "content": "This exclusive promotion for Quebec residents offers our premium fiber internet packages at special rates with a price-lock guarantee for 24 months. Customers who sign up during the promotional period will receive our most advanced fiber internet service with no price increases for a full two years. This offer includes the latest FTTH (Fiber-to-the-Home) technology, providing symmetrical upload and download speeds with ultra-low latency."
+      },
+      {
+        "type": "section",
+        "id": "eligibility",
+        "title": "Eligibility",
+        "content": "This promotion is available only to residents of Quebec province where fiber service is available. Both new customers and existing non-fiber customers upgrading to fiber are eligible. Customers must sign up between June 1 and August 31, 2024. Address verification is required to confirm fiber service availability and Quebec residency. Minimum 24-month service agreement required."
+      },
+      {
+        "type": "section",
+        "id": "package-options",
+        "title": "Package Options",
+        "content": "The Quebec Summer Fiber Promotion includes the following package options:\n\n- Fiber 500: 500Mbps symmetrical speeds (download and upload) - $69.99/month guaranteed for 24 months (regular price $89.99)\n- Fiber 1 Gig: 1Gbps symmetrical speeds (download and upload) - $89.99/month guaranteed for 24 months (regular price $109.99)\n- Fiber 1.5 Gig: 1.5Gbps symmetrical speeds (download and upload) - $109.99/month guaranteed for 24 months (regular price $129.99)\n\nAll packages include unlimited data usage, advanced WiFi 6 router rental, and standard installation."
+      },
+      {
+        "type": "section",
+        "id": "special-quebec-benefits",
+        "title": "Special Quebec Benefits",
+        "content": "In accordance with Quebec consumer protection regulations, this promotion includes additional benefits for Quebec residents:\n\n- No automatic renewal: After the 24-month promotional period ends, customers will be notified at least 30 days before any pricing changes take effect\n- No early termination fees: Quebec customers can cancel service at any time without paying early termination fees (equipment must be returned)\n- French language support: All documentation, support, and customer service available in French\n- Local Quebec-based customer service representatives\n\nAdditionally, all customers receive:\n- Guaranteed installation within 10 business days of order\n- Free modem and WiFi 6 router rental for the duration of service\n- Access to exclusive Quebec content streaming options"
+      },
+      {
+        "type": "section",
+        "id": "installation-information",
+        "title": "Installation Information",
+        "content": "The fiber installation process in Quebec includes:\n\n1. Site survey to determine optimal fiber routing to the home\n2. Exterior installation of fiber ONT (Optical Network Terminal)\n3. Interior wiring and equipment setup\n4. WiFi optimization and coverage testing\n5. Setup of customer equipment (computers, tablets, smart TVs, etc.)\n\nOur Quebec installation team is certified and experienced with local building regulations and standards. All technicians are bilingual and follow strict COVID-19 safety protocols. The typical installation takes 2-4 hours depending on the complexity of the home's layout."
+      },
+      {
+        "type": "section",
+        "id": "how-to-redeem",
+        "title": "How to Redeem",
+        "content": "Technicians can help customers redeem this offer by using promo code QCFIBER2024 when processing new fiber service orders for Quebec residents. Verify the customer's address is within Quebec and has fiber service availability. The promotional pricing will be automatically applied to the customer's account for 24 months. Installation appointments should be scheduled within 14 days of order placement."
+      },
+      {
+        "type": "section",
+        "id": "terms-conditions",
+        "title": "Terms and Conditions",
+        "content": "Offer valid from June 1, 2024, to August 31, 2024, for Quebec residents only. Promotional pricing guaranteed for 24 months from installation date. After 24 months, regular rates will apply. Current pricing information will be provided to the customer at least 30 days before the end of the promotional period. Available only in areas with fiber service capabilities. Some addresses may require additional construction costs depending on fiber availability. Internet speeds may vary based on device capabilities, network congestion, and other factors. Compatible customer equipment required for maximum performance. Offer cannot be combined with other promotional discounts. Taxes and regulatory fees are extra. Other restrictions may apply."
+      }
+    ]
+  },
+  {
+    "id": "fiber-installation-guidelines",
+    "title": "New Fiber Installation Guidelines",
+    "subtitle": "Updated procedures for fiber optic installations in multi-unit buildings",
+    "summary": "Comprehensive guidelines for technicians performing fiber installations in apartment buildings, condominiums, and other multi-dwelling units.",
+    "description": "Comprehensive guidelines for technicians performing fiber installations in apartment buildings, condominiums, and other multi-dwelling units.",
+    "type": "Technical Bulletin",
+    "category": "Installation",
+    "tags": [
+      "Fiber",
+      "Installation",
+      "Multi-Unit",
+      "Guidelines"
+    ],
+    "regions": [
+      "on",
+      "qc",
+      "ab-bc",
+      "atlantic",
+      "mb-sk"
+    ],
+    "languages": [
+      "en",
+      "fr"
+    ],
+    "roles": [
+      "technician",
+      "manager"
+    ],
+    "teamTypes": [
+      "home",
+      "custom_home"
+    ],
+    "audienceGroups": [
+      "tech"
+    ],
+    "skillDesignations": [
+      "fiber"
+    ],
+    "productFocus": [
+      "Internet",
+      "Fiber"
+    ],
+    "publishDate": "2024-06-01",
+    "lastUpdated": "2024-06-01",
+    "author": "Technical Operations Team",
+    "imageUrl": "/images/fiber-mdu-installation.jpg",
+    "isNew": true,
+    "isUpdated": false,
+    "isOutOfDate": false,
+    "bulletinID": "TB-2024-0056",
+    "severity": "standard",
+    "priority": 2,
+    "content": [
+      {
+        "type": "section",
+        "id": "introduction",
+        "title": "Introduction",
+        "content": "This bulletin introduces updated procedures for fiber optic installations in multi-unit buildings (MDUs) including apartments, condominiums, and commercial properties. These new guidelines aim to improve installation efficiency, reduce damage to building infrastructure, and ensure compliance with updated building codes. All technicians performing fiber installations in multi-unit buildings must follow these procedures effective immediately. These guidelines supersede all previous MDU installation documentation."
+      },
+      {
+        "type": "section",
+        "id": "key-changes",
+        "title": "Key Changes",
+        "content": "The following key changes have been implemented in the new guidelines:\n\n1. Revised conduit access procedures to minimize wall penetrations\n2. Updated fiber pathway mapping requirements for building documentation\n3. New mounting specifications for ONTs in common areas\n4. Enhanced standards for fiber slack management\n5. Streamlined notification process for building management\n6. Introduction of new fire-rated pass-through devices for inter-floor installations\n7. Additional safety protocols for working in common areas\n8. Updated procedures for existing cable pathway utilization\n\nAll technicians must review and familiarize themselves with these changes before performing installations in multi-unit buildings."
+      },
+      {
+        "type": "section",
+        "id": "building-access",
+        "title": "Building Access and Permissions",
+        "content": "Prior to beginning installation in any multi-unit building, technicians must:\n\n1. Confirm the installation order has been pre-authorized by building management\n2. Present proper identification to building management or security\n3. Sign in using the new digital MDU access system (accessible via the mobile app)\n4. Provide estimated completion time and work areas to building management\n5. Confirm all required access points (telecom rooms, risers, etc.) will be accessible\n6. Review and follow any building-specific protocols provided by management\n7. Verify that the customer has secured necessary permissions if required by their lease\n\nFailure to follow proper building access procedures may result in denied access, complaints to the company, and possible liability issues. Always maintain professional conduct when interacting with building staff."
+      },
+      {
+        "type": "section",
+        "id": "equipment-requirements",
+        "title": "Equipment and Materials",
+        "content": "All MDU fiber installations now require the following specific equipment and materials:\n\n1. MDU Fiber Installation Kit (Item #FIK-MDU-24)\n2. Fire-rated penetration seals (Item #FRPS-2024)\n3. Low-profile wall anchors for common areas (Item #LPWA-200)\n4. Surface-mount fiber management tracks (Item #SMFT-100)\n5. MDU-approved ONT mounting hardware (Item #ONT-MDU-MNT)\n6. Fiber slack storage rings - small footprint version (Item #FSSR-SF)\n7. Self-adhesive cable routing clips (Item #CRC-SA-50)\n8. Labeled fiber identifier tags (Item #FIT-MDU-25)\n\nTechnicians should ensure they have all required materials before beginning the installation. Equipment substitutions are not permitted without explicit approval from the operations manager. All legacy MDU installation kits should be returned to the warehouse for replacement."
+      },
+      {
+        "type": "section",
+        "id": "installation-procedure",
+        "title": "Updated Installation Procedure",
+        "content": "The updated MDU installation procedure follows these steps:\n\n1. **Building Entry Point**: Utilize existing telecom entrance facilities where available. If creating a new entry point is necessary, use only approved exterior penetration methods and weatherproofing.\n\n2. **Vertical Distribution**: Use existing telecom risers whenever possible. When running new vertical pathways, maintain minimum 6-inch separation from electrical services and use fire-rated sleeves for floor penetrations.\n\n3. **Horizontal Distribution**: Follow building's existing cable pathways. Install surface-mount fiber tracks where exposed runs are necessary. Avoid ceiling plenum spaces unless specifically approved.\n\n4. **Apartment Entry**: Use existing telecom conduits or entry points when available. If new penetrations are required, use the smallest diameter drill bit appropriate (maximum 3/8\") and install protective grommets.\n\n5. **ONT Placement**: In units with designated telecom spaces, mount ONT according to standard procedures. In units without designated spaces, follow the new low-profile mounting guidelines, prioritizing locations near power outlets and away from heat sources.\n\n6. **Fiber Management**: Maintain minimum 30mm bend radius for all fiber runs. Use new slack management spools to store excess fiber. All exposed fiber must be enclosed in protective tubing.\n\n7. **Labeling**: Apply new standard MDU fiber labels at building entry, floor transitions, apartment entries, and at the ONT location.\n\n8. **Documentation**: Capture detailed pathway photos at each stage of installation. Complete the new MDU Fiber Pathway Documentation form in the mobile app, including all access points and routing information."
+      },
+      {
+        "type": "section",
+        "id": "common-area-guidelines",
+        "title": "Common Area Installation Guidelines",
+        "content": "Special attention must be paid to installations in building common areas:\n\n1. Always use surface-mount, paintable fiber tracks in visible areas\n2. All hardware must be low-profile and installed neatly\n3. Follow building-specified routes for common area installations\n4. Obtain explicit approval for any deviations from pre-approved pathways\n5. Use corner and molding mounting techniques wherever possible\n6. Ensure all penetrations through common walls are properly sealed and finished\n7. Clean work areas thoroughly after installation\n8. Take before and after photos of common area installations\n\nCommon areas require extra care to maintain building aesthetics and minimize visible infrastructure. Always use the least intrusive installation methods in these areas."
+      },
+      {
+        "type": "section",
+        "id": "documentation-requirements",
+        "title": "Enhanced Documentation Requirements",
+        "content": "The new MDU Fiber Documentation Protocol requires capturing:\n\n1. Building entry location with GPS coordinates\n2. Riser locations and floor access points\n3. Pathway routing through common areas\n4. Photos of all penetrations (before and after sealing)\n5. ONT placement and power source\n6. Fiber slack storage locations\n7. Complete fiber pathway from building entry to customer ONT\n\nAll documentation must be submitted through the MDU Installation module in the mobile app before closing the job. This documentation will be essential for future troubleshooting, additional installations in the building, and compliance verification."
+      },
+      {
+        "type": "section",
+        "id": "compliance-deadline",
+        "title": "Implementation Timeline",
+        "content": "All technicians must begin following these new guidelines immediately. Compliance verification will begin on June 15, 2024. The transition timeline is as follows:\n\n1. June 1-14: Training and preparation period\n2. June 15: Full compliance required for all new installations\n3. June 30: Completion of all technician certifications on new procedures\n4. July 15: Follow-up quality control inspections begin\n\nOperations managers will be conducting random installation audits to ensure compliance with the new guidelines. Non-compliance may result in additional training requirements or reassignment from MDU installation work."
+      },
+      {
+        "type": "section",
+        "id": "training-resources",
+        "title": "Training Resources",
+        "content": "To support the implementation of these new guidelines, the following resources are available:\n\n1. MDU Fiber Installation video series (available in the Learning Hub)\n2. Hands-on training sessions at regional offices (schedule in the Training Calendar)\n3. Digital reference guide (downloadable to mobile devices)\n4. Virtual reality training modules for complex installations\n5. Technical support hotline for installation questions: 1-888-555-FIBER\n\nAll technicians must complete the MDU Fiber Installation certification in the Learning Hub by June 30, 2024. The certification includes both knowledge assessment and photo submission of properly completed installations."
+      },
+      {
+        "type": "section",
+        "id": "contact-information",
+        "title": "Support and Contact Information",
+        "content": "For questions or assistance regarding these new guidelines, contact:\n\n- Technical Implementation Team: mdu-fiber@techcentral.example.com\n- MDU Technical Support Hotline: 1-888-555-FIBER (available 7AM-8PM, 7 days/week)\n- Regional Operations Managers (for specific regional questions)\n\nFeedback on these guidelines is welcome and should be submitted through the Technician Feedback portal on the company intranet."
+      }
+    ]
+  },
+  {
+    "id": "service-call-rates",
+    "title": "Updated Service Call Rates",
+    "subtitle": "New rates effective July 1st, 2024 for service calls in Ontario and Quebec regions",
+    "summary": "Comprehensive guide to updated service call rates and billing procedures for technicians in Ontario and Quebec.",
+    "description": "Comprehensive guide to updated service call rates and billing procedures for technicians in Ontario and Quebec.",
+    "type": "Billing Update",
+    "category": "Billing",
+    "tags": [
+      "Billing",
+      "Rates",
+      "Service Calls",
+      "Ontario",
+      "Quebec"
+    ],
+    "regions": [
+      "on",
+      "qc"
+    ],
+    "languages": [
+      "en",
+      "fr"
+    ],
+    "roles": [
+      "technician",
+      "manager"
+    ],
+    "teamTypes": [
+      "home",
+      "custom_home"
+    ],
+    "audienceGroups": [
+      "tech"
+    ],
+    "skillDesignations": [
+      "copper",
+      "fiber",
+      "wifi_plus"
+    ],
+    "productFocus": [
+      "Internet",
+      "TV",
+      "Phone"
+    ],
+    "publishDate": "2024-06-15",
+    "lastUpdated": "2024-06-15",
+    "author": "Billing Operations Team",
+    "imageUrl": "/images/service-rates.jpg",
+    "isNew": true,
+    "isUpdated": false,
+    "isOutOfDate": false,
+    "updateID": "PBS-2024-0089",
+    "effectiveDate": "2024-07-01T00:00:00Z",
+    "priority": 1,
+    "acknowledgementRequired": true,
+    "content": [
+      {
+        "type": "section",
+        "id": "introduction",
+        "title": "Introduction",
+        "content": "Effective July 1st, 2024, updated service call rates will apply to all billable service appointments in Ontario and Quebec regions. These rate changes reflect adjustments for inflation, operational costs, and market conditions. All technicians must familiarize themselves with these new rates to ensure accurate customer billing. This document provides comprehensive information about the updated rate structure, billing procedures, and frequently asked questions to help you navigate these changes."
+      },
+      {
+        "type": "section",
+        "id": "rate-changes",
+        "title": "Key Rate Changes",
+        "content": "The following key changes have been implemented in the new rate structure:\n\n1. Base diagnostic fee increased from $49.99 to $59.99\n2. Hourly labor rate increased from $89.99 to $99.99\n3. Introduction of tiered pricing for specialized services\n4. Updated travel surcharges for remote locations\n5. New weekend and after-hours rate multipliers\n6. Additional service bundles for common repair scenarios\n7. Updated equipment replacement fees\n\nThese changes represent our first rate adjustment since 2022 and align our pricing with current industry standards while ensuring competitive rates for our customers."
+      },
+      {
+        "type": "section",
+        "id": "standard-rates",
+        "title": "Standard Service Rates",
+        "content": "The following standard rates apply to all residential service calls:\n\n- Diagnostic Fee: $59.99 (credited toward repairs if customer proceeds with service)\n- Standard Labor Rate: $99.99 per hour, billed in 15-minute increments after the first hour\n- Minimum Billing Time: 1 hour (includes diagnostic)\n- After-Hours Surcharge (6PM-8AM): 1.5x standard rate\n- Weekend/Holiday Surcharge: 1.5x standard rate\n- Emergency Response Surcharge: $49.99 additional\n\nNote that these rates apply to non-warranty, out-of-service-agreement work only. Services covered under active service plans or within warranty periods should be processed according to existing zero-dollar procedures."
+      },
+      {
+        "type": "section",
+        "id": "specialized-services",
+        "title": "Specialized Service Rates",
+        "content": "New tiered pricing for specialized services is as follows:\n\n**Tier 1 - Basic Services ($99.99):**\n- Basic WiFi optimization\n- TV retuning/channel setup\n- Simple wiring repairs (accessible areas)\n- Equipment reconnection/basic reconfiguration\n- Software updates on customer equipment\n\n**Tier 2 - Intermediate Services ($149.99):**\n- Complex WiFi analysis and optimization\n- New outlet installation (existing wiring path)\n- Equipment relocation within same room\n- Advanced device configuration\n- Network troubleshooting\n\n**Tier 3 - Advanced Services ($199.99):**\n- New wiring installation\n- Whole-home WiFi optimization\n- Complex network setup\n- Custom installation solutions\n- Multi-device integration\n\nThese tiered services include up to 90 minutes of labor. Additional time is billed at the standard hourly rate."
+      },
+      {
+        "type": "section",
+        "id": "travel-surcharges",
+        "title": "Travel Surcharges",
+        "content": "Updated travel surcharges for remote locations are based on distance from the nearest service center:\n\n- Zone 1 (0-25km): No surcharge\n- Zone 2 (26-50km): $25 surcharge\n- Zone 3 (51-75km): $50 surcharge\n- Zone 4 (76-100km): $75 surcharge\n- Zone 5 (101km+): $100 surcharge plus $1 per additional kilometer\n\nThe technician mobile app will automatically calculate the appropriate travel zone based on the customer's address. These surcharges apply to all service calls regardless of service type or customer plan status. For multi-job routes, surcharges apply only to the furthest point from the service center."
+      },
+      {
+        "type": "section",
+        "id": "service-bundles",
+        "title": "Service Bundles",
+        "content": "New service bundles have been created for common repair scenarios:\n\n**WiFi Extension Bundle - $199.99:**\n- WiFi analysis\n- Installation of one mesh extender (equipment separate)\n- Optimization of coverage\n- Mobile app setup\n\n**Entertainment Setup Bundle - $179.99:**\n- TV mounting (hardware included)\n- Device connection\n- Remote programming\n- Basic streaming setup\n\n**Smart Home Starter Bundle - $229.99:**\n- Installation of up to 3 smart devices\n- Hub configuration\n- Mobile app setup\n- Basic automation rules\n\n**Wiring Cleanup Bundle - $159.99:**\n- Organization of existing wires\n- Labeling of connections\n- Cable management solution\n- Basic testing of all connections\n\nThese bundles include all necessary labor for the described services. Additional services or materials will be billed separately."
+      },
+      {
+        "type": "section",
+        "id": "equipment-fees",
+        "title": "Equipment Replacement Fees",
+        "content": "Updated equipment replacement fees are as follows:\n\n**Networking Equipment:**\n- Standard Modem: $99.99\n- Advanced Modem/Router Combo: $149.99\n- WiFi 6 Router: $179.99\n- Mesh WiFi Node: $129.99\n- Network Switch: $59.99\n- Ethernet Adapter: $29.99\n\n**Television Equipment:**\n- Basic Set-Top Box: $99.99\n- DVR Set-Top Box: $149.99\n- 4K Streaming Box: $129.99\n- Remote Control: $29.99\n- HDMI Cable (Premium): $19.99\n\n**Installation Materials:**\n- Wall Fish Kit: $29.99\n- Cable Concealment Kit: $39.99\n- Outdoor Cable (per 50ft): $49.99\n- Indoor Cable (per 50ft): $29.99\n- Weatherproof Box: $39.99\n\nThese fees apply when equipment is not covered under warranty or service plans. Labor for installation is additional unless specified in a service bundle."
+      },
+      {
+        "type": "section",
+        "id": "billing-procedures",
+        "title": "Billing Procedures",
+        "content": "Follow these updated procedures for billing service calls:\n\n1. Always verify the customer's service plan status before beginning billable work\n2. Provide the customer with a clear estimate based on the new rate structure\n3. Obtain explicit customer approval before proceeding with any billable service\n4. Document all billable time and materials in the mobile app\n5. Apply appropriate service codes using the updated code list\n6. Review the final charges with the customer at completion\n7. Process payment according to standard procedures\n8. Email the detailed receipt to the customer\n\nRemember that clear communication about costs is essential to customer satisfaction. Always explain what services you're providing and why they are billable. For any billing concerns or disputes, contact the billing support team at billing-support@techcentral.example.com."
+      },
+      {
+        "type": "section",
+        "id": "customer-communication",
+        "title": "Customer Communication",
+        "content": "When discussing the updated service rates with customers, use these key talking points:\n\n- These are our first rate adjustments since 2022\n- The changes reflect increased operational costs and inflation\n- Our rates remain competitive within the industry\n- Service bundles offer better value for common repair scenarios\n- Customers can avoid service charges through our protection plans\n\nOffer customers information about our service protection plans as alternatives to one-time service charges. The Advanced Protection Plan ($14.99/month) covers all standard service calls with no diagnostic fees or hourly charges. The Basic Protection Plan ($9.99/month) provides discounted rates on all services."
+      },
+      {
+        "type": "section",
+        "id": "training-resources",
+        "title": "Training Resources",
+        "content": "To support technicians in implementing these new rates, the following resources are available:\n\n1. Updated rate cards (printable from the mobile app)\n2. Customer estimate calculator tool (in the mobile app)\n3. Video training on explaining new rates to customers\n4. FAQ document for common billing questions\n5. Virtual workshop on selling service protection plans\n\nAll technicians must complete the billing update certification in the Learning Hub by June 30, 2024. This certification ensures you understand the new rate structure and can accurately communicate it to customers."
+      },
+      {
+        "type": "section",
+        "id": "implementation-timeline",
+        "title": "Implementation Timeline",
+        "content": "The transition to the new rates will follow this timeline:\n\n- June 15, 2024: Announcement and training period begins\n- June 30, 2024: All technicians complete certification\n- July 1, 2024: New rates effective for all service calls\n- July 1-15, 2024: Transition period with additional support available\n- July 15, 2024: Full implementation review\n\nDuring the transition period (July 1-15), a dedicated support team will be available to assist with any billing questions or issues. Contact them at rate-support@techcentral.example.com or through the dedicated channel in the mobile app."
+      },
+      {
+        "type": "section",
+        "id": "contact-information",
+        "title": "Support and Contact Information",
+        "content": "For questions or assistance regarding the new rate structure, contact:\n\n- Billing Support Team: billing-support@techcentral.example.com\n- Rate Implementation Hotline: 1-888-555-BILL (available 7AM-8PM, 7 days/week)\n- Your Regional Manager (for region-specific questions)\n\nFeedback on the new rate structure is welcome and should be submitted through the Technician Feedback portal on the company intranet."
+      }
+    ]
+  },
+  {
+    "id": "warranty-billing-procedures",
+    "title": "Warranty Service Billing Procedures",
+    "subtitle": "Updated guidelines for processing warranty service calls and claims",
+    "summary": "Comprehensive guide to warranty service billing procedures for field technicians and managers.",
+    "description": "Comprehensive guide to warranty service billing procedures for field technicians and managers.",
+    "type": "Billing Update",
+    "category": "Billing",
+    "tags": [
+      "Warranty",
+      "Billing",
+      "Claims",
+      "Procedures"
+    ],
+    "regions": [
+      "all"
+    ],
+    "languages": [
+      "en",
+      "fr"
+    ],
+    "roles": [
+      "technician",
+      "manager"
+    ],
+    "teamTypes": [
+      "home",
+      "custom_home",
+      "business"
+    ],
+    "audienceGroups": [
+      "tech"
+    ],
+    "skillDesignations": [
+      "all"
+    ],
+    "productFocus": [
+      "All"
+    ],
+    "publishDate": "2024-06-05",
+    "lastUpdated": "2024-06-10",
+    "author": "Warranty Processing Team",
+    "imageUrl": "/images/warranty-billing.jpg",
+    "isNew": true,
+    "isUpdated": false,
+    "isOutOfDate": false,
+    "updateID": "PBS-2024-0087",
+    "effectiveDate": "2024-06-15T00:00:00Z",
+    "priority": 2,
+    "acknowledgementRequired": true,
+    "content": [
+      {
+        "type": "section",
+        "id": "introduction",
+        "title": "Introduction",
+        "content": "This document outlines the updated procedures for processing warranty service calls and submitting warranty claims. Effective June 15th, 2024, all warranty service must be processed according to these guidelines to ensure proper tracking, reimbursement, and customer satisfaction. These procedures apply to all manufacturer warranty services, extended warranty plans, and service protection agreements across all service territories."
+      },
+      {
+        "type": "section",
+        "id": "key-updates",
+        "title": "Key Updates",
+        "content": "The following key changes have been implemented in our warranty processing procedures:\n\n1. New warranty verification process through the mobile app\n2. Updated documentation requirements for manufacturer claims\n3. Streamlined approval workflow for common warranty scenarios\n4. Enhanced tracking for warranty parts exchange\n5. New billing codes specific to warranty service types\n6. Integration with manufacturer warranty systems for direct submission\n7. Automated follow-up scheduling for incomplete warranty resolutions\n\nThese changes are designed to reduce warranty claim processing time, increase approval rates, and improve the customer experience during warranty service interactions."
+      },
+      {
+        "type": "section",
+        "id": "warranty-verification",
+        "title": "Warranty Verification Process",
+        "content": "Before performing any warranty service, technicians must verify coverage using the following steps:\n\n1. Scan the equipment barcode or enter the serial number in the mobile app's warranty verification tool\n2. Confirm the installation date in the customer's service history\n3. Identify which type of warranty applies (manufacturer, extended, or service protection plan)\n4. Document the reported issue and confirm it falls under warranty coverage\n5. Take photos of the equipment showing model/serial numbers and the reported issue\n6. Generate and display the warranty verification certificate to the customer\n\nThe mobile app will automatically determine warranty eligibility based on installation date, service history, and manufacturer warranty terms. For any verification issues, contact the Warranty Verification Hotline at 1-888-555-WRTY."
+      },
+      {
+        "type": "section",
+        "id": "billing-codes",
+        "title": "Warranty Billing Codes",
+        "content": "Use the following new billing codes when processing warranty service calls:\n\n**Manufacturer Warranty Codes:**\n- MFW-DIAG: Manufacturer warranty diagnostic (no repair)\n- MFW-REPR: Manufacturer warranty repair\n- MFW-REPL: Manufacturer warranty replacement\n- MFW-PART: Manufacturer warranty parts only\n\n**Extended Warranty Codes:**\n- EXW-DIAG: Extended warranty diagnostic (no repair)\n- EXW-REPR: Extended warranty repair\n- EXW-REPL: Extended warranty replacement\n- EXW-PART: Extended warranty parts only\n\n**Service Protection Plan Codes:**\n- SPP-DIAG: Service plan diagnostic (no repair)\n- SPP-REPR: Service plan repair\n- SPP-REPL: Service plan replacement\n- SPP-PART: Service plan parts only\n\nAll warranty service must have the appropriate billing code applied, even though the customer charge will be $0.00. This ensures proper tracking and manufacturer reimbursement where applicable."
+      },
+      {
+        "type": "section",
+        "id": "documentation-requirements",
+        "title": "Documentation Requirements",
+        "content": "For all warranty service, the following documentation is required:\n\n1. Clear photos of equipment showing model and serial numbers\n2. Clear photos of the issue or damage (when visible)\n3. Detailed description of the problem and troubleshooting performed\n4. Customer acknowledgment signature for work performed\n5. Confirmation of resolution or next steps if not resolved\n\n**For manufacturer warranty claims, also include:**\n- Manufacturer's warranty authorization number (when applicable)\n- Original purchase date verification\n- Specific failure codes as defined by the manufacturer\n- Any diagnostic test results required by the manufacturer\n\n**For extended warranty claims, also include:**\n- Extended warranty contract number\n- Verification of plan coverage for the specific issue\n\nAll documentation must be submitted through the mobile app at the time of service. Incomplete documentation may result in delayed processing or claim rejection."
+      },
+      {
+        "type": "section",
+        "id": "parts-exchange-process",
+        "title": "Warranty Parts Exchange Process",
+        "content": "The warranty parts exchange process has been updated as follows:\n\n1. Before removing any equipment, document its condition with photos\n2. Scan both the old and new equipment barcodes\n3. Generate a parts exchange receipt for the customer\n4. Label the defective equipment with the warranty claim number\n5. Return defective equipment to your local warehouse within 48 hours\n6. Obtain a receipt confirmation for returned equipment\n\nImportant: Failure to return warranty exchange equipment may result in charges to the technician or customer. All equipment must be returned in the packaging of the replacement item. For oversized equipment, use the designated warranty return boxes available at your warehouse."
+      },
+      {
+        "type": "section",
+        "id": "claim-submission",
+        "title": "Warranty Claim Submission",
+        "content": "Warranty claims are now automatically generated when you select a warranty billing code and complete the required documentation. However, technicians should verify the following before finalizing the claim:\n\n1. All required photos are clear and properly labeled\n2. The correct warranty type has been selected\n3. All customer information is accurate\n4. The full problem description has been provided\n5. The resolution or next steps are clearly documented\n6. All required manufacturer-specific information is included\n\nClaims will be submitted nightly to the appropriate manufacturer or warranty provider. You can check claim status in the mobile app under 'My Warranty Claims'. For high-priority or escalated issues, contact the warranty processing team to expedite submission."
+      },
+      {
+        "type": "section",
+        "id": "customer-communication",
+        "title": "Customer Communication",
+        "content": "When providing warranty service, communicate the following to customers:\n\n1. Confirmation that their issue is covered under warranty\n2. The specific warranty type that applies (manufacturer, extended, or service plan)\n3. The resolution process and expected timeline\n4. Any customer responsibilities (such as registering new equipment)\n5. Next steps if the issue cannot be resolved during the initial visit\n\nProvide the customer with the warranty service summary, which includes:\n- The warranty claim number for reference\n- Contact information for follow-up questions\n- Expected resolution timeline\n- Details of any replacement equipment provided\n- Registration information for new equipment (if applicable)\n\nSet clear expectations regarding whether additional visits will be needed and when they can expect full resolution of their issue."
+      },
+      {
+        "type": "section",
+        "id": "follow-up-procedures",
+        "title": "Follow-up Procedures",
+        "content": "For warranty issues that cannot be resolved in a single visit:\n\n1. Create a warranty follow-up request in the mobile app\n2. Select the appropriate follow-up type (parts order, escalation, etc.)\n3. Provide a detailed explanation of what's needed to resolve the issue\n4. Set customer expectations for the next steps\n5. Schedule a tentative follow-up appointment if possible\n\nThe system will automatically track all open warranty issues and escalate those exceeding standard resolution timeframes. Customers will receive automated updates on parts orders and scheduling. Technicians will be notified when follow-up visits are scheduled or when ordered parts arrive at the warehouse."
+      },
+      {
+        "type": "section",
+        "id": "service-protection-plans",
+        "title": "Service Protection Plans",
+        "content": "Service Protection Plans have specific processing requirements:\n\n1. Verify the customer's plan level (Basic, Standard, or Premium)\n2. Confirm the reported issue is covered under their specific plan\n3. For Premium plan customers, offer the expedited resolution options\n4. Document any plan exclusions discussed with the customer\n5. Promote plan upgrades when appropriate (if current plan doesn't cover their issue)\n\nService Protection Plans cover a wider range of issues than standard manufacturer warranties, including accidental damage in Premium plans. Review the complete Service Protection Plan Coverage Guide in the mobile app for detailed information on covered services, exclusions, and customer benefits by plan level."
+      },
+      {
+        "type": "section",
+        "id": "training-resources",
+        "title": "Training Resources",
+        "content": "To support these new warranty procedures, the following resources are available:\n\n1. Warranty Processing video tutorial series in the Learning Hub\n2. Interactive warranty scenarios training module\n3. Manufacturer-specific warranty guides\n4. Mobile app guided workflow for warranty processing\n5. Weekly warranty processing webinars (schedule in Training Calendar)\n\nAll technicians must complete the Warranty Processing Certification in the Learning Hub by June 30, 2024. The certification includes knowledge assessment and practical application of the new procedures."
+      },
+      {
+        "type": "section",
+        "id": "implementation-timeline",
+        "title": "Implementation Timeline",
+        "content": "The transition to the new warranty procedures will follow this timeline:\n\n- June 5, 2024: Announcement and initial training availability\n- June 15, 2024: New procedures take effect (mobile app update)\n- June 30, 2024: Completion deadline for warranty certification\n- July 15, 2024: Implementation review and adjustments\n\nDuring the initial implementation period (June 15-30), additional support will be available through the Warranty Implementation Support Team. Contact them at warranty-support@techcentral.example.com or through the dedicated support channel in the mobile app."
+      },
+      {
+        "type": "section",
+        "id": "contact-information",
+        "title": "Support and Contact Information",
+        "content": "For questions or assistance regarding warranty procedures, contact:\n\n- Warranty Support Team: warranty-support@techcentral.example.com\n- Warranty Processing Hotline: 1-888-555-WRTY (available 7AM-8PM, 7 days/week)\n- Your Regional Warranty Coordinator (for escalations or special cases)\n\nFor manufacturer-specific warranty questions, consult the Manufacturer Warranty Portal in the Knowledge Base."
+      }
+    ]
+  },
+  {
+    "id": "repair-billing-guidelines",
+    "title": "Repair Billing Guidelines",
+    "subtitle": "Standardized billing procedures for all repair services across regions",
+    "summary": "Comprehensive guidelines for billing repair services consistently across all service territories.",
+    "description": "Comprehensive guidelines for billing repair services consistently across all service territories.",
+    "type": "Billing Update",
+    "category": "Billing",
+    "tags": [
+      "Repair",
+      "Billing",
+      "Guidelines",
+      "Procedures"
+    ],
+    "regions": [
+      "all"
+    ],
+    "languages": [
+      "en",
+      "fr"
+    ],
+    "roles": [
+      "technician",
+      "manager"
+    ],
+    "teamTypes": [
+      "home",
+      "custom_home",
+      "business"
+    ],
+    "audienceGroups": [
+      "tech"
+    ],
+    "skillDesignations": [
+      "all"
+    ],
+    "productFocus": [
+      "Internet",
+      "TV",
+      "Phone",
+      "Security"
+    ],
+    "publishDate": "2024-05-25",
+    "lastUpdated": "2024-06-08",
+    "author": "Billing Standards Team",
+    "imageUrl": "/images/repair-billing.jpg",
+    "isNew": false,
+    "isUpdated": true,
+    "isOutOfDate": false,
+    "updateID": "PBS-2024-0085",
+    "effectiveDate": "2024-06-01T00:00:00Z",
+    "priority": 2,
+    "acknowledgementRequired": true,
+    "content": [
+      {
+        "type": "section",
+        "id": "introduction",
+        "title": "Introduction",
+        "content": "This document provides standardized guidelines for billing all repair services across our service territories. Consistent billing practices are essential for customer satisfaction, accurate revenue reporting, and technician compensation. These guidelines apply to all repair services not covered under warranty or service agreements and aim to standardize the repair billing process while allowing for necessary regional variations."
+      },
+      {
+        "type": "section",
+        "id": "billing-classification",
+        "title": "Repair Classification System",
+        "content": "All repairs must be classified into one of the following categories to ensure consistent billing:\n\n**Class 1: Simple Repairs**\n- Duration: Typically under 30 minutes\n- Complexity: Low, minimal tools required\n- Examples: Cable reconnection, basic configuration, simple hardware resets\n- Billing: Flat rate according to regional rate card\n\n**Class 2: Standard Repairs**\n- Duration: 30-60 minutes\n- Complexity: Moderate, standard tools required\n- Examples: Wall outlet repair, basic wiring issues, equipment replacement\n- Billing: Flat rate according to regional rate card\n\n**Class 3: Complex Repairs**\n- Duration: 1-2 hours\n- Complexity: High, specialized tools may be required\n- Examples: Line conditioning, complex wiring repair, multiple device troubleshooting\n- Billing: Flat rate according to regional rate card\n\n**Class 4: Advanced Repairs**\n- Duration: 2+ hours\n- Complexity: Very high, specialized tools and expertise required\n- Examples: Extensive rewiring, outdoor/infrastructure repairs, multi-service issues\n- Billing: Base rate plus hourly rate after first 2 hours\n\nEach repair class has a standardized flat rate as specified in the regional rate cards. The mobile app will guide you through classifying repairs and applying the correct billing."
+      },
+      {
+        "type": "section",
+        "id": "billable-vs-non-billable",
+        "title": "Billable vs. Non-Billable Repairs",
+        "content": "Determining whether a repair is billable to the customer requires careful assessment. Follow these guidelines:\n\n**Always Billable:**\n- Customer-caused damage (excluding cases covered by protection plans)\n- Services outside our network demarcation point\n- Custom installations or relocations requested by customer\n- Third-party equipment support or integration\n- Repairs declined under previous diagnoses that have recurred\n\n**Never Billable:**\n- Issues caused by our equipment failure (within warranty)\n- Service outages due to network issues\n- Repairs of work performed incorrectly by our technicians\n- Issues covered under active service protection plans\n- Initial installation issues reported within 30 days\n\n**Requires Manager Approval for Billing:**\n- Intermittent issues not reproducible during diagnosis\n- Issues affecting multiple services with unclear cause\n- Repeat visits for the same issue within 90 days\n- Cases involving customer dispute about cause\n- Any repair where billable status is unclear\n\nWhen in doubt, contact your supervisor for guidance before committing to billable work."
+      },
+      {
+        "type": "section",
+        "id": "estimate-procedures",
+        "title": "Customer Estimate Procedures",
+        "content": "Providing accurate estimates is critical for customer satisfaction and to meet consumer protection regulations:\n\n1. Before beginning any billable repair, provide the customer with a written estimate\n2. Use the mobile app's estimate generator to create a formal estimate\n3. Clearly explain the diagnosed issue, proposed solution, and associated costs\n4. Inform the customer of potential additional costs if complications arise\n5. Obtain customer signature or electronic approval on the estimate\n6. Provide a copy of the estimate to the customer\n7. Do not exceed the estimate by more than 10% without customer approval\n\nIf during the repair you discover that additional work is needed, pause work, generate a revised estimate, and obtain customer approval before proceeding. All estimates must include parts, labor, and any applicable taxes or fees. The estimate should clearly state your diagnosis and the recommended repair approach."
+      },
+      {
+        "type": "section",
+        "id": "parts-billing",
+        "title": "Parts and Materials Billing",
+        "content": "When billing for parts and materials used in repairs:\n\n1. All parts must be entered individually in the mobile app using the correct part number\n2. Use only company-approved parts for repairs unless specifically authorized\n3. Apply the standard markup for each part category as specified in the pricing system\n4. Return all replaced parts to the customer unless:\n   - The part is subject to environmental disposal regulations\n   - The part must be returned under a warranty exchange program\n   - The customer declines to keep the replaced parts\n5. For environmentally sensitive materials, follow proper disposal procedures and apply the environmental handling fee\n6. Document the condition of all replaced parts with photos\n\nFor repairs requiring custom materials or specialized parts not in our inventory, follow the Special Order Parts process in the mobile app, which will calculate appropriate billing based on our costs plus standard markup."
+      },
+      {
+        "type": "section",
+        "id": "time-tracking",
+        "title": "Time Tracking Requirements",
+        "content": "Accurate time tracking is essential for both customer billing and operational efficiency metrics:\n\n1. Start repair time tracking when you begin the actual repair work (after diagnosis and estimate approval)\n2. Pause tracking during customer discussions, parts retrieval, or other non-repair activities\n3. Record all breaks and interruptions in the mobile app\n4. Document the specific tasks performed during each time segment\n5. For Class 4 repairs, track time in 15-minute increments after the first 2 hours\n6. Complete time tracking immediately upon finishing the repair\n7. Have the customer verify and acknowledge the time spent on billable repairs\n\nThe mobile app provides automated time tracking tools, including the ability to pause and resume tracking as needed. For extensive repairs spanning multiple days, close each day's time tracking and start a new session the following day."
+      },
+      {
+        "type": "section",
+        "id": "regional-variations",
+        "title": "Regional Billing Variations",
+        "content": "While the repair classification system is standardized across all regions, the following regional variations apply:\n\n**Quebec:**\n- Additional detailed estimate requirements under consumer protection laws\n- Mandatory cooling-off period for estimates over $500\n- Required bilingual documentation for all repairs\n- Different advance approval thresholds for estimate changes\n\n**Ontario:**\n- Provincial environmental fees for electronic waste disposal\n- Specific HST tax application rules\n- Special requirements for repairs in rental properties\n\n**Alberta/British Columbia:**\n- Different material markup regulations\n- Specialized billing for remote location services\n- Provincial warranty disclosure requirements\n\n**Atlantic Region:**\n- Modified travel charge calculation\n- Province-specific consumer protection disclosures\n\nRefer to your regional supplement in the mobile app for complete details on these variations. The mobile app will automatically apply the appropriate regional rules based on the service location."
+      },
+      {
+        "type": "section",
+        "id": "special-billing-situations",
+        "title": "Special Billing Situations",
+        "content": "Certain repair scenarios require specialized billing approaches:\n\n**Multi-Service Repairs:**\n- When a single repair affects multiple services (e.g., internet and TV), classify and bill based on the highest classification service involved\n- Document which services were affected in the repair notes\n- Apply the multi-service discount as specified in the regional rate card\n\n**Partial Repairs:**\n- When a repair cannot be fully completed due to parts availability, customer constraints, or other factors\n- Bill only for the completed portion of the repair\n- Clearly document the incomplete elements and follow-up requirements\n- Apply the partial repair code to enable proper tracking and scheduling of the completion\n\n**Repair Assessments Without Repair:**\n- When diagnostic work is performed but the customer declines the repair\n- Apply the appropriate diagnostic fee for the service type\n- Provide detailed documentation of the diagnosed issue and recommended solution\n- Include the estimated repair cost in your documentation even though the repair was declined\n\n**Failed Repair Attempts:**\n- When a repair is attempted but unsuccessful despite reasonable efforts\n- Document all troubleshooting steps and the reason for failure\n- Consult with your supervisor before applying any charges\n- If charging the customer, use the specific unsuccessful repair code and reduced rate"
+      },
+      {
+        "type": "section",
+        "id": "documentation-requirements",
+        "title": "Documentation Requirements",
+        "content": "Proper documentation is essential for all repair billing and must include:\n\n1. Clear before and after photos of the repair area\n2. Detailed notes describing the issue found and solution implemented\n3. List of all parts used with corresponding part numbers\n4. Accurate time tracking logs\n5. Customer acknowledgment signature for completed work\n6. Any relevant equipment serial numbers or identifiers\n7. Test results demonstrating the successful repair\n8. Any recommendations for future service or maintenance\n\nAll documentation must be completed in the mobile app before closing the repair ticket. Incomplete documentation may result in billing adjustments, delayed payment processing, or inability to defend against customer disputes."
+      },
+      {
+        "type": "section",
+        "id": "customer-payment-options",
+        "title": "Customer Payment Options",
+        "content": "Offer customers the following payment options for billable repairs:\n\n1. Immediate payment via credit card (processed through the mobile app)\n2. Addition to next service bill (for existing subscription customers in good standing)\n3. Financing options for large repairs exceeding $300 (subject to credit approval)\n4. Service protection plan enrollment (may waive current repair charges if allowed by regional policies)\n\nAll payment processing must be done through the approved channels in the mobile app. Never accept cash payments unless specifically authorized by your regional manager in exceptional circumstances. For customers who cannot pay immediately, follow the Deferred Payment process in the mobile app, which requires manager approval."
+      },
+      {
+        "type": "section",
+        "id": "billing-dispute-procedures",
+        "title": "Billing Dispute Procedures",
+        "content": "If a customer disputes a repair charge during or after service:\n\n1. Listen carefully to their concerns and acknowledge their position\n2. Review the estimate and completed work documentation with the customer\n3. Explain the work performed and how it aligns with the agreed estimate\n4. For disputes you cannot resolve, do not argue or make unauthorized adjustments\n5. Contact your supervisor for guidance while on-site if possible\n6. Document the specific nature of the dispute in the ticket notes\n7. Provide the customer with the dispute resolution contact information\n\nNever promise adjustments or credits that you're not authorized to provide. If a customer remains dissatisfied, provide them with the formal dispute resolution process information and escalate the issue through proper channels."
+      },
+      {
+        "type": "section",
+        "id": "training-resources",
+        "title": "Training Resources",
+        "content": "The following resources are available to help technicians master the repair billing process:\n\n1. Repair Billing module in the Learning Hub\n2. Interactive repair classification scenarios\n3. Regional variations quick reference guide\n4. Mobile app guided workflow for repair billing\n5. Bi-weekly repair billing webinars (schedule in Training Calendar)\n\nAll technicians must complete the Repair Billing Certification by June 30, 2024. Regional managers will be conducting regular audits of repair billing practices to ensure compliance and consistency."
+      },
+      {
+        "type": "section",
+        "id": "contact-information",
+        "title": "Support and Contact Information",
+        "content": "For questions or assistance with repair billing, contact:\n\n- Repair Billing Support: repair-billing@techcentral.example.com\n- Billing Support Hotline: 1-888-555-BILL (available 7AM-8PM, 7 days/week)\n- Your Regional Billing Coordinator (for escalations or special cases)\n\nFor urgent billing issues requiring immediate resolution while on a customer site, use the 'Urgent Billing Support' feature in the mobile app to connect with a billing specialist."
+      }
+    ]
   }
 ]

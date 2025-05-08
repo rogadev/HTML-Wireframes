@@ -4,36 +4,57 @@
 		description: string;
 		date: string;
 		link: string;
-	}>;
+	}> = [];
 
 	function getArticleSlug(link: string) {
+		if (!link) return '';
 		return link.replace(/^\//, '').split('/').pop();
+	}
+
+	function formatLink(linkPath: string): string {
+		if (!linkPath) return '/learning-hub';
+
+		// Ensure link starts with /articles/
+		if (!linkPath.startsWith('/articles/')) {
+			const slug = getArticleSlug(linkPath);
+			return slug ? `/articles/${slug}` : '/learning-hub';
+		}
+
+		// Ensure there's actually an ID in the path
+		const articleId = linkPath.split('/').pop();
+		return articleId ? linkPath : '/learning-hub';
 	}
 </script>
 
 <section class="technical-bulletins">
 	<div class="section-header">
 		<h2>Technical Bulletins & Policy Changes</h2>
-		<a href="/articles" class="view-all-btn">
+		<a href="/learning-hub" class="view-all-btn">
 			View All <i class="fas fa-arrow-right"></i>
 		</a>
 	</div>
 
 	<div class="bulletins-grid">
-		{#each bulletins as bulletin}
-			<a href={`/article/${getArticleSlug(bulletin.link)}`} class="bulletin-card">
-				<div class="bulletin-content">
-					<h3>{bulletin.title}</h3>
-					<p>{bulletin.description}</p>
-					<div class="bulletin-meta">
-						<span class="date">
-							<i class="fas fa-calendar-alt"></i>
-							{new Date(bulletin.date).toLocaleDateString()}
-						</span>
+		{#if bulletins && bulletins.length > 0}
+			{#each bulletins as bulletin}
+				<a href={formatLink(bulletin.link)} class="bulletin-card">
+					<div class="bulletin-content">
+						<h3>{bulletin.title}</h3>
+						<p>{bulletin.description}</p>
+						<div class="bulletin-meta">
+							<span class="date">
+								<i class="fas fa-calendar-alt"></i>
+								{new Date(bulletin.date).toLocaleDateString()}
+							</span>
+						</div>
 					</div>
-				</div>
-			</a>
-		{/each}
+				</a>
+			{/each}
+		{:else}
+			<div class="empty-state">
+				<p>No technical bulletins available at this time.</p>
+			</div>
+		{/if}
 	</div>
 </section>
 
@@ -65,9 +86,9 @@
 	}
 
 	.bulletins-grid {
-		display: flex;
-		flex-direction: column;
-		gap: 1rem;
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		gap: 1.5rem;
 	}
 
 	.bulletin-card {
@@ -106,5 +127,15 @@
 		display: flex;
 		align-items: center;
 		gap: 0.5rem;
+	}
+
+	.empty-state {
+		grid-column: 1 / -1;
+		text-align: center;
+		padding: 2rem;
+		background: white;
+		border: 1px solid var(--border-color);
+		border-radius: 8px;
+		color: var(--text-muted);
 	}
 </style>

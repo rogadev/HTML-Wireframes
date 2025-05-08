@@ -11,10 +11,10 @@
 	import { userPreferences } from '$lib/stores/userPreferences';
 	import { recentlyViewed } from '$lib/stores/recentlyViewed';
 
-	export let data;
+	export let data: { article: Article };
 
-	let article: Article | null = data.article;
-	let error = data.error;
+	let article = data.article;
+	let error: string | null = null;
 	let isOutOfDate = false;
 	let currentUrl = '';
 	let isFavorite = false;
@@ -138,7 +138,7 @@
 		</div>
 	</div>
 {:else if article}
-	{#if article.content?.length > 0}
+	{#if article.content && Array.isArray(article.content) && article.content.length > 0}
 		<ArticleTOC sections={article.content} />
 	{/if}
 
@@ -146,25 +146,45 @@
 		<article class="article-content">
 			<div class="last-updated-banner">
 				<i class="fas fa-clock"></i>
-				<span>Last updated: {formatDate(article.lastUpdated)}</span>
+				<span
+					>Last updated: {formatDate(
+						article.lastUpdated ||
+							article.publishDate ||
+							article.publishedDate ||
+							new Date().toISOString()
+					)}</span
+				>
 			</div>
 
 			<OutOfDateBanner visible={isOutOfDate} articleId={article.id} onToggle={toggleOutOfDate} />
 
 			<header class="article-header">
 				<div class="article-meta">
-					<Badge>{article.type}</Badge>
+					{#if article.type}
+						<Badge>{article.type}</Badge>
+					{:else if article.category}
+						<Badge>{article.category}</Badge>
+					{/if}
 					<div class="status-badge">
-						<StatusBadge publishDate={article.publishDate} lastUpdated={article.lastUpdated} />
+						<StatusBadge
+							publishDate={article.publishDate || article.publishedDate || ''}
+							lastUpdated={article.lastUpdated || ''}
+						/>
 					</div>
-					<time datetime={article.publishDate}>{formatDate(article.publishDate)}</time>
+					{#if article.publishDate || article.publishedDate}
+						<time datetime={article.publishDate || article.publishedDate}
+							>{formatDate(article.publishDate || article.publishedDate || '')}</time
+						>
+					{/if}
 					{#if article.author}
 						<span class="author">by {article.author}</span>
 					{/if}
 				</div>
 
 				<h1>{article.title}</h1>
-				<p class="subtitle">{article.subtitle}</p>
+				{#if article.subtitle}
+					<p class="subtitle">{article.subtitle}</p>
+				{/if}
 
 				<div class="article-actions">
 					<button
@@ -180,23 +200,39 @@
 							<span>Save</span>
 						{/if}
 					</button>
-					<DownloadButton articleId={article.id} lastUpdated={article.lastUpdated} />
+					<DownloadButton articleId={article.id} lastUpdated={article.lastUpdated || ''} />
 				</div>
 
-				<div class="article-tags">
-					{#each article.tags as tag}
-						<span class="tag">{tag}</span>
-					{/each}
-				</div>
+				{#if article.tags && article.tags.length > 0}
+					<div class="article-tags">
+						{#each article.tags as tag}
+							<span class="tag">{tag}</span>
+						{/each}
+					</div>
+				{/if}
 			</header>
 
 			<div class="article-body">
-				{#each article.content as section (section.id)}
-					<section id={section.id} class="article-section">
-						<h2>{section.title}</h2>
-						<p>{section.content}</p>
+				{#if article.content && typeof article.content !== 'string' && article.content.length > 0}
+					{#each article.content as section (section.id)}
+						<section id={section.id} class="article-section">
+							<h2>{section.title}</h2>
+							<p>{section.content}</p>
+						</section>
+					{/each}
+				{:else if typeof article.content === 'string'}
+					<section class="article-section">
+						<div>
+							{article.content}
+						</div>
 					</section>
-				{/each}
+				{:else if article.description}
+					<section class="article-section">
+						<div>
+							{article.description}
+						</div>
+					</section>
+				{/if}
 			</div>
 
 			<FeedbackWidget articleId={article.id} articleUrl={currentUrl} />

@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/state';
+	import { goto } from '$app/navigation';
 	import Card from '$lib/components/Card.svelte';
 	import CardGrid from '$lib/components/CardGrid.svelte';
 	import Badge from '$lib/components/Badge.svelte';
@@ -7,24 +8,119 @@
 
 	const props = $props<{ data: PageData }>();
 
+	// Define a type for search result
+	type SearchResult = {
+		id: string;
+		slug?: string;
+		title: string;
+		description: string;
+		languages: string[];
+		isNew?: boolean;
+		isUpdated?: boolean;
+		isOutOfDate?: boolean;
+		lastUpdated?: string;
+	};
+
 	let activeLanguage = $state<'en' | 'fr' | 'all'>('all');
 	let isLoading = $state(false);
 	let isFirstLoad = $state(true);
-	let isIndexBuilding = $state(true);
+	let isIndexBuilding = $state(false);
+	let searchResults = $state<SearchResult[]>(props.data.searchResults || []);
+	let languageCounts = $state(props.data.languages || { en: 0, fr: 0 });
+	let error = $state(props.data.error);
 
 	// Get search parameters from URL
 	const searchQuery = $derived(page.url.searchParams.get('q') || '');
 	const urlLang = $derived(page.url.searchParams.get('lang') || 'all');
 
-	// Access data from props
-	const searchResults = $derived(props.data.searchResults || []);
-	const languageCounts = $derived(props.data.languages || { en: 0, fr: 0 });
-	const error = $derived(props.data.error);
+	// Calculate accurate language counts based on current search results
+	$effect(() => {
+		if (searchResults && searchResults.length > 0) {
+			const counts = {
+				en: searchResults.filter((result: SearchResult) => result.languages?.includes('en')).length,
+				fr: searchResults.filter((result: SearchResult) => result.languages?.includes('fr')).length
+			};
+			languageCounts = counts;
+		}
+	});
+
+	// Cache key constructor
+	const getCacheKey = (query: string, lang: string) => `search_cache_${query}_${lang}`;
+
+	// Check and load from cache if available
+	$effect(() => {
+		if (typeof window !== 'undefined' && searchQuery) {
+			const cacheKey = getCacheKey(searchQuery, 'all'); // Always look for all languages in cache
+			const cachedData = localStorage.getItem(cacheKey);
+
+			if (cachedData) {
+				try {
+					const parsedData = JSON.parse(cachedData);
+					if (parsedData.results && parsedData.timestamp) {
+						// Check if cache is still valid (1 hour expiration)
+						const now = new Date().getTime();
+						const cacheAge = now - parsedData.timestamp;
+						const cacheExpirationMs = 60 * 60 * 1000; // 1 hour
+
+						if (cacheAge < cacheExpirationMs) {
+							const allResults = parsedData.results;
+
+							// Filter results based on selected language
+							if (activeLanguage !== 'all') {
+								searchResults = allResults.filter((result: SearchResult) =>
+									result.languages?.includes(activeLanguage)
+								);
+							} else {
+								searchResults = allResults;
+							}
+
+							// Make sure language counts are accurate for all results
+							languageCounts = {
+								en: allResults.filter((result: SearchResult) => result.languages?.includes('en'))
+									.length,
+								fr: allResults.filter((result: SearchResult) => result.languages?.includes('fr'))
+									.length
+							};
+
+							isLoading = false;
+							return;
+						}
+					}
+				} catch (e) {
+					console.error('Error parsing cached search data', e);
+				}
+			}
+		}
+	});
+
+	// Save results to cache
+	function cacheSearchResults() {
+		if (typeof window !== 'undefined' && searchQuery && searchResults.length > 0) {
+			const cacheKey = getCacheKey(searchQuery, 'all'); // Always cache all results
+			const cacheData = {
+				results: searchResults,
+				languageCounts,
+				timestamp: new Date().getTime()
+			};
+
+			try {
+				localStorage.setItem(cacheKey, JSON.stringify(cacheData));
+			} catch (e) {
+				console.error('Error caching search results', e);
+			}
+		}
+	}
+
+	// Update cache when new results are loaded
+	$effect(() => {
+		if (!isLoading && !isFirstLoad && searchResults.length > 0) {
+			cacheSearchResults();
+		}
+	});
 
 	// Function to create language badge for each result
-	function createLanguageBadge(language: string) {
+	function createLanguageBadge(languages: string[]) {
 		return () => {
-			// Return an object structure that will render a badge with proper styling
 			return {
 				component: Badge,
 				props: {
@@ -32,7 +128,7 @@
 					size: 'small',
 					pill: true
 				},
-				children: () => (language === 'fr' ? 'FR' : 'EN'),
+				children: () => (languages.includes('fr') ? 'FR' : 'EN'),
 				wrapperClass: 'language-indicator'
 			};
 		};
@@ -43,20 +139,7 @@
 		activeLanguage = (urlLang as 'en' | 'fr' | 'all') || 'all';
 	});
 
-	// Simulate index building on first load
-	$effect(() => {
-		if (isFirstLoad) {
-			isIndexBuilding = true;
-			const timer = setTimeout(() => {
-				isIndexBuilding = false;
-				isFirstLoad = false;
-			}, 1500);
-
-			return () => clearTimeout(timer);
-		}
-	});
-
-	function setLanguageFilter(lang: 'en' | 'fr' | 'all') {
+	async function setLanguageFilter(lang: 'en' | 'fr' | 'all') {
 		isLoading = true;
 
 		// Update URL with new language parameter
@@ -66,7 +149,116 @@
 		} else {
 			url.searchParams.set('lang', lang);
 		}
-		window.location.href = url.toString();
+
+		// Use client-side navigation
+		await goto(url.toString(), { keepFocus: true, noScroll: true });
+
+		// Try to use cached results for filtering if available
+		if (typeof window !== 'undefined' && searchQuery) {
+			const cacheKey = getCacheKey(searchQuery, 'all');
+			const cachedData = localStorage.getItem(cacheKey);
+
+			if (cachedData) {
+				try {
+					const parsedData = JSON.parse(cachedData);
+					if (parsedData.results && parsedData.timestamp) {
+						const now = new Date().getTime();
+						const cacheAge = now - parsedData.timestamp;
+						const cacheExpirationMs = 60 * 60 * 1000; // 1 hour
+
+						if (cacheAge < cacheExpirationMs) {
+							const allResults = parsedData.results;
+
+							// Apply language filter
+							if (lang !== 'all') {
+								searchResults = allResults.filter((result: SearchResult) =>
+									result.languages?.includes(lang)
+								);
+							} else {
+								searchResults = allResults;
+							}
+
+							// Recalculate language counts based on all results
+							languageCounts = {
+								en: allResults.filter((result: SearchResult) => result.languages?.includes('en'))
+									.length,
+								fr: allResults.filter((result: SearchResult) => result.languages?.includes('fr'))
+									.length
+							};
+
+							isLoading = false;
+							return;
+						}
+					}
+				} catch (e) {
+					console.error('Error parsing cached search data for filtering', e);
+				}
+			}
+		}
+
+		isLoading = false;
+	}
+
+	// Handle article navigation
+	async function handleArticleClick(event: MouseEvent, articleId: string) {
+		event.preventDefault();
+
+		// Store current search state in history
+		const searchState = {
+			results: searchResults,
+			query: searchQuery,
+			language: activeLanguage,
+			counts: languageCounts
+		};
+
+		// Push current state to history before navigating
+		history.pushState(searchState, '', window.location.href);
+
+		// Navigate to article
+		const url = `/articles/${articleId}`;
+		await goto(url, { keepFocus: true });
+	}
+
+	// Handle browser back/forward navigation
+	$effect(() => {
+		const handlePopState = (event: PopStateEvent) => {
+			if (event.state?.results) {
+				// Restore search results from history state
+				searchResults = event.state.results;
+				activeLanguage = event.state.language;
+				languageCounts = event.state.counts;
+				isLoading = false;
+				isFirstLoad = false;
+			}
+		};
+
+		window.addEventListener('popstate', handlePopState);
+		return () => window.removeEventListener('popstate', handlePopState);
+	});
+
+	// Set firstLoad to false after initial load
+	$effect(() => {
+		if (isFirstLoad && !isLoading && searchResults.length > 0) {
+			isFirstLoad = false;
+		}
+	});
+
+	// Clear cache function that can be used for debugging or adding a clear cache button
+	function clearSearchCache() {
+		if (typeof window !== 'undefined') {
+			// Find all search cache keys
+			const searchCacheKeys = [];
+			for (let i = 0; i < localStorage.length; i++) {
+				const key = localStorage.key(i);
+				if (key && key.startsWith('search_cache_')) {
+					searchCacheKeys.push(key);
+				}
+			}
+
+			// Remove all search cache entries
+			searchCacheKeys.forEach((key) => localStorage.removeItem(key));
+			console.log(`Cleared ${searchCacheKeys.length} search cache entries`);
+		}
 	}
 </script>
 
@@ -112,16 +304,6 @@
 				</button>
 			</div>
 		</div>
-
-		{#if activeLanguage === 'all'}
-			<div class="bilingual-info">
-				<i class="fas fa-check-circle"></i>
-				<p>
-					You're viewing results in <strong>both English and French</strong>. Perfect for bilingual
-					users who want to choose the best content regardless of language.
-				</p>
-			</div>
-		{/if}
 	</div>
 
 	{#if isIndexBuilding}
@@ -169,65 +351,27 @@
 			</p>
 		</div>
 	{:else}
-		<p class="results-count">
-			{searchResults.length} results found
-			{#if activeLanguage !== 'all'}
-				in {activeLanguage === 'en' ? 'English' : 'French'}
-			{:else}
-				across both languages
-			{/if}
-		</p>
-
-		{#if activeLanguage === 'all' && languageCounts.en > 0 && languageCounts.fr > 0}
-			<div class="bilingual-match-info">
-				<i class="fas fa-lightbulb"></i>
-				<div>
-					<p>
-						<strong>Matching content found in both languages!</strong>
-					</p>
-					<p>
-						We found similar content in both English ({languageCounts.en}) and French ({languageCounts.fr}).
-						Each result is clearly labeled with its language so you can choose your preference.
-					</p>
-				</div>
-			</div>
-		{/if}
-
 		<CardGrid columns={3}>
 			{#each searchResults as result}
-				<Card {...result} children={createLanguageBadge(result.language)} />
+				<div
+					onclick={(e: MouseEvent) => handleArticleClick(e, result.slug || result.id)}
+					onkeydown={(e: any) =>
+						e.key === 'Enter' && handleArticleClick(e, result.slug || result.id)}
+					role="button"
+					tabindex="0"
+				>
+					<Card
+						{...result}
+						link={`/articles/${result.slug || result.id}`}
+						isOutOfDate={result.isOutOfDate}
+						isUpdated={result.isUpdated}
+						isNew={result.isNew}
+						lastUpdated={result.lastUpdated}
+						children={createLanguageBadge(result.languages)}
+					/>
+				</div>
 			{/each}
 		</CardGrid>
-
-		<div class="search-features-info">
-			<h3>About Tech Central's Search Features</h3>
-			<div class="features-grid">
-				<div class="feature-card">
-					<i class="fas fa-language"></i>
-					<h4>Multilingual Search</h4>
-					<p>
-						Our search engine indexes content in both English and French, allowing you to find
-						relevant information regardless of language preference.
-					</p>
-				</div>
-				<div class="feature-card">
-					<i class="fas fa-filter"></i>
-					<h4>Smart Filtering</h4>
-					<p>
-						Filter search results by language, content type, or date to quickly find exactly what
-						you're looking for.
-					</p>
-				</div>
-				<div class="feature-card">
-					<i class="fas fa-sync"></i>
-					<h4>Real-time Updates</h4>
-					<p>
-						New content is automatically indexed as soon as it's published, ensuring search results
-						always include the latest information.
-					</p>
-				</div>
-			</div>
-		</div>
 	{/if}
 </div>
 
@@ -246,54 +390,6 @@
 		font-size: 2rem;
 		margin-bottom: 1rem;
 		color: var(--text-color);
-	}
-
-	.bilingual-info {
-		background-color: #f0ffed;
-		border-radius: 0.5rem;
-		padding: 0.75rem 1rem;
-		margin-bottom: 1.5rem;
-		display: flex;
-		align-items: center;
-		gap: 0.75rem;
-	}
-
-	.bilingual-info i {
-		color: #22c55e;
-		font-size: 1.25rem;
-	}
-
-	.bilingual-info p {
-		margin: 0;
-		font-size: 0.875rem;
-		line-height: 1.5;
-		color: #166534;
-	}
-
-	.bilingual-match-info {
-		background-color: #fffbeb;
-		border-radius: 0.5rem;
-		padding: 1rem;
-		margin-bottom: 1.5rem;
-		display: flex;
-		align-items: flex-start;
-		gap: 0.75rem;
-	}
-
-	.bilingual-match-info i {
-		color: #eab308;
-		font-size: 1.25rem;
-		padding-top: 0.25rem;
-	}
-
-	.bilingual-match-info p {
-		margin: 0;
-		font-size: 0.875rem;
-		line-height: 1.5;
-	}
-
-	.bilingual-match-info p:first-child {
-		margin-bottom: 0.25rem;
 	}
 
 	.language-filter-chips {
@@ -391,11 +487,6 @@
 		font-weight: 600;
 	}
 
-	.results-count {
-		color: var(--secondary-color);
-		margin-bottom: 2rem;
-	}
-
 	.loading,
 	.error,
 	.no-results {
@@ -423,54 +514,6 @@
 		color: var(--secondary-color);
 		font-size: 0.875rem;
 		max-width: 400px;
-	}
-
-	.language-indicator {
-		margin-top: 0.5rem;
-	}
-
-	.search-features-info {
-		margin-top: 4rem;
-		padding-top: 2rem;
-		border-top: 1px solid #eee;
-	}
-
-	.search-features-info h3 {
-		text-align: center;
-		margin-bottom: 2rem;
-		color: var(--text-color);
-		font-size: 1.5rem;
-	}
-
-	.features-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-		gap: 2rem;
-	}
-
-	.feature-card {
-		background: #f9fafb;
-		border-radius: 0.5rem;
-		padding: 1.5rem;
-		text-align: center;
-	}
-
-	.feature-card i {
-		font-size: 2rem;
-		color: var(--primary-color);
-		margin-bottom: 1rem;
-	}
-
-	.feature-card h4 {
-		font-size: 1.25rem;
-		margin-bottom: 0.75rem;
-		color: var(--text-color);
-	}
-
-	.feature-card p {
-		color: var(--secondary-color);
-		font-size: 0.875rem;
-		line-height: 1.5;
 	}
 
 	/* Index building animation styles */
@@ -568,5 +611,35 @@
 		.filter-chip-container {
 			width: 100%;
 		}
+	}
+
+	/* Add smooth transition for loading states */
+	.loading,
+	.error,
+	.no-results {
+		transition: opacity 0.2s ease-in-out;
+	}
+
+	/* Preserve scroll position during navigation */
+	:global(body) {
+		scroll-behavior: smooth;
+	}
+
+	@keyframes loading {
+		0% {
+			transform: scaleX(0);
+		}
+		50% {
+			transform: scaleX(0.5);
+		}
+		100% {
+			transform: scaleX(1);
+		}
+	}
+
+	/* Card wrapper styles for event handling */
+	:global(div[onclick]) {
+		cursor: pointer;
+		display: contents;
 	}
 </style>

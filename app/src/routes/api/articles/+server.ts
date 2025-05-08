@@ -24,7 +24,9 @@ export const GET: RequestHandler = async ({ url }) => {
     // Filter by category
     if (category) {
       filteredArticles = filteredArticles.filter(article =>
-        article.type === category || article.tags.includes(category)
+        article.type === category ||
+        article.category === category ||
+        (article.tags && article.tags.includes(category))
       );
     }
 
@@ -32,8 +34,9 @@ export const GET: RequestHandler = async ({ url }) => {
     if (region && region !== 'all') {
       filteredArticles = filteredArticles.filter(article =>
         !article.regions ||
-        article.regions.includes(region) ||
-        article.regions.includes('all')
+        (Array.isArray(article.regions) &&
+          (article.regions.includes(region) ||
+            article.regions.includes('all')))
       );
     }
 
@@ -41,15 +44,17 @@ export const GET: RequestHandler = async ({ url }) => {
     if (query) {
       filteredArticles = filteredArticles.filter(article =>
         article.title.toLowerCase().includes(query) ||
-        article.subtitle.toLowerCase().includes(query) ||
-        article.tags.some(tag => tag.toLowerCase().includes(query))
+        (article.subtitle && article.subtitle.toLowerCase().includes(query)) ||
+        (article.tags && article.tags.some(tag => tag.toLowerCase().includes(query)))
       );
     }
 
     // Sort by publishDate (most recent first) by default
-    filteredArticles.sort((a, b) =>
-      new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime()
-    );
+    filteredArticles.sort((a, b) => {
+      const dateA = a.lastUpdated || a.publishDate || a.publishedDate || '';
+      const dateB = b.lastUpdated || b.publishDate || b.publishedDate || '';
+      return new Date(dateB).getTime() - new Date(dateA).getTime();
+    });
   }
 
   // Map to article summaries if full articles not requested
