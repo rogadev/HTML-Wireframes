@@ -18,7 +18,7 @@
       "title": "New Fiber Installation Guidelines",
       "description": "Updated procedures for fiber optic installations in multi-unit buildings",
       "date": "2024-06-01",
-      "link": "/articles/fiber-installation-guidelines"
+      "link": "/learning-hub/fiber-installation-guidelines"
     },
     {
       "title": "WiFi 6E Router Configuration",
@@ -68,7 +68,7 @@
       "title": "Ontario Building Code Update",
       "description": "New building code regulations for multi-dwelling installations in Ontario have been published.",
       "relevance": "Specific to your region",
-      "link": "/articles/ontario-building-code"
+      "link": "/learning-hub/ontario-building-code"
     },
     {
       "type": "Technical",
@@ -76,13 +76,13 @@
       "title": "Router Firmware Update Required",
       "description": "Critical security update for all RT-3000 series routers must be completed by June 15th.",
       "relevance": "High priority",
-      "link": "/articles/router-firmware-update"
+      "link": "/learning-hub/router-firmware-update"
     }
   ],
   "recentArticles": [
     {
       "title": "Fiber Installation Guide v2.3",
-      "link": "/articles/fiber-installation-guide",
+      "link": "/learning-hub/fiber-installation-guide",
       "timeViewed": "2h ago"
     },
     {

@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { page } from '$app/state';
 	import type { ArticleSummary } from '$lib/types/article';
 	import Badge from './Badge.svelte';
+	import StatusBadge from './StatusBadge.svelte';
 
 	export let article: ArticleSummary;
 	export let onClick: () => void = () => {
@@ -28,6 +28,10 @@
 >
 	<div class="article-type">
 		<Badge>{article.type}</Badge>
+
+		<div class="status-badge-container">
+			<StatusBadge publishDate={article.publishDate} lastUpdated={article.lastUpdated} />
+		</div>
 	</div>
 
 	<div class="article-content">
@@ -76,6 +80,14 @@
 
 	.article-type {
 		margin-bottom: 1rem;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	.status-badge-container {
+		display: flex;
+		align-items: center;
 	}
 
 	.article-content h3 {

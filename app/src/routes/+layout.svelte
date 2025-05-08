@@ -2,36 +2,20 @@
 	import '../app.css';
 	import Navigation from '$lib/components/Navigation.svelte';
 	import TopBar from '$lib/components/TopBar.svelte';
-	import { userPreferences } from '$lib/stores/userPreferences';
+	import SystemAlert from '$lib/components/SystemAlert.svelte';
 
-	function handleLanguageChange(event: { language: string }) {
-		// Already handled by the TopBar component
-	}
-
-	function handleRegionChange(event: { region: string }) {
-		// Already handled by the TopBar component
-	}
-
-	function handleRoleChange(event: { role: string }) {
-		// Already handled by the TopBar component
-	}
-
-	function handleTeamTypeChange(event: { teamType: string }) {
-		// Already handled by the TopBar component
-	}
+	const pollingInterval = $state(30000);
+	let { children } = $props();
 </script>
 
-<TopBar
-	onLanguageChange={handleLanguageChange}
-	onRegionChange={handleRegionChange}
-	onRoleChange={handleRoleChange}
-	onTeamTypeChange={handleTeamTypeChange}
-/>
+<TopBar />
 
 <Navigation />
 
+<SystemAlert {pollingInterval} />
+
 <main>
-	<slot />
+	{@render children()}
 </main>
 
 <style>

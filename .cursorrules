@@ -118,3 +118,210 @@ $: currentPath = page.url.pathname
 - Prevents deprecation warnings
 - Maintains consistent store usage across the application
 - Provides proper reactivity with the new page API
+
+# Tech Central Route Structure and Content Organization
+
+## Main Navigation Tabs
+
+### Learning Hub (/learning-hub)
+
+- Primary purpose: Job aids and documentation for field technicians
+- Content types:
+  - Troubleshooting guides
+  - Installation procedures
+  - Technical documentation
+  - Field reference materials
+  - Hardware business rules
+  - Equipment handling guides
+  - Safety protocols
+- Example routes:
+  - `/learning-hub/installation-guides`
+  - `/learning-hub/troubleshooting`
+  - `/learning-hub/hardware-rules`
+  - `/learning-hub/device-library`
+  - `/learning-hub/equipment-safety`
+  - `/learning-hub/technical-specs`
+  - `/learning-hub/network-topology`
+  - `/learning-hub/qa-checklists`
+
+### ValueGen (/valuegen)
+
+- Primary purpose: Deals, promotions, and customer offers
+- Content types:
+  - Current promotions
+  - Special offers
+  - Deal qualification guides
+  - Customer benefit documentation
+  - Regional offers
+  - Language-specific content
+  - Sales investigation tracking
+- Example routes:
+  - `/valuegen/current-offers`
+  - `/valuegen/promotions-calendar`
+  - `/valuegen/incentive-rates`
+  - `/valuegen/qualification-guides`
+  - `/valuegen/regional-offers`
+  - `/valuegen/alerts`
+  - `/valuegen/sales-investigations`
+  - `/valuegen/solicitation-policy`
+
+### Billing/PSB (/billing)
+
+- Primary purpose: Professional Services Billing documentation
+- Content types:
+  - Billing procedures
+  - Rate cards
+  - Invoice templates
+  - Billing guidelines
+  - Regional billing rules
+  - Skill-specific billing
+  - Repair billing guidelines
+- Example routes:
+  - `/billing/quick-guide`
+  - `/billing/procedures`
+  - `/billing/rate-cards`
+  - `/billing/guidelines`
+  - `/billing/regional-rules`
+  - `/billing/repair-guidelines`
+  - `/billing/skill-specific`
+  - `/billing/updates`
+
+### Partners (/partners)
+
+- Primary purpose: Resources for Telus partners and subcontractors
+- Content types:
+  - Partner-specific job aids
+  - Service documentation
+  - Partner guidelines
+  - Contract information
+  - Partner training materials
+  - Partner performance metrics
+- Example routes:
+  - `/partners/job-aids`
+  - `/partners/guidelines`
+  - `/partners/contracts`
+  - `/partners/training`
+  - `/partners/performance`
+  - `/partners/onboarding`
+
+### Training (/training)
+
+- Primary purpose: Training materials and learning resources
+- Content types:
+  - Training modules
+  - Learning materials
+  - Certification guides
+  - Skill development resources
+  - Learning paths
+  - Training calendar
+  - Mentorship program
+- Example routes:
+  - `/training/learning-paths`
+  - `/training/modules`
+  - `/training/certifications`
+  - `/training/calendar`
+  - `/training/onboarding`
+  - `/training/knowledge-checks`
+  - `/training/mentorship`
+  - `/training/compliance`
+
+### Managers (/managers)
+
+- Primary purpose: Field management resources
+- Content types:
+  - Management dashboards
+  - Performance metrics
+  - Team management tools
+  - Field operations guides
+  - Training management
+  - Certification tracking
+  - Team scheduling
+- Example routes:
+  - `/managers/dashboard`
+  - `/managers/metrics`
+  - `/managers/team-tools`
+  - `/managers/scheduling`
+  - `/managers/training-management`
+  - `/managers/certifications`
+  - `/managers/access-requests`
+  - `/managers/reports`
+
+## URL Structure Rules
+
+1. Use kebab-case for all URLs
+2. Keep URLs descriptive but concise
+3. Use plural nouns for resource collections
+4. Use singular nouns for specific resources
+5. Include version numbers in URLs when applicable (e.g., `/training/fiber-installation-v2`)
+
+## Content Organization Rules
+
+1. Each section should have a clear, distinct purpose
+2. Content should be organized hierarchically
+3. Related content should be cross-linked when appropriate
+4. Each section should have its own navigation structure
+5. Content should be tagged with appropriate metadata for filtering and search
+
+## Mockup Development Rules
+
+1. All routes should be functional in the mockup
+2. Use static data for mockup development
+3. Structure data to match future CMS integration
+4. Include loading states and error handling
+5. Maintain consistent UI patterns across sections
+
+## Svelte 5 Event Handling
+
+### Event Handlers
+
+In Svelte 5, event handlers are properties rather than directives:
+
+```typescript
+// ❌ Don't do this (Svelte 4 style)
+<button on:click={handleClick}>Click me</button>
+
+// ✅ Do this instead (Svelte 5 style)
+<button onclick={handleClick}>Click me</button>
+```
+
+### Component Events
+
+For component events, use callback props instead of `createEventDispatcher`:
+
+```typescript
+// ❌ Don't do this (Svelte 4 style)
+import { createEventDispatcher } from 'svelte'
+const dispatch = createEventDispatcher()
+dispatch('event', data)
+
+// ✅ Do this instead (Svelte 5 style)
+export let onEvent: (data: any) => void
+onEvent(data)
+```
+
+### $derived vs $effect
+
+Use $derived for computed values and $effect for side effects:
+
+```typescript
+// ❌ Don't do this
+$effect(() => {
+  doubledCount = count * 2 // Computing values in an effect
+})
+
+// ✅ Do this instead
+const doubledCount = $derived(count * 2)
+
+// ✅ Use $effect only for side effects
+$effect(() => {
+  localStorage.setItem('count', count.toString())
+  document.title = `Count: ${count}`
+})
+```
+
+### Rules of thumb:
+
+1. If you're calculating a value based on other state, use $derived
+2. If you're performing side effects (DOM manipulation, API calls, etc.), use $effect
+3. Never modify state inside a $derived calculation
+4. Keep $effect functions focused on side effects only

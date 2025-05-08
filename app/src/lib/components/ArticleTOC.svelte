@@ -2,12 +2,13 @@
 	import { onMount } from 'svelte';
 	import type { ArticleSection } from '$lib/types/article';
 
-	export let sections: ArticleSection[];
+	// Correct way to use $props in Svelte 5
+	const { sections } = $props<{ sections: ArticleSection[] }>();
 
-	let isOpen = false;
-	let activeSection = sections[0]?.id;
+	let isOpen = $state(false);
+	let activeSection = $state(sections[0]?.id);
 	let observer: IntersectionObserver;
-	let closeOnNavigation = false; // Default to keeping TOC open after navigation
+	let closeOnNavigation = $state(false); // Default to keeping TOC open after navigation
 
 	const toggleTOC = () => {
 		isOpen = !isOpen;
@@ -22,6 +23,17 @@
 			// Ignore localStorage errors
 		}
 	};
+
+	// Handle key press to toggle TOC with enter key
+	function handleKeydown(e: KeyboardEvent) {
+		if (e.key === 'Enter') toggleTOC();
+	}
+
+	// Prevent default and scroll to section
+	function handleSectionClick(event: MouseEvent, id: string) {
+		event.preventDefault();
+		scrollToSection(id);
+	}
 
 	onMount(() => {
 		// Load preference from localStorage
@@ -74,7 +86,7 @@
 		}, options);
 
 		// Observe all section elements
-		sections.forEach((section) => {
+		sections.forEach((section: ArticleSection) => {
 			const element = document.getElementById(section.id);
 			if (element) observer.observe(element);
 		});
@@ -95,7 +107,7 @@
 
 		return () => {
 			// Clean up observer and event listeners
-			sections.forEach((section) => {
+			sections.forEach((section: ArticleSection) => {
 				const element = document.getElementById(section.id);
 				if (element) observer.unobserve(element);
 			});
@@ -122,10 +134,10 @@
 <div class="toc-container" class:open={isOpen}>
 	<div
 		class="toc-toggle-btn"
-		on:click={toggleTOC}
+		onclick={toggleTOC}
 		role="button"
 		tabindex="0"
-		on:keydown={(e) => e.key === 'Enter' && toggleTOC()}
+		onkeydown={handleKeydown}
 	>
 		<i class="fas fa-chevron-{isOpen ? 'right' : 'left'}"></i>
 		<span class="sr-only">{isOpen ? 'Close' : 'Open'} table of contents</span>
@@ -134,7 +146,7 @@
 	<div class="floating-toc">
 		<div class="floating-toc-header">
 			<span>On this page</span>
-			<button class="close-toc-btn" on:click={toggleTOC} aria-label="Close table of contents">
+			<button class="close-toc-btn" onclick={toggleTOC} aria-label="Close table of contents">
 				<i class="fas fa-times"></i>
 			</button>
 		</div>
@@ -145,7 +157,7 @@
 					<a
 						href={`#${section.id}`}
 						class:active={activeSection === section.id}
-						on:click|preventDefault={() => scrollToSection(section.id)}
+						onclick={(event) => handleSectionClick(event, section.id)}
 					>
 						{section.title}
 					</a>
@@ -155,7 +167,7 @@
 
 		<div class="toc-settings">
 			<label class="toc-setting-toggle">
-				<input type="checkbox" checked={closeOnNavigation} on:change={toggleCloseOnNavigation} />
+				<input type="checkbox" checked={closeOnNavigation} onchange={toggleCloseOnNavigation} />
 				<span class="setting-label">Close after navigation</span>
 			</label>
 		</div>

@@ -2,12 +2,19 @@
 	import type { Article } from '$lib/types/article';
 	import ArticleTOC from '$lib/components/ArticleTOC.svelte';
 	import Badge from '$lib/components/Badge.svelte';
+	import DownloadButton from '$lib/components/DownloadButton.svelte';
+	import StatusBadge from '$lib/components/StatusBadge.svelte';
+	import OutOfDateBanner from '$lib/components/OutOfDateBanner.svelte';
+	import FeedbackWidget from '$lib/components/FeedbackWidget.svelte';
 	import { goto } from '$app/navigation';
+	import { onMount } from 'svelte';
 
 	export let data;
 
 	let article: Article | null = data.article;
 	let error = data.error;
+	let isOutOfDate = false;
+	let currentUrl = '';
 
 	// Format date for display
 	const formatDate = (dateString: string) => {
@@ -18,6 +25,57 @@
 			day: 'numeric'
 		});
 	};
+
+	// Fetch the out-of-date status on mount
+	onMount(async () => {
+		// Get the current full URL for the feedback form
+		currentUrl = window.location.href;
+
+		if (article) {
+			// First check if it's set in the article data (initial state)
+			if (article.isOutOfDate !== undefined) {
+				isOutOfDate = article.isOutOfDate;
+			} else {
+				// Otherwise fetch from API
+				try {
+					const response = await fetch(`/api/articles/out-of-date?articleId=${article.id}`);
+					if (response.ok) {
+						const data = await response.json();
+						isOutOfDate = !!data.isOutOfDate;
+					}
+				} catch (err) {
+					console.error('Failed to fetch out-of-date status:', err);
+				}
+			}
+		}
+	});
+
+	// Toggle the out-of-date status
+	async function toggleOutOfDate(newStatus: boolean) {
+		if (!article) return;
+
+		try {
+			const response = await fetch('/api/articles/out-of-date', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({
+					articleId: article.id,
+					isOutOfDate: newStatus
+				})
+			});
+
+			if (response.ok) {
+				isOutOfDate = newStatus;
+			} else {
+				// Handle error
+				console.error('Failed to update out-of-date status');
+			}
+		} catch (err) {
+			console.error('Error toggling out-of-date status:', err);
+		}
+	}
 </script>
 
 <svelte:head>
@@ -62,9 +120,19 @@
 
 	<div class="article-page">
 		<article class="article-content">
+			<div class="last-updated-banner">
+				<i class="fas fa-clock"></i>
+				<span>Last updated: {formatDate(article.lastUpdated)}</span>
+			</div>
+
+			<OutOfDateBanner visible={isOutOfDate} articleId={article.id} onToggle={toggleOutOfDate} />
+
 			<header class="article-header">
 				<div class="article-meta">
 					<Badge>{article.type}</Badge>
+					<div class="status-badge">
+						<StatusBadge publishDate={article.publishDate} lastUpdated={article.lastUpdated} />
+					</div>
 					<time datetime={article.publishDate}>{formatDate(article.publishDate)}</time>
 					{#if article.author}
 						<span class="author">by {article.author}</span>
@@ -73,6 +141,10 @@
 
 				<h1>{article.title}</h1>
 				<p class="subtitle">{article.subtitle}</p>
+
+				<div class="article-actions">
+					<DownloadButton articleId={article.id} lastUpdated={article.lastUpdated} />
+				</div>
 
 				<div class="article-tags">
 					{#each article.tags as tag}
@@ -89,6 +161,8 @@
 					</section>
 				{/each}
 			</div>
+
+			<FeedbackWidget articleId={article.id} articleUrl={currentUrl} />
 		</article>
 	</div>
 {:else}
@@ -274,5 +348,31 @@
 		.subtitle {
 			font-size: 1.125rem;
 		}
+	}
+
+	.last-updated-banner {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		background-color: #f9f5ff;
+		border-left: 4px solid #7c3aed;
+		padding: 0.75rem 1rem;
+		margin-bottom: 1.5rem;
+		border-radius: 0 4px 4px 0;
+		font-size: 0.875rem;
+		color: #6b21a8;
+	}
+
+	.last-updated-banner i {
+		font-size: 1rem;
+	}
+
+	.article-actions {
+		display: flex;
+		margin: 1rem 0;
+	}
+
+	.status-badge {
+		margin-left: 0.5rem;
 	}
 </style>

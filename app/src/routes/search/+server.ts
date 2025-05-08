@@ -7,7 +7,7 @@ const articles = [
     title: 'Installing Fiber Optic in Your New Home',
     description: 'A comprehensive guide to installing fiber optic internet in your new home, including best practices and common pitfalls to avoid.',
     imageUrl: '/images/fiber-installation.jpg',
-    link: '/articles/fiber-installation-guide',
+    link: '/learning-hub/fiber-installation-guide',
     category: 'Guide',
     tags: ['Fiber', 'Installation', 'Home'],
     date: 'June 1, 2024',
