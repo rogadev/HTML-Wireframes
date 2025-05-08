@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 
 	export let isMobile = false;
 	export let isExpanded = false;
@@ -12,7 +12,7 @@
 			const searchUrl = `/search?q=${encodeURIComponent(searchQuery.trim())}`;
 
 			// If we're already on the search page, force a page reload
-			if ($page.url.pathname === '/search') {
+			if (page.url.pathname === '/search') {
 				window.location.href = searchUrl;
 			} else {
 				goto(searchUrl);

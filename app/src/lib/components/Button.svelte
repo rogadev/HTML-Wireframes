@@ -1,6 +1,4 @@
 <script lang="ts">
-	import { createEventDispatcher } from 'svelte';
-
 	export let variant: 'primary' | 'secondary' | 'outline' | 'text' = 'primary';
 	export let size: 'small' | 'medium' | 'large' = 'medium';
 	export let icon: string | undefined = undefined;
@@ -8,14 +6,11 @@
 	export let disabled = false;
 	export let type: 'button' | 'submit' | 'reset' = 'button';
 	export let fullWidth = false;
-
-	const dispatch = createEventDispatcher<{
-		click: MouseEvent;
-	}>();
+	export let onClick: ((event: MouseEvent) => void) | undefined = undefined;
 
 	function handleClick(event: MouseEvent) {
-		if (!disabled) {
-			dispatch('click', event);
+		if (!disabled && onClick) {
+			onClick(event);
 		}
 	}
 </script>
